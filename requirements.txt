@@ -1,0 +1,23 @@
+# RPT - Redes Preditivas Termodinâmicas
+# Requirements
+
+# Core
+torch>=2.0.0
+numpy>=1.24.0
+
+# Transformers (para conversão e comparação)
+transformers>=4.36.0
+tokenizers>=0.15.0
+accelerate>=0.25.0
+
+# Treinamento
+tqdm>=4.65.0
+datasets>=2.16.0
+
+# Opcional: otimização
+# bitsandbytes>=0.41.0  # Para quantização
+
+# Desenvolvimento
+# pytest>=7.4.0
+# black>=23.0.0
+# ruff>=0.1.0

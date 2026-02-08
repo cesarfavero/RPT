@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "RPT: Sparsity Improves Ternary Language Models"
+message: "If you use this repository, please cite it using this metadata."
+type: software
+authors:
+  - family-names: "Favero"
+    given-names: "Cesar"
+    email: "cesar@caesarstechnology.com"
+repository-code: "https://github.com/cesarfavero/RPT"
+url: "https://github.com/cesarfavero/RPT"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-02-08"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Favero"
+      given-names: "Cesar"
+  title: "Sparsity Improves Ternary Language Models: Evidence from BitNet b1.58"
+  year: 2026

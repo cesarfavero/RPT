@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large artifacts (keep on Hugging Face)
+*.gguf
+*.tar.gz
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Local large dirs
+archive/
+dataset_wikitext/
+deploy/bitnet_2b_pruned/
+
+# TeX build outputs
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.pdf
+paper/*.synctex.gz
