@@ -59,12 +59,15 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `07` expansão para 36 projeções MLP com recovery forte:
   - pré-recovery: `0.07`
   - pós-recovery: `0.91`
+- `07` repetição de 36 projeções MLP com recovery mais forte:
+  - pré-recovery: `0.07`
+  - pós-recovery: `0.91`
 
 Leitura honesta:
 - a teoria está forte para `pruning + 8bit`
 - ternário direto sem adaptação falhou
 - ternário com adaptação ficou sustentado até `24` projeções MLP no platô `0.92`, usando recovery forte
-- em `36` projeções MLP, o recovery ainda preserva função em `0.91`, mas saiu do platô; antes de saltar para `48`, o próximo teste deve fortalecer o recovery em `36`
+- em `36` projeções MLP, dois recoveries preservaram função em `0.91`, mas saíram do platô; antes de saltar para `48`, o próximo teste deve medir o intermediário `30`
 
 ## Estratégia de expansão
 
@@ -79,6 +82,8 @@ Critério:
 - se cair para `0.91`, repetir o mesmo estágio com recovery mais forte antes de avançar
 - se cair abaixo de `0.90`, testar o ponto intermediário entre o último estágio bom e o estágio que falhou
 - `78` significa todos os MLPs ternarizados em um modelo com 26 blocos e 3 projeções MLP por bloco
+
+Depois de `36` repetir `0.91` mesmo com recovery mais forte, o próximo alvo operacional é `30`, para localizar o limite entre o último platô confirmado (`24`) e o primeiro ponto tensionado (`36`).
 
 ## Regra do projeto
 
