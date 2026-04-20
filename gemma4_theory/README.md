@@ -83,7 +83,11 @@ Critério:
 - se cair abaixo de `0.90`, testar o ponto intermediário entre o último estágio bom e o estágio que falhou
 - `78` significa todos os MLPs ternarizados em um modelo com 26 blocos e 3 projeções MLP por bloco
 
-Depois de `36` repetir `0.91` mesmo com recovery mais forte, o próximo alvo operacional é `30`, para localizar o limite entre o último platô confirmado (`24`) e o primeiro ponto tensionado (`36`).
+Depois de `36` repetir `0.91` mesmo com recovery mais forte, existem duas rotas:
+- mapear o limite fino entre `24` e `36` usando `30`/`33`
+- ou avançar para o próximo regime com `48` usando recovery mais forte
+
+Decisão operacional atual: testar `48` para observar se o regime colapsa, estabiliza em `0.91`, ou ainda consegue voltar a `0.92`.
 
 ## Regra do projeto
 
