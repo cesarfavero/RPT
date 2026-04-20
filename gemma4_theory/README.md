@@ -53,12 +53,15 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `07` expansão para 21 projeções MLP com recovery forte:
   - pré-recovery: `0.02`
   - pós-recovery: `0.92`
+- `07` expansão para 24 projeções MLP com recovery forte:
+  - pré-recovery: `0.05`
+  - pós-recovery: `0.92`
 
 Leitura honesta:
 - a teoria está forte para `pruning + 8bit`
 - ternário direto sem adaptação falhou
-- ternário com adaptação ficou sustentado até `21` projeções MLP no platô `0.92`, desde que o recovery seja fortalecido
-- o próximo teste deve expandir para `24` projeções MLP usando o recovery forte
+- ternário com adaptação ficou sustentado até `24` projeções MLP no platô `0.92`, usando recovery forte
+- o próximo teste deve saltar para `36` projeções MLP usando o mesmo recovery forte
 
 ## Estratégia de expansão
 
