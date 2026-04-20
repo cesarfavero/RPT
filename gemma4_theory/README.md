@@ -38,11 +38,14 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
   - `pruned_4bit = 0.91`
 - `05` ternary snap direto em 8 camadas MLP: `0.76`
 - `06` ternary recovery após o snap parcial: `0.91`
+- `07` expansão para 12 projeções MLP:
+  - pré-recovery: `0.46`
+  - pós-recovery: `0.92`
 
 Leitura honesta:
 - a teoria está forte para `pruning + 8bit`
 - ternário direto sem adaptação falhou
-- ternário com adaptação ficou promissor e agora precisa de expansão gradual, não de conversão total abrupta
+- ternário com adaptação ficou sustentado para `12` projeções MLP e agora precisa de expansão gradual, não de conversão total abrupta
 
 ## Regra do projeto
 
