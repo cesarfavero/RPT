@@ -62,6 +62,9 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `07` repetição de 36 projeções MLP com recovery mais forte:
   - pré-recovery: `0.07`
   - pós-recovery: `0.91`
+- `07` expansão para 48 projeções MLP com recovery forte:
+  - pré-recovery: `0.03`
+  - pós-recovery: `0.91`
 
 Leitura honesta:
 - a teoria está forte para `pruning + 8bit`
@@ -88,6 +91,8 @@ Depois de `36` repetir `0.91` mesmo com recovery mais forte, existem duas rotas:
 - ou avançar para o próximo regime com `48` usando recovery mais forte
 
 Decisão operacional atual: testar `48` para observar se o regime colapsa, estabiliza em `0.91`, ou ainda consegue voltar a `0.92`.
+
+Resultado do `48`: estabilizou em `0.91`, sem colapsar. Próximo passo operacional: repetir `48` com recovery mais longo antes de tentar `60`.
 
 ## Regra do projeto
 
