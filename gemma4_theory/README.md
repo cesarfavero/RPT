@@ -41,11 +41,14 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `07` expansão para 12 projeções MLP:
   - pré-recovery: `0.46`
   - pós-recovery: `0.92`
+- `07` expansão para 16 projeções MLP:
+  - pré-recovery: `0.16`
+  - pós-recovery: `0.92`
 
 Leitura honesta:
 - a teoria está forte para `pruning + 8bit`
 - ternário direto sem adaptação falhou
-- ternário com adaptação ficou sustentado para `12` projeções MLP e agora precisa de expansão gradual, não de conversão total abrupta
+- ternário com adaptação ficou sustentado até `16` projeções MLP e agora precisa de expansão gradual por blocos completos, não de conversão total abrupta
 
 ## Regra do projeto
 
