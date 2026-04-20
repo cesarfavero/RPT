@@ -60,6 +60,20 @@ Leitura honesta:
 - ternário com adaptação ficou sustentado até `21` projeções MLP no platô `0.92`, desde que o recovery seja fortalecido
 - o próximo teste deve expandir para `24` projeções MLP usando o recovery forte
 
+## Estratégia de expansão
+
+Não vamos varrer de `3 em 3` até o fim. Depois de validar `21` com recovery forte, a expansão passa a ser por saltos:
+
+```text
+24 -> 36 -> 48 -> 60 -> 78
+```
+
+Critério:
+- se o estágio mantiver `0.92`, avançar para o próximo salto
+- se cair para `0.91`, repetir o mesmo estágio com recovery mais forte antes de avançar
+- se cair abaixo de `0.90`, testar o ponto intermediário entre o último estágio bom e o estágio que falhou
+- `78` significa todos os MLPs ternarizados em um modelo com 26 blocos e 3 projeções MLP por bloco
+
 ## Regra do projeto
 
 Cada notebook salva um artefato em `results/` com timestamp. Não edite resultados manualmente; rode novamente.
