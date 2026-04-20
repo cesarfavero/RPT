@@ -1,0 +1,981 @@
+{
+  "source_model": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+  "target_layer_limit": 21,
+  "pilot_layers": [
+    "model.layers.0.mlp.gate_proj",
+    "model.layers.0.mlp.up_proj",
+    "model.layers.0.mlp.down_proj",
+    "model.layers.1.mlp.gate_proj",
+    "model.layers.1.mlp.up_proj",
+    "model.layers.1.mlp.down_proj",
+    "model.layers.2.mlp.gate_proj",
+    "model.layers.2.mlp.up_proj",
+    "model.layers.2.mlp.down_proj",
+    "model.layers.3.mlp.gate_proj",
+    "model.layers.3.mlp.up_proj",
+    "model.layers.3.mlp.down_proj",
+    "model.layers.4.mlp.gate_proj",
+    "model.layers.4.mlp.up_proj",
+    "model.layers.4.mlp.down_proj",
+    "model.layers.5.mlp.gate_proj",
+    "model.layers.5.mlp.up_proj",
+    "model.layers.5.mlp.down_proj",
+    "model.layers.6.mlp.gate_proj",
+    "model.layers.6.mlp.up_proj",
+    "model.layers.6.mlp.down_proj"
+  ],
+  "summary": {
+    "total_questions": 100,
+    "correct": 2,
+    "accuracy": 0.02,
+    "by_category": {
+      "factual": {
+        "total": 20,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "math": {
+        "total": 10,
+        "correct": 1,
+        "accuracy": 0.1
+      },
+      "science": {
+        "total": 10,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "history": {
+        "total": 10,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "logic": {
+        "total": 10,
+        "correct": 1,
+        "accuracy": 0.1
+      },
+      "coding": {
+        "total": 10,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "language": {
+        "total": 10,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "sports": {
+        "total": 10,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "everyday": {
+        "total": 10,
+        "correct": 0,
+        "accuracy": 0.0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": 1,
+      "category": "factual",
+      "question": "Qual a capital da França?",
+      "expected_answer": "Paris",
+      "model_answer": "A capital da França. \n: \nA capital da França. \n:",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital da França?\nResposta: \nA capital da França. \n: \nA capital da França. \n: \n"
+    },
+    {
+      "id": 2,
+      "category": "factual",
+      "question": "Qual a capital da Alemanha?",
+      "expected_answer": "Berlim",
+      "model_answer": "**",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital da Alemanha?\nResposta: \nA capital da Alemanha.\n\n**Resposta:** \nA capital da Alemanha.\n\n**Resposta:** \n"
+    },
+    {
+      "id": 3,
+      "category": "factual",
+      "question": "Qual a capital da Itália?",
+      "expected_answer": "Roma",
+      "model_answer": "**",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital da Itália?\nResposta: \nA capital da Itália.\n\n**Resposta:** \nA capital da Itália.\n\n**Resposta:** \n"
+    },
+    {
+      "id": 4,
+      "category": "factual",
+      "question": "Qual a capital da Espanha?",
+      "expected_answer": "Madri",
+      "model_answer": "** A capital da Espanha.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital da Espanha?\nResposta: A capital da Espanha.\n\n**Resposta:** A capital da Espanha.\n"
+    },
+    {
+      "id": 5,
+      "category": "factual",
+      "question": "Qual a capital de Portugal?",
+      "expected_answer": "Lisboa",
+      "model_answer": "A capital de Portugal é a capital de Portugal.\n\n:\nA capital de Portugal é a capital de Portugal",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital de Portugal?\nResposta: A capital de Portugal é a capital de Portugal.\n\n:\nA capital de Portugal é a capital de Portugal"
+    },
+    {
+      "id": 6,
+      "category": "factual",
+      "question": "Qual a capital do Japão?",
+      "expected_answer": "Tóquio",
+      "model_answer": "A capital do Japão?",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital do Japão?\nResposta: \nA capital do Japão? \n \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 7,
+      "category": "factual",
+      "question": "Qual a capital da China?",
+      "expected_answer": "Pequim",
+      "model_answer": "A capital da China é um capital da China.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital da China?\nResposta: A capital da China é um capital da China.\n"
+    },
+    {
+      "id": 8,
+      "category": "factual",
+      "question": "Qual a capital da Argentina?",
+      "expected_answer": "Buenos Aires",
+      "model_answer": "A capital da Argentina",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital da Argentina?\nResposta: A capital da Argentina.\n\n**Pergunta: Qual a capital da Argentina?**\n\nResposta: A capital da Argentina"
+    },
+    {
+      "id": 9,
+      "category": "factual",
+      "question": "Qual a capital do Canadá?",
+      "expected_answer": "Ottawa",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital do Canadá?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 10,
+      "category": "factual",
+      "question": "Qual a capital da Austrália?",
+      "expected_answer": "Camberra",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual a capital da Austrália?\nResposta: \n \n \n \n  \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 11,
+      "category": "factual",
+      "question": "Quem pintou a Mona Lisa?",
+      "expected_answer": "Leonardo da Vinci",
+      "model_answer": "** Mona Lisa.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem pintou a Mona Lisa?\nResposta: Mona Lisa.\n\n**Resposta:** Mona Lisa.\n\n**Resposta:** Mona Lisa.\n"
+    },
+    {
+      "id": 12,
+      "category": "factual",
+      "question": "Quem escreveu Dom Quixote?",
+      "expected_answer": "Miguel de Cervantes",
+      "model_answer": "Dom Quixote.\n\n**Explanation:**\n\nDom Quixote is a famous and a famous and a famous and a famous and a",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem escreveu Dom Quixote?\nResposta: Dom Quixote.\n\n**Explanation:**\n\nDom Quixote is a famous and a famous and a famous and a famous and a"
+    },
+    {
+      "id": 13,
+      "category": "factual",
+      "question": "Quem escreveu Hamlet?",
+      "expected_answer": "William Shakespeare",
+      "model_answer": "Hamlet.\n\n**Hamlet**\n\n**Hamlet**\n\n**Hamlet**\n\n**Hamlet**\n\n**Hamlet**\n\n**",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem escreveu Hamlet?\nResposta: Hamlet.\n\n**Hamlet**\n\n**Hamlet**\n\n**Hamlet**\n\n**Hamlet**\n\n**Hamlet**\n\n**"
+    },
+    {
+      "id": 14,
+      "category": "factual",
+      "question": "Quem descobriu a penicilina?",
+      "expected_answer": "Alexander Fleming",
+      "model_answer": "A penicilina é um um um um um um um um um um um um um um um um um um um",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem descobriu a penicilina?\nResposta: A penicilina é um um um um um um um um um um um um um um um um um um um"
+    },
+    {
+      "id": 15,
+      "category": "factual",
+      "question": "Quem desenvolveu a teoria da relatividade?",
+      "expected_answer": "Albert Einstein",
+      "model_answer": "A teoria",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem desenvolveu a teoria da relatividade?\nResposta:\n\n**A teoria da relatividade**\n\n**Resposta: A teoria da relatividade**\n\n**Resposta: A teoria"
+    },
+    {
+      "id": 16,
+      "category": "factual",
+      "question": "Qual planeta é conhecido como Planeta Vermelho?",
+      "expected_answer": "Marte",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual planeta é conhecido como Planeta Vermelho?\nResposta: \n \n \n \n  \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 17,
+      "category": "factual",
+      "question": "Qual é o maior planeta do Sistema Solar?",
+      "expected_answer": "Júpiter",
+      "model_answer": "O planeta do Sistema Solar é",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o maior planeta do Sistema Solar?\nResposta:\n\nO planeta do Sistema Solar é o maior planeta do Sistema Solar.\n\nResposta:\n\nO planeta do Sistema Solar é"
+    },
+    {
+      "id": 18,
+      "category": "factual",
+      "question": "Quantos continentes existem tradicionalmente?",
+      "expected_answer": "7",
+      "model_answer": "**I am a large language model, trained on a massive dataset of text and code. I can generate text",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quantos continentes existem tradicionalmente?\nResposta: \n\n**I am a large language model, trained on a massive dataset of text and code. I can generate text"
+    },
+    {
+      "id": 19,
+      "category": "factual",
+      "question": "Qual é o oceano mais extenso da Terra?",
+      "expected_answer": "Oceano Pacífico",
+      "model_answer": "** O oceano mais extenso da Terra é.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o oceano mais extenso da Terra?\nResposta: O oceano mais extenso da Terra é.\n\n**Resposta:** O oceano mais extenso da Terra é.\n"
+    },
+    {
+      "id": 20,
+      "category": "factual",
+      "question": "Qual é o metal cujo símbolo químico é Au?",
+      "expected_answer": "Ouro",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o metal cujo símbolo químico é Au?\nResposta: O metal que símbolo químico é Au?\n\n**Resposta: O metal que símbolo químico é Au**\n\n**Resposta:"
+    },
+    {
+      "id": 21,
+      "category": "math",
+      "question": "Qual é o resultado de 12 x 8?",
+      "expected_answer": "96",
+      "model_answer": "12 x 8 = 12 x 8.\n\n**Explanation:**\n\nThe result of 1",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o resultado de 12 x 8?\nResposta: 12 x 8 = 12 x 8.\n\n**Explanation:**\n\nThe result of 1"
+    },
+    {
+      "id": 22,
+      "category": "math",
+      "question": "Quanto é 144 dividido por 12?",
+      "expected_answer": "12",
+      "model_answer": "144 dividido por  12.\n\n**Explanation:**\n\nThe question is about 144",
+      "is_correct": true,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quanto é 144 dividido por 12?\nResposta: 144 dividido por  12.\n\n**Explanation:**\n\nThe question is about 144"
+    },
+    {
+      "id": 23,
+      "category": "math",
+      "question": "Quanto é 15 ao quadrado?",
+      "expected_answer": "225",
+      "model_answer": "15 ao quadrado?\n\n**Please provide a response in a short and direct manner.**\n\n**Please provide a",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quanto é 15 ao quadrado?\nResposta: 15 ao quadrado?\n\n**Please provide a response in a short and direct manner.**\n\n**Please provide a"
+    },
+    {
+      "id": 24,
+      "category": "math",
+      "question": "Qual é a raiz quadrada de 81?",
+      "expected_answer": "9",
+      "model_answer": "** 81 é a raiz quad",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é a raiz quadrada de 81?\nResposta: 81 é a raiz quadrada de 81.\n\n**Resposta:** 81 é a raiz quad"
+    },
+    {
+      "id": 25,
+      "category": "math",
+      "question": "Quanto é 7 + 18?",
+      "expected_answer": "25",
+      "model_answer": "7 + 18 = 18 + 7.\n\n**Explanation:**\n\nThis is a simple example",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quanto é 7 + 18?\nResposta: 7 + 18 = 18 + 7.\n\n**Explanation:**\n\nThis is a simple example"
+    },
+    {
+      "id": 26,
+      "category": "math",
+      "question": "Quanto é 100 - 37?",
+      "expected_answer": "63",
+      "model_answer": "100 - 37?\n\n**Pergunta: Quanto é 100 - 37",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quanto é 100 - 37?\nResposta: 100 - 37?\n\n**Pergunta: Quanto é 100 - 37"
+    },
+    {
+      "id": 27,
+      "category": "math",
+      "question": "Quanto é 9 x 9?",
+      "expected_answer": "81",
+      "model_answer": "9 x 9.\n\n**Explanation:**\n\nThe question is a bit of a bit of a bit of a",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quanto é 9 x 9?\nResposta: 9 x 9.\n\n**Explanation:**\n\nThe question is a bit of a bit of a bit of a"
+    },
+    {
+      "id": 28,
+      "category": "math",
+      "question": "Quanto é 5! (fatorial de 5)?",
+      "expected_answer": "120",
+      "model_answer": "5! (fatorial de 5)?\n\n.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quanto é 5! (fatorial de 5)?\nResposta: 5! (fatorial de 5)?\n\n. \n \n \n \n \n \n"
+    },
+    {
+      "id": 29,
+      "category": "math",
+      "question": "Qual é o próximo número na sequência 2, 4, 8, 16, ...?",
+      "expected_answer": "32",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o próximo número na sequência 2, 4, 8, 16, ...?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 30,
+      "category": "math",
+      "question": "Se um triângulo tem lados 3, 4 e 5, ele é retângulo?",
+      "expected_answer": "Sim",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se um triângulo tem lados 3, 4 e 5, ele é retângulo?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 31,
+      "category": "science",
+      "question": "A água ferve a aproximadamente quantos graus Celsius ao nível do mar?",
+      "expected_answer": "100",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: A água ferve a aproximadamente quantos graus Celsius ao nível do mar?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 32,
+      "category": "science",
+      "question": "Qual gás as plantas absorvem principalmente para fazer fotossíntese?",
+      "expected_answer": "Dióxido de carbono",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual gás as plantas absorvem principalmente para fazer fotossíntese?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 33,
+      "category": "science",
+      "question": "Qual é a fórmula química da água?",
+      "expected_answer": "H2O",
+      "model_answer": "A fórmula química da água é a fórmula química da água é a fórmula química da água é a fórmula química da água é",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é a fórmula química da água?\nResposta: A fórmula química da água é a fórmula química da água é a fórmula química da água é a fórmula química da água é"
+    },
+    {
+      "id": 34,
+      "category": "science",
+      "question": "Qual partícula tem carga elétrica negativa?",
+      "expected_answer": "Elétron",
+      "model_answer": "**A**\n\n**B**\n\n**C**\n\n**D**\n\n**E**\n\n**F",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual partícula tem carga elétrica negativa?\nResposta: \n\n**A**\n\n**B**\n\n**C**\n\n**D**\n\n**E**\n\n**F"
+    },
+    {
+      "id": 35,
+      "category": "science",
+      "question": "Qual órgão do corpo humano bombeia sangue?",
+      "expected_answer": "Coração",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual órgão do corpo humano bombeia sangue?\nResposta: \n \n \n \n  \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 36,
+      "category": "science",
+      "question": "Qual é o satélite natural da Terra?",
+      "expected_answer": "Lua",
+      "model_answer": "** A Terra é um satélite natural.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o satélite natural da Terra?\nResposta: A Terra é um satélite natural.\n\n**Resposta:** A Terra é um satélite natural.\n"
+    },
+    {
+      "id": 37,
+      "category": "science",
+      "question": "Qual é o processo pelo qual um líquido vira vapor?",
+      "expected_answer": "Evaporação",
+      "model_answer": "O processo pelo qual um líquido vira vapor? é um processo pelo qual um líquido vira vapor?",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o processo pelo qual um líquido vira vapor?\nResposta: O processo pelo qual um líquido vira vapor? é um processo pelo qual um líquido vira vapor?\n \n \n"
+    },
+    {
+      "id": 38,
+      "category": "science",
+      "question": "Quantos cromossomos tem um ser humano típico em células somáticas?",
+      "expected_answer": "46",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quantos cromossomos tem um ser humano típico em células somáticas?\nResposta:\n \n \n \n \n \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 39,
+      "category": "science",
+      "question": "Qual é a camada da atmosfera onde vivemos?",
+      "expected_answer": "Troposfera",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é a camada da atmosfera onde vivemos?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 40,
+      "category": "science",
+      "question": "O DNA tem forma clássica de qual estrutura?",
+      "expected_answer": "Dupla hélice",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: O DNA tem forma clássica de qual estrutura?\nResposta: \n \n \n  \n   \n \n \n \n \n \n "
+    },
+    {
+      "id": 41,
+      "category": "history",
+      "question": "Em que ano o homem pisou na Lua pela primeira vez?",
+      "expected_answer": "1969",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em que ano o homem pisou na Lua pela primeira vez?\nResposta:\n \n \n \n \n  \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 42,
+      "category": "history",
+      "question": "Quem foi o primeiro presidente do Brasil?",
+      "expected_answer": "Deodoro da Fonseca",
+      "model_answer": "O primeiro presidente do Brasil foi o presidente do Brasil.\n\nPergunta: Quem foi o primeiro presidente do Brasil?",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem foi o primeiro presidente do Brasil?\nResposta: O primeiro presidente do Brasil foi o presidente do Brasil.\n\nPergunta: Quem foi o primeiro presidente do Brasil?\n"
+    },
+    {
+      "id": 43,
+      "category": "history",
+      "question": "Quem foi o líder sul-africano associado ao fim do apartheid e eleito presidente em 1994?",
+      "expected_answer": "Nelson Mandela",
+      "model_answer": "A.\nA.\nA.\nA.\nA.\nA.\nA.\nA.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem foi o líder sul-africano associado ao fim do apartheid e eleito presidente em 1994?\nResposta:\nA.\nA.\nA.\nA.\nA.\nA.\nA.\nA."
+    },
+    {
+      "id": 44,
+      "category": "history",
+      "question": "Em que país começou a Revolução Industrial?",
+      "expected_answer": "Reino Unido",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em que país começou a Revolução Industrial?\nResposta: \n \n \n  \n               "
+    },
+    {
+      "id": 45,
+      "category": "history",
+      "question": "Qual império construiu o Coliseu?",
+      "expected_answer": "Império Romano",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual império construiu o Coliseu?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 46,
+      "category": "history",
+      "question": "Em que ano caiu o Muro de Berlim?",
+      "expected_answer": "1989",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em que ano caiu o Muro de Berlim?\nResposta:\n \n \n \n \n \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 47,
+      "category": "history",
+      "question": "Quem liderou a independência da Índia com estratégia de não violência?",
+      "expected_answer": "Mahatma Gandhi",
+      "model_answer": "**Não, violência, e estratégia de não violência**\n\n**Não, violência, e estratégia de não violência**",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem liderou a independência da Índia com estratégia de não violência?\nResposta:\n\n**Não, violência, e estratégia de não violência**\n\n**Não, violência, e estratégia de não violência**"
+    },
+    {
+      "id": 48,
+      "category": "history",
+      "question": "Qual civilização antiga construiu Machu Picchu?",
+      "expected_answer": "Inca",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual civilização antiga construiu Machu Picchu?\nResposta: \n \n \n \n  \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 49,
+      "category": "history",
+      "question": "Quem foi o imperador francês derrotado em Waterloo?",
+      "expected_answer": "Napoleão Bonaparte",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quem foi o imperador francês derrotado em Waterloo?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 50,
+      "category": "history",
+      "question": "Em que continente fica o Egito?",
+      "expected_answer": "África",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em que continente fica o Egito?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 51,
+      "category": "logic",
+      "question": "Se todos os gatos são mamíferos e Mimi é um gato, Mimi é mamífero?",
+      "expected_answer": "Sim",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se todos os gatos são mamíferos e Mimi é um gato, Mimi é mamífero?\nResposta: \n \n \n \n  \n  \n   \n      "
+    },
+    {
+      "id": 52,
+      "category": "logic",
+      "question": "Se hoje é segunda-feira, que dia será depois de 3 dias?",
+      "expected_answer": "Quinta-feira",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se hoje é segunda-feira, que dia será depois de 3 dias?\nResposta: \n \n \n  \n \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 53,
+      "category": "logic",
+      "question": "Qual palavra não pertence ao grupo: maçã, banana, cenoura, uva?",
+      "expected_answer": "Cenoura",
+      "model_answer": "**Nen**\n\n.\n\n**Nen**\n\n.\n\n**Nen**\n\n.\n\n**Nen**\n\n.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual palavra não pertence ao grupo: maçã, banana, cenoura, uva?\nResposta: **Nen**\n\n.\n\n**Nen**\n\n.\n\n**Nen**\n\n.\n\n**Nen**\n\n.\n\n"
+    },
+    {
+      "id": 54,
+      "category": "logic",
+      "question": "Se João é mais alto que Maria e Maria é mais alta que Ana, quem é a mais alta?",
+      "expected_answer": "João",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se João é mais alto que Maria e Maria é mais alta que Ana, quem é a mais alta?\nResposta: \n \n \n  \n   \n           "
+    },
+    {
+      "id": 55,
+      "category": "logic",
+      "question": "Um carro percorre 60 km em 1 hora. Em 3 horas, mantendo a velocidade, percorre quantos km?",
+      "expected_answer": "180",
+      "model_answer": "60 km em 1 hora. Em 3 horas, mantendo a velocidade, percorre quantos km",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Um carro percorre 60 km em 1 hora. Em 3 horas, mantendo a velocidade, percorre quantos km?\nResposta: 60 km em 1 hora. Em 3 horas, mantendo a velocidade, percorre quantos km"
+    },
+    {
+      "id": 56,
+      "category": "logic",
+      "question": "Se 2 canetas custam 10 reais, quanto custam 5 canetas ao mesmo preço unitário?",
+      "expected_answer": "25",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se 2 canetas custam 10 reais, quanto custam 5 canetas ao mesmo preço unitário?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 57,
+      "category": "logic",
+      "question": "Qual número é ímpar: 14, 22, 31, 48?",
+      "expected_answer": "31",
+      "model_answer": "14, 22, 31, 48. \n\n**Please provide a response that",
+      "is_correct": true,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual número é ímpar: 14, 22, 31, 48?\nResposta: 14, 22, 31, 48. \n\n**Please provide a response that"
+    },
+    {
+      "id": 58,
+      "category": "logic",
+      "question": "Se A implica B e A é verdadeiro, o que se conclui sobre B?",
+      "expected_answer": "B é verdadeiro",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se A implica B e A é verdadeiro, o que se conclui sobre B?\nResposta: \n \n \n \n  \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 59,
+      "category": "logic",
+      "question": "Se uma receita pede 2 ovos para 1 bolo, quantos ovos são necessários para 4 bolos?",
+      "expected_answer": "8",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se uma receita pede 2 ovos para 1 bolo, quantos ovos são necessários para 4 bolos?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 60,
+      "category": "logic",
+      "question": "Qual alternativa completa melhor: livro está para leitura assim como garfo está para ...?",
+      "expected_answer": "Comer",
+      "model_answer": "**A**\n\n**B**\n\n**C**\n\n**D**\n\n**E**\n\n**F**",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual alternativa completa melhor: livro está para leitura assim como garfo está para ...?\nResposta:\n\n**A**\n\n**B**\n\n**C**\n\n**D**\n\n**E**\n\n**F**"
+    },
+    {
+      "id": 61,
+      "category": "coding",
+      "question": "Em Python, qual palavra-chave define uma função?",
+      "expected_answer": "def",
+      "model_answer": "** A função em Python é a função que",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em Python, qual palavra-chave define uma função?\nResposta: A função em Python é a função que define uma chave.\n\n**Resposta:** A função em Python é a função que"
+    },
+    {
+      "id": 62,
+      "category": "coding",
+      "question": "Qual estrutura em Python normalmente guarda pares chave-valor?",
+      "expected_answer": "dicionário",
+      "model_answer": "**Python** é um linguagem de programação de programação.\n\n**Python** é um linguagem de programação de programação",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual estrutura em Python normalmente guarda pares chave-valor?\nResposta: \n\n**Python** é um linguagem de programação de programação.\n\n**Python** é um linguagem de programação de programação"
+    },
+    {
+      "id": 63,
+      "category": "coding",
+      "question": "Em JavaScript, qual valor booleano representa verdade?",
+      "expected_answer": "true",
+      "model_answer": "JavaScript, qual valor booleano representa verdade?**",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em JavaScript, qual valor booleano representa verdade?\nResposta: JavaScript, qual valor booleano representa verdade?\n\n**Resposta: JavaScript, qual valor booleano representa verdade?**\n\n"
+    },
+    {
+      "id": 64,
+      "category": "coding",
+      "question": "Qual comando Git cria um novo commit com as mudanças staged?",
+      "expected_answer": "git commit",
+      "model_answer": "**O que?**\n\n**O que?**\n\n**O que?**\n\n**O que?**",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual comando Git cria um novo commit com as mudanças staged?\nResposta:\n\n**O que?**\n\n**O que?**\n\n**O que?**\n\n**O que?**"
+    },
+    {
+      "id": 65,
+      "category": "coding",
+      "question": "Qual protocolo é usado normalmente para páginas web seguras?",
+      "expected_answer": "HTTPS",
+      "model_answer": "**A página web segura** é um protocolo que é usado normalmente para páginas web seguras.**\n\n**A página",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual protocolo é usado normalmente para páginas web seguras?\nResposta: \n\n**A página web segura** é um protocolo que é usado normalmente para páginas web seguras.**\n\n**A página"
+    },
+    {
+      "id": 66,
+      "category": "coding",
+      "question": "Qual comando Linux lista arquivos de um diretório?",
+      "expected_answer": "ls",
+      "model_answer": "**A**\n\n**B**\n\n**C**\n\n**D**\n\n**E**\n\n**F",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual comando Linux lista arquivos de um diretório?\nResposta: \n\n**A**\n\n**B**\n\n**C**\n\n**D**\n\n**E**\n\n**F"
+    },
+    {
+      "id": 67,
+      "category": "coding",
+      "question": "Em SQL, qual comando retorna linhas de uma tabela?",
+      "expected_answer": "SELECT",
+      "model_answer": "**\n\n**Em SQL,",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em SQL, qual comando retorna linhas de uma tabela?\nResposta:\n\n**Em SQL, qual comando retorna linhas de uma tabela?**\n\n**Resposta: **\n\n**Em SQL,"
+    },
+    {
+      "id": 68,
+      "category": "coding",
+      "question": "Em HTML, qual tag principal representa um link?",
+      "expected_answer": "<a>",
+      "model_answer": "<br>\n\n<br>\n\n<br>\n\n<br>\n\n<br>\n\n<br>",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em HTML, qual tag principal representa um link?\nResposta:\n\n<br>\n\n<br>\n\n<br>\n\n<br>\n\n<br>\n\n<br>"
+    },
+    {
+      "id": 69,
+      "category": "coding",
+      "question": "Em CSS, qual propriedade muda a cor do texto?",
+      "expected_answer": "color",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em CSS, qual propriedade muda a cor do texto?\nResposta: \n \n \n  \n   \n   \n    \n  "
+    },
+    {
+      "id": 70,
+      "category": "coding",
+      "question": "Qual estrutura de dados usa a política LIFO?",
+      "expected_answer": "pilha",
+      "model_answer": "** A estrutura de dados usa a política LIFO?",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual estrutura de dados usa a política LIFO?\nResposta: A estrutura de dados usa a política LIFO?\n\n**Resposta:** A estrutura de dados usa a política LIFO?"
+    },
+    {
+      "id": 71,
+      "category": "language",
+      "question": "Qual é o idioma oficial mais falado no Brasil?",
+      "expected_answer": "Português",
+      "model_answer": "A resposta curto e direta.\n\nPergunta: Qual é o idioma oficial mais falado no Brasil?\nResposta",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o idioma oficial mais falado no Brasil?\nResposta:\n\nA resposta curto e direta.\n\nPergunta: Qual é o idioma oficial mais falado no Brasil?\nResposta"
+    },
+    {
+      "id": 72,
+      "category": "language",
+      "question": "Qual é o antônimo de “rápido”?",
+      "expected_answer": "Lento",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o antônimo de “rápido”?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 73,
+      "category": "language",
+      "question": "Complete: cachorro está para latir assim como gato está para ...?",
+      "expected_answer": "miar",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Complete: cachorro está para latir assim como gato está para ...?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 74,
+      "category": "language",
+      "question": "Qual é o plural de “papel” em português?",
+      "expected_answer": "papéis",
+      "model_answer": "O papel é um plural de “papel”",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o plural de “papel” em português?\nResposta: O papel é um plural de “papel” em português.\n\nResposta: O papel é um plural de “papel”"
+    },
+    {
+      "id": 75,
+      "category": "language",
+      "question": "Qual palavra é um verbo: azul, correr, mesa, janela?",
+      "expected_answer": "correr",
+      "model_answer": "**A**\n\n**B**\n\n**C**\n\n**D**\n\n**E**\n\n**F",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual palavra é um verbo: azul, correr, mesa, janela?\nResposta: \n\n**A**\n\n**B**\n\n**C**\n\n**D**\n\n**E**\n\n**F"
+    },
+    {
+      "id": 76,
+      "category": "language",
+      "question": "Qual é o sinônimo mais próximo de “feliz”?",
+      "expected_answer": "contente",
+      "model_answer": "**Feliz** é um sinônimo mais próximo de “feliz”?\n\n**Feliz** é um sinônimo mais",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o sinônimo mais próximo de “feliz”?\nResposta: \n\n**Feliz** é um sinônimo mais próximo de “feliz”?\n\n**Feliz** é um sinônimo mais"
+    },
+    {
+      "id": 77,
+      "category": "language",
+      "question": "Qual é a forma correta: “a gente fomos” ou “a gente foi”?",
+      "expected_answer": "a gente foi",
+      "model_answer": "**A gente",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é a forma correta: “a gente fomos” ou “a gente foi”?\nResposta: \n\n**A gente fomos” ou “a gente foi”?**\n\n**Resposta: \n\n**A gente"
+    },
+    {
+      "id": 78,
+      "category": "language",
+      "question": "Em inglês, como se traduz “casa”?",
+      "expected_answer": "house",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em inglês, como se traduz “casa”?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 79,
+      "category": "language",
+      "question": "Qual dessas palavras é um adjetivo: bonito, correr, pedra, ontem?",
+      "expected_answer": "bonito",
+      "model_answer": "**I'm not sure what you're asking about.**\n\n**I'm not sure what you",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual dessas palavras é um adjetivo: bonito, correr, pedra, ontem?\nResposta: \n\n**I'm not sure what you're asking about.**\n\n**I'm not sure what you"
+    },
+    {
+      "id": 80,
+      "category": "language",
+      "question": "Qual palavra está escrita corretamente: exceção ou excessão?",
+      "expected_answer": "exceção",
+      "model_answer": "**The word \"** is written correctly.**\n\n**The word \"** is written correctly.**\n\n**The",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual palavra está escrita corretamente: exceção ou excessão?\nResposta: \n\n**The word \"** is written correctly.**\n\n**The word \"** is written correctly.**\n\n**The"
+    },
+    {
+      "id": 81,
+      "category": "sports",
+      "question": "Qual país venceu a Copa do Mundo de 2002?",
+      "expected_answer": "Brasil",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual país venceu a Copa do Mundo de 2002?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 82,
+      "category": "sports",
+      "question": "Quantos jogadores cada time tem em campo no futebol tradicional?",
+      "expected_answer": "11",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quantos jogadores cada time tem em campo no futebol tradicional?\nResposta: \n \n \n \n  \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 83,
+      "category": "sports",
+      "question": "Em que esporte se usa uma cesta e uma bola laranja?",
+      "expected_answer": "basquete",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em que esporte se usa uma cesta e uma bola laranja?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 84,
+      "category": "sports",
+      "question": "Em qual esporte Rafael Nadal ficou mundialmente famoso?",
+      "expected_answer": "tênis",
+      "model_answer": "Rafael Nadal é um famoso.\n\n**Explanation:**\n\nRafael Nadal is a famous person.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em qual esporte Rafael Nadal ficou mundialmente famoso?\nResposta: Rafael Nadal é um famoso.\n\n**Explanation:**\n\nRafael Nadal is a famous person. \n"
+    },
+    {
+      "id": 85,
+      "category": "sports",
+      "question": "Qual país sediou as Olimpíadas de 2016?",
+      "expected_answer": "Brasil",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual país sediou as Olimpíadas de 2016?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 86,
+      "category": "sports",
+      "question": "Qual piloto brasileiro é tricampeão mundial de Fórmula 1 e morreu em 1994?",
+      "expected_answer": "Ayrton Senna",
+      "model_answer": "**I'm not sure I can help you with a short and direct response.**\n\n**I'm",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual piloto brasileiro é tricampeão mundial de Fórmula 1 e morreu em 1994?\nResposta: \n\n**I'm not sure I can help you with a short and direct response.**\n\n**I'm"
+    },
+    {
+      "id": 87,
+      "category": "sports",
+      "question": "No xadrez, quantas casas tem um tabuleiro?",
+      "expected_answer": "64",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: No xadrez, quantas casas tem um tabuleiro?\nResposta: \n \n \n \n  \n \n \n \n \n \n \n "
+    },
+    {
+      "id": 88,
+      "category": "sports",
+      "question": "Qual esporte usa raquete, rede e peteca?",
+      "expected_answer": "badminton",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual esporte usa raquete, rede e peteca?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 89,
+      "category": "sports",
+      "question": "Em que esporte se faz touchdown?",
+      "expected_answer": "futebol americano",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Em que esporte se faz touchdown?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 90,
+      "category": "sports",
+      "question": "Qual seleção é conhecida como La Albiceleste?",
+      "expected_answer": "Argentina",
+      "model_answer": "La Albiceleste é um grupo de música.",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual seleção é conhecida como La Albiceleste?\nResposta: \nLa Albiceleste é um grupo de música. \n \n \n \n  \n "
+    },
+    {
+      "id": 91,
+      "category": "everyday",
+      "question": "Se você misturar azul com amarelo, qual cor obtém normalmente?",
+      "expected_answer": "verde",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se você misturar azul com amarelo, qual cor obtém normalmente?\nResposta: \n \n \n \n  \n  \n \n \n \n \n \n"
+    },
+    {
+      "id": 92,
+      "category": "everyday",
+      "question": "Qual eletrodoméstico é usado para manter alimentos congelados?",
+      "expected_answer": "freezer",
+      "model_answer": "**I'm not sure what you're asking about.**\n\n**I'm not sure what you",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual eletrodoméstico é usado para manter alimentos congelados?\nResposta: \n\n**I'm not sure what you're asking about.**\n\n**I'm not sure what you"
+    },
+    {
+      "id": 93,
+      "category": "everyday",
+      "question": "Quantos minutos tem 2 horas?",
+      "expected_answer": "120",
+      "model_answer": "2 horas.\n\n**Explanation:**\n\nThe time it takes to take to take to take to take to take to",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quantos minutos tem 2 horas?\nResposta: 2 horas.\n\n**Explanation:**\n\nThe time it takes to take to take to take to take to take to"
+    },
+    {
+      "id": 94,
+      "category": "everyday",
+      "question": "Qual objeto é usado para cortar papel com as mãos?",
+      "expected_answer": "tesoura",
+      "model_answer": "**Ojo**\n\n**Ojo**\n\n**Ojo**\n\n**Ojo**\n\n**O",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual objeto é usado para cortar papel com as mãos?\nResposta: \n\n**Ojo**\n\n**Ojo**\n\n**Ojo**\n\n**Ojo**\n\n**O"
+    },
+    {
+      "id": 95,
+      "category": "everyday",
+      "question": "Qual é o mês que vem depois de abril?",
+      "expected_answer": "maio",
+      "model_answer": "** \n\nO mês que vem depois de abril?",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual é o mês que vem depois de abril?\nResposta: \n\nO mês que vem depois de abril?\n\n**Resposta:** \n\nO mês que vem depois de abril?"
+    },
+    {
+      "id": 96,
+      "category": "everyday",
+      "question": "Se um produto custa 50 reais e recebe desconto de 10 reais, quanto passa a custar?",
+      "expected_answer": "40",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Se um produto custa 50 reais e recebe desconto de 10 reais, quanto passa a custar?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 97,
+      "category": "everyday",
+      "question": "Qual bebida é tradicionalmente feita a partir de grãos de café torrados?",
+      "expected_answer": "café",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual bebida é tradicionalmente feita a partir de grãos de café torrados?\nResposta: \n \n \n  \n   \n           "
+    },
+    {
+      "id": 98,
+      "category": "everyday",
+      "question": "Qual direção é oposta ao norte?",
+      "expected_answer": "sul",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual direção é oposta ao norte?\nResposta: \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "id": 99,
+      "category": "everyday",
+      "question": "Qual animal normalmente põe ovos e tem penas?",
+      "expected_answer": "ave",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Qual animal normalmente põe ovos e tem penas?\nResposta: \n \n \n  \n   \n \n   \n \n \n "
+    },
+    {
+      "id": 100,
+      "category": "everyday",
+      "question": "Quantos dias tem uma semana?",
+      "expected_answer": "7",
+      "model_answer": "",
+      "is_correct": false,
+      "raw_output": "Responda de forma curta e direta.\nPergunta: Quantos dias tem uma semana?\nResposta: \n \n \n  \n  \n   \n \n \n \n \n"
+    }
+  ]
+}
