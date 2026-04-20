@@ -1,0 +1,38 @@
+{
+  "reference_recovery_accuracy": 0.91,
+  "stages": [
+    {
+      "target_layer_limit": 21,
+      "pilot_layers": [
+        "model.layers.0.mlp.gate_proj",
+        "model.layers.0.mlp.up_proj",
+        "model.layers.0.mlp.down_proj",
+        "model.layers.1.mlp.gate_proj",
+        "model.layers.1.mlp.up_proj",
+        "model.layers.1.mlp.down_proj",
+        "model.layers.2.mlp.gate_proj",
+        "model.layers.2.mlp.up_proj",
+        "model.layers.2.mlp.down_proj",
+        "model.layers.3.mlp.gate_proj",
+        "model.layers.3.mlp.up_proj",
+        "model.layers.3.mlp.down_proj",
+        "model.layers.4.mlp.gate_proj",
+        "model.layers.4.mlp.up_proj",
+        "model.layers.4.mlp.down_proj",
+        "model.layers.5.mlp.gate_proj",
+        "model.layers.5.mlp.up_proj",
+        "model.layers.5.mlp.down_proj",
+        "model.layers.6.mlp.gate_proj",
+        "model.layers.6.mlp.up_proj",
+        "model.layers.6.mlp.down_proj"
+      ],
+      "pre_recovery_accuracy": 0.02,
+      "post_recovery_accuracy": 0.92,
+      "delta_vs_pre": 0.9,
+      "delta_vs_reference_recovery": 0.010000000000000009,
+      "pre_result_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_pre_recovery_l21_20260420_171325.json",
+      "post_result_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_post_recovery_l21_20260420_173049.json",
+      "adapter_path": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l21"
+    }
+  ]
+}
