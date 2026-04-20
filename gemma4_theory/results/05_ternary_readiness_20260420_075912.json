@@ -1,0 +1,22 @@
+{
+  "best_variant_from_04": "pruned_reference",
+  "best_accuracy_from_04": 0.92,
+  "source_model": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+  "source_accuracy": 0.92,
+  "pilot_layer_limit": 8,
+  "pilot_layer_name_filters": [
+    "mlp"
+  ],
+  "pilot_layers": [
+    "model.layers.0.mlp.gate_proj",
+    "model.layers.0.mlp.up_proj",
+    "model.layers.0.mlp.down_proj",
+    "model.layers.1.mlp.gate_proj",
+    "model.layers.1.mlp.up_proj",
+    "model.layers.1.mlp.down_proj",
+    "model.layers.2.mlp.gate_proj",
+    "model.layers.2.mlp.up_proj"
+  ],
+  "pilot_layer_count": 8,
+  "ternary_ratio_before": 0.17511271841732073
+}

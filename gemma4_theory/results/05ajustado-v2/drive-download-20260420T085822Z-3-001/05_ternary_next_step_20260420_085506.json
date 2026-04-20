@@ -1,0 +1,14 @@
+{
+  "recommended_source": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+  "recommended_teacher": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+  "recommended_quant_baseline": "pruned_8bit matched pruned_reference; keep as deployment fallback",
+  "recommended_ternary_strategy": "do not expand direct snap; move to ternary recovery / QAT-lite on the same subset",
+  "enable_ternary_pilot_default": false,
+  "latest_pilot_accuracy": 0.76,
+  "why": [
+    "04 showed pruned_reference = 0.92 and pruned_8bit = 0.92",
+    "direct ternary pilot on 8 MLP projections dropped accuracy to 0.76",
+    "student_pruned remains the highest-fidelity source checkpoint available",
+    "the next rational step is adaptation after ternary snap, not broader direct snapping"
+  ]
+}

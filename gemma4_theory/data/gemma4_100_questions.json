@@ -1,0 +1,1082 @@
+[
+  {
+    "id": 1,
+    "question": "Qual a capital da França?",
+    "expected_answer": "Paris",
+    "accepted_answers": [
+      "Paris"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "question": "Qual a capital da Alemanha?",
+    "expected_answer": "Berlim",
+    "accepted_answers": [
+      "Berlim",
+      "Berlin"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "question": "Qual a capital da Itália?",
+    "expected_answer": "Roma",
+    "accepted_answers": [
+      "Roma",
+      "Rome"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "question": "Qual a capital da Espanha?",
+    "expected_answer": "Madri",
+    "accepted_answers": [
+      "Madri",
+      "Madrid"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 5,
+    "question": "Qual a capital de Portugal?",
+    "expected_answer": "Lisboa",
+    "accepted_answers": [
+      "Lisboa"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 6,
+    "question": "Qual a capital do Japão?",
+    "expected_answer": "Tóquio",
+    "accepted_answers": [
+      "Tóquio",
+      "Toquio",
+      "Tokyo"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 7,
+    "question": "Qual a capital da China?",
+    "expected_answer": "Pequim",
+    "accepted_answers": [
+      "Pequim",
+      "Beijing",
+      "Pekin"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 8,
+    "question": "Qual a capital da Argentina?",
+    "expected_answer": "Buenos Aires",
+    "accepted_answers": [
+      "Buenos Aires"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 9,
+    "question": "Qual a capital do Canadá?",
+    "expected_answer": "Ottawa",
+    "accepted_answers": [
+      "Ottawa"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 10,
+    "question": "Qual a capital da Austrália?",
+    "expected_answer": "Camberra",
+    "accepted_answers": [
+      "Camberra",
+      "Canberra"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 11,
+    "question": "Quem pintou a Mona Lisa?",
+    "expected_answer": "Leonardo da Vinci",
+    "accepted_answers": [
+      "Leonardo da Vinci",
+      "Da Vinci"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 12,
+    "question": "Quem escreveu Dom Quixote?",
+    "expected_answer": "Miguel de Cervantes",
+    "accepted_answers": [
+      "Miguel de Cervantes",
+      "Cervantes"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 13,
+    "question": "Quem escreveu Hamlet?",
+    "expected_answer": "William Shakespeare",
+    "accepted_answers": [
+      "William Shakespeare",
+      "Shakespeare"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 14,
+    "question": "Quem descobriu a penicilina?",
+    "expected_answer": "Alexander Fleming",
+    "accepted_answers": [
+      "Alexander Fleming",
+      "Fleming"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 15,
+    "question": "Quem desenvolveu a teoria da relatividade?",
+    "expected_answer": "Albert Einstein",
+    "accepted_answers": [
+      "Albert Einstein",
+      "Einstein"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 16,
+    "question": "Qual planeta é conhecido como Planeta Vermelho?",
+    "expected_answer": "Marte",
+    "accepted_answers": [
+      "Marte",
+      "Mars"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 17,
+    "question": "Qual é o maior planeta do Sistema Solar?",
+    "expected_answer": "Júpiter",
+    "accepted_answers": [
+      "Júpiter",
+      "Jupiter"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 18,
+    "question": "Quantos continentes existem tradicionalmente?",
+    "expected_answer": "7",
+    "accepted_answers": [
+      "7",
+      "sete"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 19,
+    "question": "Qual é o oceano mais extenso da Terra?",
+    "expected_answer": "Oceano Pacífico",
+    "accepted_answers": [
+      "Oceano Pacífico",
+      "Pacífico",
+      "Pacific Ocean"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 20,
+    "question": "Qual é o metal cujo símbolo químico é Au?",
+    "expected_answer": "Ouro",
+    "accepted_answers": [
+      "Ouro",
+      "Gold"
+    ],
+    "category": "factual",
+    "notes": ""
+  },
+  {
+    "id": 21,
+    "question": "Qual é o resultado de 12 x 8?",
+    "expected_answer": "96",
+    "accepted_answers": [
+      "96"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 22,
+    "question": "Quanto é 144 dividido por 12?",
+    "expected_answer": "12",
+    "accepted_answers": [
+      "12"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 23,
+    "question": "Quanto é 15 ao quadrado?",
+    "expected_answer": "225",
+    "accepted_answers": [
+      "225"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 24,
+    "question": "Qual é a raiz quadrada de 81?",
+    "expected_answer": "9",
+    "accepted_answers": [
+      "9"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 25,
+    "question": "Quanto é 7 + 18?",
+    "expected_answer": "25",
+    "accepted_answers": [
+      "25"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 26,
+    "question": "Quanto é 100 - 37?",
+    "expected_answer": "63",
+    "accepted_answers": [
+      "63"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 27,
+    "question": "Quanto é 9 x 9?",
+    "expected_answer": "81",
+    "accepted_answers": [
+      "81"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 28,
+    "question": "Quanto é 5! (fatorial de 5)?",
+    "expected_answer": "120",
+    "accepted_answers": [
+      "120"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 29,
+    "question": "Qual é o próximo número na sequência 2, 4, 8, 16, ...?",
+    "expected_answer": "32",
+    "accepted_answers": [
+      "32"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 30,
+    "question": "Se um triângulo tem lados 3, 4 e 5, ele é retângulo?",
+    "expected_answer": "Sim",
+    "accepted_answers": [
+      "Sim",
+      "sim",
+      "Yes"
+    ],
+    "category": "math",
+    "notes": ""
+  },
+  {
+    "id": 31,
+    "question": "A água ferve a aproximadamente quantos graus Celsius ao nível do mar?",
+    "expected_answer": "100",
+    "accepted_answers": [
+      "100",
+      "100°C",
+      "100 graus Celsius"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 32,
+    "question": "Qual gás as plantas absorvem principalmente para fazer fotossíntese?",
+    "expected_answer": "Dióxido de carbono",
+    "accepted_answers": [
+      "Dióxido de carbono",
+      "CO2",
+      "Gás carbônico"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 33,
+    "question": "Qual é a fórmula química da água?",
+    "expected_answer": "H2O",
+    "accepted_answers": [
+      "H2O"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 34,
+    "question": "Qual partícula tem carga elétrica negativa?",
+    "expected_answer": "Elétron",
+    "accepted_answers": [
+      "Elétron",
+      "Eletron",
+      "Electron"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 35,
+    "question": "Qual órgão do corpo humano bombeia sangue?",
+    "expected_answer": "Coração",
+    "accepted_answers": [
+      "Coração",
+      "Coracao"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 36,
+    "question": "Qual é o satélite natural da Terra?",
+    "expected_answer": "Lua",
+    "accepted_answers": [
+      "Lua",
+      "Moon"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 37,
+    "question": "Qual é o processo pelo qual um líquido vira vapor?",
+    "expected_answer": "Evaporação",
+    "accepted_answers": [
+      "Evaporação",
+      "Evaporacao"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 38,
+    "question": "Quantos cromossomos tem um ser humano típico em células somáticas?",
+    "expected_answer": "46",
+    "accepted_answers": [
+      "46"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 39,
+    "question": "Qual é a camada da atmosfera onde vivemos?",
+    "expected_answer": "Troposfera",
+    "accepted_answers": [
+      "Troposfera"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 40,
+    "question": "O DNA tem forma clássica de qual estrutura?",
+    "expected_answer": "Dupla hélice",
+    "accepted_answers": [
+      "Dupla hélice",
+      "Dupla helix",
+      "Double helix"
+    ],
+    "category": "science",
+    "notes": ""
+  },
+  {
+    "id": 41,
+    "question": "Em que ano o homem pisou na Lua pela primeira vez?",
+    "expected_answer": "1969",
+    "accepted_answers": [
+      "1969"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 42,
+    "question": "Quem foi o primeiro presidente do Brasil?",
+    "expected_answer": "Deodoro da Fonseca",
+    "accepted_answers": [
+      "Deodoro da Fonseca"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 43,
+    "question": "Quem foi o líder sul-africano associado ao fim do apartheid e eleito presidente em 1994?",
+    "expected_answer": "Nelson Mandela",
+    "accepted_answers": [
+      "Nelson Mandela",
+      "Mandela"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 44,
+    "question": "Em que país começou a Revolução Industrial?",
+    "expected_answer": "Reino Unido",
+    "accepted_answers": [
+      "Reino Unido",
+      "Inglaterra",
+      "Grã-Bretanha",
+      "Great Britain"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 45,
+    "question": "Qual império construiu o Coliseu?",
+    "expected_answer": "Império Romano",
+    "accepted_answers": [
+      "Império Romano",
+      "Roman Empire",
+      "Roma"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 46,
+    "question": "Em que ano caiu o Muro de Berlim?",
+    "expected_answer": "1989",
+    "accepted_answers": [
+      "1989"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 47,
+    "question": "Quem liderou a independência da Índia com estratégia de não violência?",
+    "expected_answer": "Mahatma Gandhi",
+    "accepted_answers": [
+      "Mahatma Gandhi",
+      "Gandhi"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 48,
+    "question": "Qual civilização antiga construiu Machu Picchu?",
+    "expected_answer": "Inca",
+    "accepted_answers": [
+      "Inca",
+      "Império Inca"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 49,
+    "question": "Quem foi o imperador francês derrotado em Waterloo?",
+    "expected_answer": "Napoleão Bonaparte",
+    "accepted_answers": [
+      "Napoleão Bonaparte",
+      "Napoleon Bonaparte",
+      "Napoleão"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 50,
+    "question": "Em que continente fica o Egito?",
+    "expected_answer": "África",
+    "accepted_answers": [
+      "África",
+      "Africa"
+    ],
+    "category": "history",
+    "notes": ""
+  },
+  {
+    "id": 51,
+    "question": "Se todos os gatos são mamíferos e Mimi é um gato, Mimi é mamífero?",
+    "expected_answer": "Sim",
+    "accepted_answers": [
+      "Sim",
+      "sim",
+      "Yes"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 52,
+    "question": "Se hoje é segunda-feira, que dia será depois de 3 dias?",
+    "expected_answer": "Quinta-feira",
+    "accepted_answers": [
+      "Quinta-feira",
+      "Quinta",
+      "Thursday"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 53,
+    "question": "Qual palavra não pertence ao grupo: maçã, banana, cenoura, uva?",
+    "expected_answer": "Cenoura",
+    "accepted_answers": [
+      "Cenoura"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 54,
+    "question": "Se João é mais alto que Maria e Maria é mais alta que Ana, quem é a mais alta?",
+    "expected_answer": "João",
+    "accepted_answers": [
+      "João",
+      "Joao"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 55,
+    "question": "Um carro percorre 60 km em 1 hora. Em 3 horas, mantendo a velocidade, percorre quantos km?",
+    "expected_answer": "180",
+    "accepted_answers": [
+      "180"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 56,
+    "question": "Se 2 canetas custam 10 reais, quanto custam 5 canetas ao mesmo preço unitário?",
+    "expected_answer": "25",
+    "accepted_answers": [
+      "25",
+      "25 reais",
+      "R$25"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 57,
+    "question": "Qual número é ímpar: 14, 22, 31, 48?",
+    "expected_answer": "31",
+    "accepted_answers": [
+      "31"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 58,
+    "question": "Se A implica B e A é verdadeiro, o que se conclui sobre B?",
+    "expected_answer": "B é verdadeiro",
+    "accepted_answers": [
+      "B é verdadeiro",
+      "verdadeiro",
+      "B true"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 59,
+    "question": "Se uma receita pede 2 ovos para 1 bolo, quantos ovos são necessários para 4 bolos?",
+    "expected_answer": "8",
+    "accepted_answers": [
+      "8"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 60,
+    "question": "Qual alternativa completa melhor: livro está para leitura assim como garfo está para ...?",
+    "expected_answer": "Comer",
+    "accepted_answers": [
+      "Comer",
+      "alimentação",
+      "eat"
+    ],
+    "category": "logic",
+    "notes": ""
+  },
+  {
+    "id": 61,
+    "question": "Em Python, qual palavra-chave define uma função?",
+    "expected_answer": "def",
+    "accepted_answers": [
+      "def"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 62,
+    "question": "Qual estrutura em Python normalmente guarda pares chave-valor?",
+    "expected_answer": "dicionário",
+    "accepted_answers": [
+      "dicionário",
+      "dicionario",
+      "dict"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 63,
+    "question": "Em JavaScript, qual valor booleano representa verdade?",
+    "expected_answer": "true",
+    "accepted_answers": [
+      "true"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 64,
+    "question": "Qual comando Git cria um novo commit com as mudanças staged?",
+    "expected_answer": "git commit",
+    "accepted_answers": [
+      "git commit"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 65,
+    "question": "Qual protocolo é usado normalmente para páginas web seguras?",
+    "expected_answer": "HTTPS",
+    "accepted_answers": [
+      "HTTPS"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 66,
+    "question": "Qual comando Linux lista arquivos de um diretório?",
+    "expected_answer": "ls",
+    "accepted_answers": [
+      "ls"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 67,
+    "question": "Em SQL, qual comando retorna linhas de uma tabela?",
+    "expected_answer": "SELECT",
+    "accepted_answers": [
+      "SELECT"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 68,
+    "question": "Em HTML, qual tag principal representa um link?",
+    "expected_answer": "<a>",
+    "accepted_answers": [
+      "<a>",
+      "a"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 69,
+    "question": "Em CSS, qual propriedade muda a cor do texto?",
+    "expected_answer": "color",
+    "accepted_answers": [
+      "color"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 70,
+    "question": "Qual estrutura de dados usa a política LIFO?",
+    "expected_answer": "pilha",
+    "accepted_answers": [
+      "pilha",
+      "stack"
+    ],
+    "category": "coding",
+    "notes": ""
+  },
+  {
+    "id": 71,
+    "question": "Qual é o idioma oficial mais falado no Brasil?",
+    "expected_answer": "Português",
+    "accepted_answers": [
+      "Português",
+      "Portugues"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 72,
+    "question": "Qual é o antônimo de “rápido”?",
+    "expected_answer": "Lento",
+    "accepted_answers": [
+      "Lento"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 73,
+    "question": "Complete: cachorro está para latir assim como gato está para ...?",
+    "expected_answer": "miar",
+    "accepted_answers": [
+      "miar"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 74,
+    "question": "Qual é o plural de “papel” em português?",
+    "expected_answer": "papéis",
+    "accepted_answers": [
+      "papéis",
+      "papeis"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 75,
+    "question": "Qual palavra é um verbo: azul, correr, mesa, janela?",
+    "expected_answer": "correr",
+    "accepted_answers": [
+      "correr"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 76,
+    "question": "Qual é o sinônimo mais próximo de “feliz”?",
+    "expected_answer": "contente",
+    "accepted_answers": [
+      "contente",
+      "alegre"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 77,
+    "question": "Qual é a forma correta: “a gente fomos” ou “a gente foi”?",
+    "expected_answer": "a gente foi",
+    "accepted_answers": [
+      "a gente foi"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 78,
+    "question": "Em inglês, como se traduz “casa”?",
+    "expected_answer": "house",
+    "accepted_answers": [
+      "house"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 79,
+    "question": "Qual dessas palavras é um adjetivo: bonito, correr, pedra, ontem?",
+    "expected_answer": "bonito",
+    "accepted_answers": [
+      "bonito"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 80,
+    "question": "Qual palavra está escrita corretamente: exceção ou excessão?",
+    "expected_answer": "exceção",
+    "accepted_answers": [
+      "exceção",
+      "excecao"
+    ],
+    "category": "language",
+    "notes": ""
+  },
+  {
+    "id": 81,
+    "question": "Qual país venceu a Copa do Mundo de 2002?",
+    "expected_answer": "Brasil",
+    "accepted_answers": [
+      "Brasil",
+      "Brazil"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 82,
+    "question": "Quantos jogadores cada time tem em campo no futebol tradicional?",
+    "expected_answer": "11",
+    "accepted_answers": [
+      "11",
+      "onze"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 83,
+    "question": "Em que esporte se usa uma cesta e uma bola laranja?",
+    "expected_answer": "basquete",
+    "accepted_answers": [
+      "basquete",
+      "basketball"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 84,
+    "question": "Em qual esporte Rafael Nadal ficou mundialmente famoso?",
+    "expected_answer": "tênis",
+    "accepted_answers": [
+      "tênis",
+      "tenis",
+      "tennis"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 85,
+    "question": "Qual país sediou as Olimpíadas de 2016?",
+    "expected_answer": "Brasil",
+    "accepted_answers": [
+      "Brasil",
+      "Brazil"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 86,
+    "question": "Qual piloto brasileiro é tricampeão mundial de Fórmula 1 e morreu em 1994?",
+    "expected_answer": "Ayrton Senna",
+    "accepted_answers": [
+      "Ayrton Senna",
+      "Senna"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 87,
+    "question": "No xadrez, quantas casas tem um tabuleiro?",
+    "expected_answer": "64",
+    "accepted_answers": [
+      "64"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 88,
+    "question": "Qual esporte usa raquete, rede e peteca?",
+    "expected_answer": "badminton",
+    "accepted_answers": [
+      "badminton"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 89,
+    "question": "Em que esporte se faz touchdown?",
+    "expected_answer": "futebol americano",
+    "accepted_answers": [
+      "futebol americano",
+      "football americano",
+      "american football"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 90,
+    "question": "Qual seleção é conhecida como La Albiceleste?",
+    "expected_answer": "Argentina",
+    "accepted_answers": [
+      "Argentina"
+    ],
+    "category": "sports",
+    "notes": ""
+  },
+  {
+    "id": 91,
+    "question": "Se você misturar azul com amarelo, qual cor obtém normalmente?",
+    "expected_answer": "verde",
+    "accepted_answers": [
+      "verde"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 92,
+    "question": "Qual eletrodoméstico é usado para manter alimentos congelados?",
+    "expected_answer": "freezer",
+    "accepted_answers": [
+      "freezer",
+      "congelador"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 93,
+    "question": "Quantos minutos tem 2 horas?",
+    "expected_answer": "120",
+    "accepted_answers": [
+      "120"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 94,
+    "question": "Qual objeto é usado para cortar papel com as mãos?",
+    "expected_answer": "tesoura",
+    "accepted_answers": [
+      "tesoura"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 95,
+    "question": "Qual é o mês que vem depois de abril?",
+    "expected_answer": "maio",
+    "accepted_answers": [
+      "maio"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 96,
+    "question": "Se um produto custa 50 reais e recebe desconto de 10 reais, quanto passa a custar?",
+    "expected_answer": "40",
+    "accepted_answers": [
+      "40",
+      "40 reais",
+      "R$40"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 97,
+    "question": "Qual bebida é tradicionalmente feita a partir de grãos de café torrados?",
+    "expected_answer": "café",
+    "accepted_answers": [
+      "café",
+      "cafe"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 98,
+    "question": "Qual direção é oposta ao norte?",
+    "expected_answer": "sul",
+    "accepted_answers": [
+      "sul",
+      "south"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 99,
+    "question": "Qual animal normalmente põe ovos e tem penas?",
+    "expected_answer": "ave",
+    "accepted_answers": [
+      "ave",
+      "pássaro",
+      "passaro",
+      "bird"
+    ],
+    "category": "everyday",
+    "notes": ""
+  },
+  {
+    "id": 100,
+    "question": "Quantos dias tem uma semana?",
+    "expected_answer": "7",
+    "accepted_answers": [
+      "7",
+      "sete"
+    ],
+    "category": "everyday",
+    "notes": ""
+  }
+]

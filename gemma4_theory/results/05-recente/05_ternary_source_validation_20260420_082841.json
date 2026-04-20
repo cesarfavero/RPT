@@ -1,0 +1,7 @@
+{
+  "best_variant_from_04": "pruned_reference",
+  "best_accuracy_from_04": 0.92,
+  "source_model": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+  "source_accuracy": 0.92,
+  "source_checkpoint_exists": true
+}

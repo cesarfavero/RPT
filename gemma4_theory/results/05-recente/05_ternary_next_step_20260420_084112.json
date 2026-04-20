@@ -1,0 +1,12 @@
+{
+  "recommended_source": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+  "recommended_teacher": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+  "recommended_quant_baseline": "pruned_8bit matched pruned_reference; keep as deployment fallback",
+  "recommended_ternary_strategy": "start with eval_only pilot on a small MLP subset before any QAT/STE training",
+  "enable_ternary_pilot_default": true,
+  "why": [
+    "04 showed pruned_reference = 0.92 and pruned_8bit = 0.92",
+    "4bit already dropped to 0.91, so ternary is higher risk",
+    "student_pruned is the highest-fidelity source checkpoint available"
+  ]
+}
