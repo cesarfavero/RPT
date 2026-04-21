@@ -37,3 +37,8 @@ paper/*.log
 paper/*.out
 paper/*.pdf
 paper/*.synctex.gz
+
+# Gemma theory local deployment artifacts
+gemma4_theory/checkpoints/
+gemma4_theory/exports/
+gemma4_theory/deploy/*.bin

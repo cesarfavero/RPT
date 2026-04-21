@@ -1,0 +1,97 @@
+{
+  "export_dir": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78",
+  "manifest_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/manifest.json",
+  "bin_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/mlp_ternary_2bit.bin",
+  "summary": {
+    "package_type": "packed ternary MLP base + LoRA recovery adapter",
+    "num_tensors": 78,
+    "fp16_total_bytes": 3312451584,
+    "fp16_total_human": "3.08 GB",
+    "packed_total_bytes": 414056448,
+    "packed_total_human": "394.88 MB",
+    "compression_vs_fp16": 8.0,
+    "max_abs_reconstruction_error": 0.0,
+    "adapter_size_bytes": 899854988,
+    "adapter_size_human": "858.17 MB",
+    "hybrid_package_bytes_excluding_base_non_mlp": 1313911436,
+    "hybrid_package_human_excluding_base_non_mlp": "1.22 GB"
+  },
+  "important_note": "The functional l78 result requires the recovery adapter. Packed ternary MLP alone corresponds to the pre-recovery collapsed model.",
+  "first_tensors": [
+    {
+      "name": "model.layers.0.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006388030014932156,
+      "offset": 0,
+      "packed_bytes": 5308416,
+      "pad_codes": 0,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "max_abs_reconstruction_error": 0.0
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006174345035105944,
+      "offset": 5308416,
+      "packed_bytes": 5308416,
+      "pad_codes": 0,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "max_abs_reconstruction_error": 0.0
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005880442913621664,
+      "offset": 10616832,
+      "packed_bytes": 5308416,
+      "pad_codes": 0,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "max_abs_reconstruction_error": 0.0
+    },
+    {
+      "name": "model.layers.1.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006309930235147476,
+      "offset": 15925248,
+      "packed_bytes": 5308416,
+      "pad_codes": 0,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "max_abs_reconstruction_error": 0.0
+    },
+    {
+      "name": "model.layers.1.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0061631579883396626,
+      "offset": 21233664,
+      "packed_bytes": 5308416,
+      "pad_codes": 0,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "max_abs_reconstruction_error": 0.0
+    }
+  ]
+}
