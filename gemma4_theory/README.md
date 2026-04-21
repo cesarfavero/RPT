@@ -96,6 +96,8 @@ Resultado do `48`: estabilizou em `0.91`, sem colapsar. Próximo passo operacion
 
 Decisão revisada: `0.91` é aceitável para a fase exploratória de expansão. A partir de `48`, o claim deixa de ser "sem perda contra o melhor checkpoint" e passa a ser "preservação alta com perda de 1 ponto". O próximo teste operacional é `60`, mantendo recovery forte.
 
+Resultado do `60`: pré-recovery `0.00`, pós-recovery `0.92`. Isso mostra recuperação total contra o melhor checkpoint mesmo após colapso bruto completo do benchmark. Próximo teste operacional: `78`, todos os MLPs ternarizados.
+
 ## Regra do projeto
 
 Cada notebook salva um artefato em `results/` com timestamp. Não edite resultados manualmente; rode novamente.
