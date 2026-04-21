@@ -1,0 +1,56 @@
+{
+  "note": "lm_eval com --limit 500; métrica mais robusta que limit=100, mas ainda não substitui benchmark completo sem limite.",
+  "baseline_key": "student_pruned_base_scaled500",
+  "candidate_key": "l78_adapter_scaled500",
+  "rows": [
+    {
+      "task": "arc_challenge",
+      "metric": "acc",
+      "student_pruned_base": 0.492,
+      "l78_adapter": null,
+      "delta_l78_minus_base": null
+    },
+    {
+      "task": "arc_challenge",
+      "metric": "acc_norm",
+      "student_pruned_base": 0.514,
+      "l78_adapter": null,
+      "delta_l78_minus_base": null
+    },
+    {
+      "task": "arc_easy",
+      "metric": "acc",
+      "student_pruned_base": 0.792,
+      "l78_adapter": null,
+      "delta_l78_minus_base": null
+    },
+    {
+      "task": "arc_easy",
+      "metric": "acc_norm",
+      "student_pruned_base": 0.758,
+      "l78_adapter": null,
+      "delta_l78_minus_base": null
+    },
+    {
+      "task": "hellaswag",
+      "metric": "acc",
+      "student_pruned_base": 0.492,
+      "l78_adapter": null,
+      "delta_l78_minus_base": null
+    },
+    {
+      "task": "hellaswag",
+      "metric": "acc_norm",
+      "student_pruned_base": 0.638,
+      "l78_adapter": null,
+      "delta_l78_minus_base": null
+    },
+    {
+      "task": "truthfulqa_mc1",
+      "metric": "acc",
+      "student_pruned_base": 0.358,
+      "l78_adapter": null,
+      "delta_l78_minus_base": null
+    }
+  ]
+}

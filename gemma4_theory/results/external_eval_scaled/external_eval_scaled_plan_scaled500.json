@@ -1,0 +1,55 @@
+{
+  "models": {
+    "student_pruned_base": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+    "l78_adapter": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78"
+  },
+  "model_args": {
+    "student_pruned_base": "pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,trust_remote_code=True",
+    "l78_adapter": "pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,peft=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78,trust_remote_code=True"
+  },
+  "tasks": [
+    "arc_easy",
+    "arc_challenge",
+    "hellaswag",
+    "truthfulqa_mc1"
+  ],
+  "limit": 500,
+  "batch_size": 1,
+  "commands": [
+    {
+      "model_label": "student_pruned_base",
+      "eval_label": "scaled500",
+      "tasks": [
+        "arc_easy",
+        "arc_challenge",
+        "hellaswag",
+        "truthfulqa_mc1"
+      ],
+      "limit": 500,
+      "command": "lm_eval --model hf --model_args \"pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,trust_remote_code=True\" --tasks arc_easy,arc_challenge,hellaswag,truthfulqa_mc1 --batch_size 1 --limit 500 --output_path /content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/student_pruned_base_scaled500.json",
+      "output_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/student_pruned_base_scaled500.json",
+      "log_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/student_pruned_base_scaled500.log"
+    },
+    {
+      "model_label": "l78_adapter",
+      "eval_label": "scaled500",
+      "tasks": [
+        "arc_easy",
+        "arc_challenge",
+        "hellaswag",
+        "truthfulqa_mc1"
+      ],
+      "limit": 500,
+      "command": "lm_eval --model hf --model_args \"pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,peft=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78,trust_remote_code=True\" --tasks arc_easy,arc_challenge,hellaswag,truthfulqa_mc1 --batch_size 1 --limit 500 --output_path /content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500.json",
+      "output_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500.json",
+      "log_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500.log"
+    }
+  ],
+  "interpretation": {
+    "purpose": "Scale external validation from limit=100 to limit=500.",
+    "baseline": "student_pruned_base",
+    "candidate": "l78_adapter",
+    "warning": "This validates HF/PEFT functional quality, not packed ternary runtime speed.",
+    "pass_signal": "L78 remains near student_pruned_base across the scaled external tasks."
+  }
+}

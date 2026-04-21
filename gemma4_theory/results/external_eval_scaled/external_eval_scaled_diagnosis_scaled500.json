@@ -1,0 +1,30 @@
+{
+  "status": "l78_scaled500_not_completed",
+  "cause": "PEFT failed while loading LoRA adapter because installed torchao was incompatible.",
+  "log_error": "ImportError: Found an incompatible version of torchao. Found version 0.10.0, but only versions above 0.16.0 are supported",
+  "not_oom": true,
+  "baseline_scaled500_result": "gemma4_theory/results/external_eval_scaled/student_pruned_base_scaled500_2026-04-21T17-41-53.735217.json",
+  "baseline_metrics": {
+    "arc_challenge": {
+      "acc": 0.492,
+      "acc_norm": 0.514
+    },
+    "arc_easy": {
+      "acc": 0.792,
+      "acc_norm": 0.758
+    },
+    "hellaswag": {
+      "acc": 0.492,
+      "acc_norm": 0.638
+    },
+    "truthfulqa_mc1": {
+      "acc": 0.358
+    }
+  },
+  "fix_applied_to_notebook_13": [
+    "Install torchao>=0.16.0 with dependencies.",
+    "Use bash pipefail so lm_eval failures are not hidden by tee.",
+    "Treat missing result_path as failure even if subprocess return code is zero."
+  ],
+  "rerun_instruction": "Rerun notebook 13 from the dependency install cell onward with RESUME_EXISTING=True. Baseline should be skipped; l78_adapter should rerun."
+}
