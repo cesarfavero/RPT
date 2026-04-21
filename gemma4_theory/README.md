@@ -98,6 +98,12 @@ Decisão revisada: `0.91` é aceitável para a fase exploratória de expansão. 
 
 Resultado do `60`: pré-recovery `0.00`, pós-recovery `0.92`. Isso mostra recuperação total contra o melhor checkpoint mesmo após colapso bruto completo do benchmark. Próximo teste operacional: `78`, todos os MLPs ternarizados.
 
+Resultado do `78`: todos os MLPs ternarizados.
+- pré-recovery: `0.01`
+- pós-recovery: `0.92`
+
+Conclusão da fase MLP: concluída com sucesso no benchmark local. O próximo passo não deve ser ternarizar attention imediatamente; deve ser consolidar resultados, validar em benchmarks maiores e medir custo/tamanho/latência.
+
 ## Regra do projeto
 
 Cada notebook salva um artefato em `results/` com timestamp. Não edite resultados manualmente; rode novamente.
