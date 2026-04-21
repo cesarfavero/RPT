@@ -1,0 +1,45 @@
+{
+  "claim_supported_now": "Functional conversion of all MLP projections to ternary-valued weights with recovery to local benchmark parity.",
+  "claim_not_yet_supported": "Efficient packed ternary runtime/deployment speedup.",
+  "l78_summary": {},
+  "artifact_sizes": [
+    {
+      "artifact": "student_pruned",
+      "path": "/content/checkpoints/student_pruned",
+      "size_bytes": 0,
+      "size_human": "0.00 B",
+      "exists": false
+    },
+    {
+      "artifact": "student_ternary_recovered_l78_adapter",
+      "path": "/content/checkpoints/student_ternary_recovered_l78",
+      "size_bytes": 0,
+      "size_human": "0.00 B",
+      "exists": false
+    }
+  ],
+  "static_mlp_storage_estimate": {
+    "num_layers": 26,
+    "hidden_size": 2304,
+    "intermediate_size": 9216,
+    "mlp_projections_per_layer": 3,
+    "total_mlp_weights": 1656225792,
+    "fp16_mlp_bytes": 3312451584,
+    "fp16_mlp_human": "3.08 GB",
+    "int8_mlp_bytes": 1656225792,
+    "int8_mlp_human": "1.54 GB",
+    "ternary_2bit_mlp_bytes": 414056448,
+    "ternary_2bit_mlp_human": "394.88 MB",
+    "ternary_2bit_with_per_projection_scale_bytes": 414056760,
+    "ternary_2bit_with_per_projection_scale_human": "394.88 MB",
+    "theoretical_compression_vs_fp16": 7.999993971840962,
+    "theoretical_compression_vs_int8": 3.999996985920481
+  },
+  "next_runtime_steps": [
+    "Materialize merged l78 model or adapter-loadable reproducible checkpoint.",
+    "Write exporter that stores MLP ternary signs/masks packed into 2-bit representation plus per-projection scales.",
+    "Write reference Python unpack + matmul correctness test against current fp tensor outputs.",
+    "Benchmark packed size on disk versus fp16 checkpoint and adapter representation.",
+    "Only then implement or target real kernels: custom PyTorch extension, BitBLAS/T-MAC-style backend, or bitnet.cpp-compatible path if architecture constraints allow."
+  ]
+}
