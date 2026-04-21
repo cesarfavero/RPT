@@ -1,10 +1,31 @@
 [
   {
+    "stage": "base_reference",
+    "target_layer_limit": "",
+    "pre_recovery_accuracy": "",
+    "post_recovery_accuracy": 0.9,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json"
+  },
+  {
     "stage": "baseline",
     "target_layer_limit": "",
     "pre_recovery_accuracy": "",
     "post_recovery_accuracy": 0.9,
     "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/01_baseline_eval_20260420_060326.json"
+  },
+  {
+    "stage": "pruned_4bit",
+    "target_layer_limit": "",
+    "pre_recovery_accuracy": "",
+    "post_recovery_accuracy": 0.91,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json"
+  },
+  {
+    "stage": "pruned_8bit",
+    "target_layer_limit": "",
+    "pre_recovery_accuracy": "",
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json"
   },
   {
     "stage": "pruned_checkpoint",
@@ -14,10 +35,10 @@
     "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/03_pruned_checkpoint_eval_20260420_065514.json"
   },
   {
-    "stage": "quantization",
+    "stage": "pruned_reference",
     "target_layer_limit": "",
     "pre_recovery_accuracy": "",
-    "post_recovery_accuracy": null,
+    "post_recovery_accuracy": 0.92,
     "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json"
   },
   {

@@ -1,7 +1,10 @@
 stage,target_layer_limit,pre_recovery_accuracy,post_recovery_accuracy,source_file
+base_reference,,,0.9,/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json
 baseline,,,0.9,/content/drive/MyDrive/RPT/gemma4_theory/results/01_baseline_eval_20260420_060326.json
+pruned_4bit,,,0.91,/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json
+pruned_8bit,,,0.92,/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json
 pruned_checkpoint,,,0.92,/content/drive/MyDrive/RPT/gemma4_theory/results/03_pruned_checkpoint_eval_20260420_065514.json
-quantization,,,,/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json
+pruned_reference,,,0.92,/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json
 ternary_mlp_recovery,12,0.46,0.92,/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_155447.json
 ternary_mlp_recovery,16,0.16,0.92,/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_161855.json
 ternary_mlp_recovery,18,0.12,0.92,/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_164049.json
