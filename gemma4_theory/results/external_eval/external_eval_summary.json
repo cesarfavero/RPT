@@ -1,0 +1,72 @@
+{
+  "student_pruned_base_fast": {
+    "exists": true,
+    "path": "gemma4_theory/results/external_eval/student_pruned_base_fast_2026-04-21T16-20-08.517165.json",
+    "metrics": {
+      "arc_easy": {
+        "acc": 0.77,
+        "acc_norm": 0.74
+      },
+      "hellaswag": {
+        "acc": 0.49,
+        "acc_norm": 0.65
+      }
+    }
+  },
+  "student_pruned_base_full": {
+    "exists": true,
+    "path": "gemma4_theory/results/external_eval/student_pruned_base_full_2026-04-21T16-33-25.217198.json",
+    "metrics": {
+      "arc_challenge": {
+        "acc": 0.52,
+        "acc_norm": 0.47
+      },
+      "arc_easy": {
+        "acc": 0.77,
+        "acc_norm": 0.74
+      },
+      "hellaswag": {
+        "acc": 0.49,
+        "acc_norm": 0.65
+      },
+      "truthfulqa_mc1": {
+        "acc": 0.36
+      }
+    }
+  },
+  "l78_adapter_fast": {
+    "exists": true,
+    "path": "gemma4_theory/results/external_eval/l78_adapter_fast_2026-04-21T16-24-01.236123.json",
+    "metrics": {
+      "arc_easy": {
+        "acc": 0.75,
+        "acc_norm": 0.73
+      },
+      "hellaswag": {
+        "acc": 0.5,
+        "acc_norm": 0.68
+      }
+    }
+  },
+  "l78_adapter_full": {
+    "exists": true,
+    "path": "gemma4_theory/results/external_eval/l78_adapter_full_2026-04-21T16-43-19.523335.json",
+    "metrics": {
+      "arc_challenge": {
+        "acc": 0.52,
+        "acc_norm": 0.45
+      },
+      "arc_easy": {
+        "acc": 0.75,
+        "acc_norm": 0.73
+      },
+      "hellaswag": {
+        "acc": 0.5,
+        "acc_norm": 0.68
+      },
+      "truthfulqa_mc1": {
+        "acc": 0.32
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "student_pruned_base": {
+    "exists": true,
+    "path": "gemma4_theory/results/external_eval/student_pruned_base_fast_2026-04-21T16-20-08.517165.json",
+    "metrics": {
+      "arc_easy": {
+        "acc": 0.77,
+        "acc_norm": 0.74
+      },
+      "hellaswag": {
+        "acc": 0.49,
+        "acc_norm": 0.65
+      }
+    }
+  },
+  "l78_adapter": {
+    "exists": true,
+    "path": "gemma4_theory/results/external_eval/l78_adapter_fast_2026-04-21T16-24-01.236123.json",
+    "metrics": {
+      "arc_easy": {
+        "acc": 0.75,
+        "acc_norm": 0.73
+      },
+      "hellaswag": {
+        "acc": 0.5,
+        "acc_norm": 0.68
+      }
+    }
+  }
+}
