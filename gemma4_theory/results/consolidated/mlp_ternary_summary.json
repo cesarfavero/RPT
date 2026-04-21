@@ -1,0 +1,100 @@
+[
+  {
+    "stage": "baseline",
+    "target_layer_limit": "",
+    "pre_recovery_accuracy": "",
+    "post_recovery_accuracy": 0.9,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/01_baseline_eval_20260420_060326.json"
+  },
+  {
+    "stage": "pruned_checkpoint",
+    "target_layer_limit": "",
+    "pre_recovery_accuracy": "",
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/03_pruned_checkpoint_eval_20260420_065514.json"
+  },
+  {
+    "stage": "quantization",
+    "target_layer_limit": "",
+    "pre_recovery_accuracy": "",
+    "post_recovery_accuracy": null,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/04_quantization_eval_20260420_073000.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 12,
+    "pre_recovery_accuracy": 0.46,
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_155447.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 16,
+    "pre_recovery_accuracy": 0.16,
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_161855.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 18,
+    "pre_recovery_accuracy": 0.12,
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_164049.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 21,
+    "pre_recovery_accuracy": 0.02,
+    "post_recovery_accuracy": 0.91,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_170259.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 21,
+    "pre_recovery_accuracy": 0.02,
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_173049.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 24,
+    "pre_recovery_accuracy": 0.05,
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_180330.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 36,
+    "pre_recovery_accuracy": 0.07,
+    "post_recovery_accuracy": 0.91,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_183144.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 36,
+    "pre_recovery_accuracy": 0.07,
+    "post_recovery_accuracy": 0.91,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_190900.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 48,
+    "pre_recovery_accuracy": 0.03,
+    "post_recovery_accuracy": 0.91,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260420_201926.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 60,
+    "pre_recovery_accuracy": 0.0,
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260421_114702.json"
+  },
+  {
+    "stage": "ternary_mlp_recovery",
+    "target_layer_limit": 78,
+    "pre_recovery_accuracy": 0.01,
+    "post_recovery_accuracy": 0.92,
+    "source_file": "/content/drive/MyDrive/RPT/gemma4_theory/results/07_ternary_expansion_summary_20260421_133727.json"
+  }
+]
