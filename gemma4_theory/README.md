@@ -94,6 +94,8 @@ Decisão operacional atual: testar `48` para observar se o regime colapsa, estab
 
 Resultado do `48`: estabilizou em `0.91`, sem colapsar. Próximo passo operacional: repetir `48` com recovery mais longo antes de tentar `60`.
 
+Decisão revisada: `0.91` é aceitável para a fase exploratória de expansão. A partir de `48`, o claim deixa de ser "sem perda contra o melhor checkpoint" e passa a ser "preservação alta com perda de 1 ponto". O próximo teste operacional é `60`, mantendo recovery forte.
+
 ## Regra do projeto
 
 Cada notebook salva um artefato em `results/` com timestamp. Não edite resultados manualmente; rode novamente.
