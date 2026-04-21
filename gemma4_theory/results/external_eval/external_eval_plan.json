@@ -1,0 +1,65 @@
+{
+  "models": {
+    "student_pruned_base": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+    "l78_adapter": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78"
+  },
+  "model_args": {
+    "student_pruned_base": "pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,trust_remote_code=True",
+    "l78_adapter": "pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,peft=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78,trust_remote_code=True"
+  },
+  "commands": [
+    {
+      "model_label": "student_pruned_base",
+      "eval_label": "fast",
+      "tasks": [
+        "arc_easy",
+        "hellaswag"
+      ],
+      "command": "lm_eval --model hf --model_args \"pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,trust_remote_code=True\" --tasks arc_easy,hellaswag --batch_size 1 --limit 100 --output_path /content/drive/MyDrive/RPT/gemma4_theory/results/external_eval/student_pruned_base_fast.json",
+      "output_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval/student_pruned_base_fast.json"
+    },
+    {
+      "model_label": "student_pruned_base",
+      "eval_label": "full",
+      "tasks": [
+        "arc_easy",
+        "arc_challenge",
+        "hellaswag",
+        "truthfulqa_mc1"
+      ],
+      "command": "lm_eval --model hf --model_args \"pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,trust_remote_code=True\" --tasks arc_easy,arc_challenge,hellaswag,truthfulqa_mc1 --batch_size 1 --limit 100 --output_path /content/drive/MyDrive/RPT/gemma4_theory/results/external_eval/student_pruned_base_full.json",
+      "output_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval/student_pruned_base_full.json"
+    },
+    {
+      "model_label": "l78_adapter",
+      "eval_label": "fast",
+      "tasks": [
+        "arc_easy",
+        "hellaswag"
+      ],
+      "command": "lm_eval --model hf --model_args \"pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,peft=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78,trust_remote_code=True\" --tasks arc_easy,hellaswag --batch_size 1 --limit 100 --output_path /content/drive/MyDrive/RPT/gemma4_theory/results/external_eval/l78_adapter_fast.json",
+      "output_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval/l78_adapter_fast.json"
+    },
+    {
+      "model_label": "l78_adapter",
+      "eval_label": "full",
+      "tasks": [
+        "arc_easy",
+        "arc_challenge",
+        "hellaswag",
+        "truthfulqa_mc1"
+      ],
+      "command": "lm_eval --model hf --model_args \"pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,peft=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78,trust_remote_code=True\" --tasks arc_easy,arc_challenge,hellaswag,truthfulqa_mc1 --batch_size 1 --limit 100 --output_path /content/drive/MyDrive/RPT/gemma4_theory/results/external_eval/l78_adapter_full.json",
+      "output_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval/l78_adapter_full.json"
+    }
+  ],
+  "interpretation": {
+    "purpose": "Check whether local 0.92 recovery generalizes beyond the 100-question suite.",
+    "compare_against": [
+      "student_pruned_base",
+      "l78_adapter"
+    ],
+    "warning": "This evaluates model quality through HF/PEFT loading. It does not benchmark packed ternary runtime speed or execute mlp_ternary_2bit.bin.",
+    "next_step_if_good": "Build custom loader/runtime path that uses manifest.json + mlp_ternary_2bit.bin for MLP execution."
+  }
+}
