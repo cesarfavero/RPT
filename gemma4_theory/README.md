@@ -12,6 +12,8 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `notebooks/05_ternary_qat_ste_gemma4.ipynb`: tentativa de ternarização estilo BitNet.
 - `notebooks/06_ternary_recovery_gemma4.ipynb`: recovery leve após snap ternário parcial.
 - `notebooks/07_progressive_ternary_expansion_gemma4.ipynb`: expansão curricular do piloto ternário com recovery por estágios.
+- `notebooks/08_consolidate_mlp_ternary_results.ipynb`: consolidação dos resultados da fase MLP ternária.
+- `notebooks/09_ternary_deployment_audit.ipynb`: auditoria de deploy, estimativa de packing ternário e próximos passos de runtime.
 - `notebooks/06_result_analysis_gemma4.ipynb`: consolidação dos resultados que você vai me devolver.
 - `utils/eval_utils.py`: utilitários compartilhados de avaliação e logging.
 - `results/`: saídas JSON/CSV de cada execução.
@@ -25,7 +27,9 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 5. Só depois entrar em `04` e `05`.
 6. Validar `06_ternary_recovery_gemma4.ipynb`.
 7. Escalar em `07_progressive_ternary_expansion_gemma4.ipynb`.
-8. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
+8. Consolidar a fase MLP em `08_consolidate_mlp_ternary_results.ipynb`.
+9. Auditar deploy/packing em `09_ternary_deployment_audit.ipynb`.
+10. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
 
 ## Estado atual da hipótese
 
