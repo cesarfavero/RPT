@@ -15,6 +15,8 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `notebooks/08_consolidate_mlp_ternary_results.ipynb`: consolidação dos resultados da fase MLP ternária.
 - `notebooks/09_ternary_deployment_audit.ipynb`: auditoria de deploy, estimativa de packing ternário e próximos passos de runtime.
 - `notebooks/10_export_packed_ternary_mlp.ipynb`: exporta os MLPs ternários em artefato 2-bit empacotado e testa reconstrução.
+- `notebooks/11_validate_hybrid_ternary_package.ipynb`: valida o pacote híbrido exportado e o adapter `l78`.
+- `notebooks/12_external_eval_l78_hybrid.ipynb`: prepara avaliação externa com `lm-evaluation-harness`.
 - `notebooks/06_result_analysis_gemma4.ipynb`: consolidação dos resultados que você vai me devolver.
 - `utils/eval_utils.py`: utilitários compartilhados de avaliação e logging.
 - `results/`: saídas JSON/CSV de cada execução.
@@ -31,7 +33,9 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 8. Consolidar a fase MLP em `08_consolidate_mlp_ternary_results.ipynb`.
 9. Auditar deploy/packing em `09_ternary_deployment_audit.ipynb`.
 10. Exportar artefato MLP ternário empacotado em `10_export_packed_ternary_mlp.ipynb`.
-11. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
+11. Validar pacote híbrido em `11_validate_hybrid_ternary_package.ipynb`.
+12. Preparar benchmark externo em `12_external_eval_l78_hybrid.ipynb`.
+13. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
 
 ## Estado atual da hipótese
 
