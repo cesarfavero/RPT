@@ -211,6 +211,7 @@ Runtime nativo estrutural:
   - avaliação 100 perguntas: ainda não rodada nesse primeiro teste
 - leitura: o protótipo reduziu a memória persistente alocada em relação ao materialized hybrid (`5.10 GB` -> `2.40 GB`), mas ficou mais lento porque ainda desempacota no `forward`
 - limitação: serve para validar compatibilidade antes de CUDA/Triton; performance real exige kernel otimizado
+- nota de ambiente: se o Colab tiver `torchao 0.10.0` com PEFT novo, atualizar para `torchao>=0.16.0`; o notebook 22 faz essa correção no bootstrap
 
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico

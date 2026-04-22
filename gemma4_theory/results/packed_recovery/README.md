@@ -108,6 +108,8 @@ Limitação: ainda não é kernel otimizado. O protótipo desempacota no `forwar
 
 O notebook `22_native_ternary_mlp_runtime.ipynb` roda a avaliação das 100 perguntas por padrão. Para depuração rápida, definir `RPT_NATIVE_RUN_FULL_100=0` antes da célula de avaliação.
 
+Se o ambiente falhar com `Found an incompatible version of torchao`, atualizar para `torchao>=0.16.0`. O bootstrap do notebook 22 foi ajustado para corrigir automaticamente `torchao 0.10.0` quando detectado.
+
 ## Importância
 
 Este run mostra que o artefato packed/materialized (`mlp_ternary_2bit.bin`) pode ser recuperado funcionalmente. O packed puro praticamente colapsa no benchmark local, mas o adapter treinado especificamente para esse caminho recupera o desempenho e supera a referência local de `0.92` nessa bateria.
