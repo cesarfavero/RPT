@@ -17,6 +17,12 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `notebooks/10_export_packed_ternary_mlp.ipynb`: exporta os MLPs ternários em artefato 2-bit empacotado e testa reconstrução.
 - `notebooks/11_validate_hybrid_ternary_package.ipynb`: valida o pacote híbrido exportado e o adapter `l78`.
 - `notebooks/12_external_eval_l78_hybrid.ipynb`: prepara avaliação externa com `lm-evaluation-harness`.
+- `notebooks/13_external_eval_scaled_l78.ipynb`: avaliação externa ampliada do adapter `l78`.
+- `notebooks/14_validate_packed_ternary_reconstruction.ipynb`: valida reconstrução packed/materialized.
+- `notebooks/15_recover_packed_ternary_path.ipynb`: recovery inicial do caminho packed/materialized.
+- `notebooks/16_reference_gemma2b_question_eval.ipynb`: avaliação de referência HF original e `student_pruned`.
+- `notebooks/17_t4_resume_packed_recovery.ipynb`: recovery T4 retomável do caminho packed/materialized.
+- `notebooks/18_test_packed_recovered_l78.ipynb`: validação pós-marco do checkpoint packed recuperado, sem retreino.
 - `notebooks/06_result_analysis_gemma4.ipynb`: consolidação dos resultados que você vai me devolver.
 - `utils/eval_utils.py`: utilitários compartilhados de avaliação e logging.
 - `results/`: saídas JSON/CSV de cada execução.
@@ -35,7 +41,9 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 10. Exportar artefato MLP ternário empacotado em `10_export_packed_ternary_mlp.ipynb`.
 11. Validar pacote híbrido em `11_validate_hybrid_ternary_package.ipynb`.
 12. Preparar benchmark externo em `12_external_eval_l78_hybrid.ipynb`.
-13. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
+13. Validar/recover o caminho packed/materialized em `14`, `15` e `17_t4_resume_packed_recovery.ipynb`.
+14. Reproduzir o checkpoint packed recuperado sem retreino em `18_test_packed_recovered_l78.ipynb`.
+15. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
 
 ## Estado atual da hipótese
 
@@ -142,6 +150,13 @@ Arquivos registrados:
 - `results/packed_recovery/packed_base_required.json`
 
 Conclusão atualizada da fase MLP: concluída com sucesso no benchmark local e no caminho packed/materialized. O claim honesto é que o resultado atingiu `1.00` no benchmark local de 100 perguntas, acima da referência `0.92`; próximos passos exigem benchmark maior/externo, medição de custo/tamanho/latência e teste de robustez fora dessa bateria.
+
+Próximos passos após o marco:
+- reproduzir o `100/100` com `18_test_packed_recovered_l78.ipynb` sem retreino
+- criar uma bateria maior e inédita para medir generalização fora das 100 perguntas locais
+- comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
+- medir tamanho, latência, VRAM/RAM e custo real do caminho packed/materialized
+- só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
 
 ## Regra do projeto
 
