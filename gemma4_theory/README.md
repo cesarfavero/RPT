@@ -27,6 +27,7 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `notebooks/21_build_distributable_packed_recovered_l78.ipynb`: monta uma pasta distribuível executável do modelo packed recovered L78.
 - `notebooks/22_native_ternary_mlp_runtime.ipynb`: testa o protótipo nativo estrutural com `PackedTernaryLinear`.
 - `notebooks/23_triton_ternary_matmul_spike.ipynb`: spike de kernel Triton para matmul ternária packed nos shapes reais.
+- `notebooks/24_integrate_triton_ternary_runtime.ipynb`: integra o kernel Triton no modelo completo e reavalia o runtime.
 - `runtime/packed_recovered_l78/`: runtime CLI versionado para carregar e executar o pacote distribuível.
 - `notebooks/06_result_analysis_gemma4.ipynb`: consolidação dos resultados que você vai me devolver.
 - `utils/eval_utils.py`: utilitários compartilhados de avaliação e logging.
@@ -52,7 +53,8 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 16. Montar pacote distribuível executável em `21_build_distributable_packed_recovered_l78.ipynb`.
 17. Testar runtime nativo estrutural em `22_native_ternary_mlp_runtime.ipynb`.
 18. Validar spike de kernel Triton em `23_triton_ternary_matmul_spike.ipynb`.
-19. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
+19. Integrar Triton no runtime completo em `24_integrate_triton_ternary_runtime.ipynb`.
+20. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
 
 ## Estado atual da hipótese
 
@@ -239,6 +241,12 @@ Spike Triton:
 - speedup médio contra `unpack_then_linear`: `187.43x`
 - speedup médio contra dense materializado: `0.109x`
 - leitura: o kernel Triton remove o gargalo extremo do unpack no `forward`, mas ainda não vence `F.linear` denso materializado; o próximo passo é integrar no runtime nativo e medir tokens/s do modelo completo
+
+Runtime Triton integrado:
+- runtime: `runtime/packed_recovered_l78/triton_loader.py`
+- CLI: `runtime/packed_recovered_l78/run_triton_inference.py`
+- notebook: `24_integrate_triton_ternary_runtime`
+- objetivo: medir o modelo completo com `TritonPackedTernaryLinear`, mantendo `100/100` e VRAM baixa
 
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico

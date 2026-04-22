@@ -70,6 +70,23 @@ Diferença:
 
 O protótipo nativo ainda não tem kernel otimizado. Ele desempacota no `forward`, então pode ser mais lento; o objetivo é validar compatibilidade funcional antes de implementar CUDA/Triton.
 
+## Protótipo Triton integrado
+
+Depois do spike de kernel, o runtime inclui uma CLI com `TritonPackedTernaryLinear`:
+
+```bash
+python runtime/run_triton_inference.py \
+  --model-dir /path/to/MODEL_DIR \
+  --prompt "Qual a capital da França?"
+```
+
+Diferença:
+
+- `run_native_inference.py`: usa `PackedTernaryLinear` e desempacota com PyTorch no `forward`.
+- `run_triton_inference.py`: usa `TritonPackedTernaryLinear` e chama kernel Triton no `forward`.
+
+O caminho Triton ainda é experimental. Ele deve preservar a acurácia do notebook 22 e melhorar tokens/s contra o runtime nativo estrutural antes de virar default.
+
 ## Verificação rápida
 
 ```bash

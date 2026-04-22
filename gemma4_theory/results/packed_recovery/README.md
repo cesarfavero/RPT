@@ -157,6 +157,24 @@ Resultado do spike:
 
 Interpretação: o kernel Triton é correto o suficiente para o spike e elimina o gargalo absurdo de reconstruir o peso em PyTorch a cada forward. Porém ele ainda é mais lento que o caminho dense materializado. O próximo passo é integrar no runtime nativo (`24`) para medir o efeito real em tokens/s, VRAM e `100/100`.
 
+## Runtime Triton integrado
+
+Arquivos:
+
+```text
+../../runtime/packed_recovered_l78/triton_loader.py
+../../runtime/packed_recovered_l78/run_triton_inference.py
+../../notebooks/24_integrate_triton_ternary_runtime.ipynb
+```
+
+O notebook 24 integra o kernel Triton no modelo completo e roda a avaliação das 100 perguntas por padrão. Ele deve ser comparado contra:
+
+- notebook 20: materialized hybrid, `~7.75 tokens/s`, `~5.10 GB` alocados após load
+- notebook 22: native structural, `~2.29 tokens/s`, `~2.40 GB` alocados após load
+- notebook 23: kernel isolado, `187.43x` contra unpack PyTorch, mas `0.109x` contra dense
+
+Critério: preservar `100/100`, manter VRAM baixa e superar claramente o notebook 22 em tokens/s.
+
 ## Importância
 
 Este run mostra que o artefato packed/materialized (`mlp_ternary_2bit.bin`) pode ser recuperado funcionalmente. O packed puro praticamente colapsa no benchmark local, mas o adapter treinado especificamente para esse caminho recupera o desempenho e supera a referência local de `0.92` nessa bateria.

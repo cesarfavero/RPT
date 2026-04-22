@@ -15,6 +15,7 @@
   "known_limitations": [
     "This package still requires the dense student_pruned base.",
     "The packed MLP tensors are materialized into the base model before inference.",
-    "The structural native prototype is available but is not yet an optimized ternary kernel runtime."
+    "The structural native prototype is available.",
+    "The Triton backend is experimental and must be validated per GPU/runtime before becoming default."
   ]
 }
