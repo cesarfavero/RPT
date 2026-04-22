@@ -199,6 +199,7 @@ Runtime nativo estrutural:
 - abordagem: carrega o adapter recovered e substitui as bases MLP por `PackedTernaryLinear`
 - status: protótipo estrutural validado em smoke test, ainda sem kernel otimizado
 - o notebook 22 agora roda as 100 perguntas por padrão; para pular em depuração rápida, definir `RPT_NATIVE_RUN_FULL_100=0`
+- avaliador usa `expected_answer` e `accepted_answers` do dataset local
 - resultado reportado do primeiro run:
   - `replaced_count`: `78`
   - runtime: `native_structural_prototype`

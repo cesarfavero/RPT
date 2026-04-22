@@ -107,6 +107,7 @@ python runtime/run_native_inference.py --model-dir . --prompt "Qual a capital da
 Limitação: ainda não é kernel otimizado. O protótipo desempacota no `forward`, então pode ser lento. Se preservar qualidade, o próximo marco é CUDA/Triton para matmul ternária.
 
 O notebook `22_native_ternary_mlp_runtime.ipynb` roda a avaliação das 100 perguntas por padrão. Para depuração rápida, definir `RPT_NATIVE_RUN_FULL_100=0` antes da célula de avaliação.
+O avaliador usa `expected_answer` e `accepted_answers`, que é o formato real de `data/gemma4_100_questions.json`.
 
 Se o ambiente falhar com `Found an incompatible version of torchao`, atualizar para `torchao>=0.16.0`. O bootstrap do notebook 22 foi ajustado para corrigir automaticamente `torchao 0.10.0` quando detectado.
 
