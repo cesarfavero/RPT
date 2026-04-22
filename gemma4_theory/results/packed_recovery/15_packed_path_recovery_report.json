@@ -1,0 +1,73 @@
+{
+  "status": "target_not_met",
+  "problem_from_14": {
+    "old_l78_on_packed_accuracy": 0.63,
+    "clean_base_plus_l78_accuracy": 0.92,
+    "diagnosis": "Old l78 adapter was not sufficient for the materialized packed ternary base."
+  },
+  "new_packed_path_adapter": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_packed_ternary_recovered_l78_v2",
+  "new_eval_summary": {
+    "total_questions": 100,
+    "correct": 68,
+    "accuracy": 0.68,
+    "by_category": {
+      "factual": {
+        "total": 20,
+        "correct": 20,
+        "accuracy": 1.0
+      },
+      "math": {
+        "total": 10,
+        "correct": 10,
+        "accuracy": 1.0
+      },
+      "science": {
+        "total": 10,
+        "correct": 3,
+        "accuracy": 0.3
+      },
+      "history": {
+        "total": 10,
+        "correct": 7,
+        "accuracy": 0.7
+      },
+      "logic": {
+        "total": 10,
+        "correct": 8,
+        "accuracy": 0.8
+      },
+      "coding": {
+        "total": 10,
+        "correct": 4,
+        "accuracy": 0.4
+      },
+      "language": {
+        "total": 10,
+        "correct": 3,
+        "accuracy": 0.3
+      },
+      "sports": {
+        "total": 10,
+        "correct": 5,
+        "accuracy": 0.5
+      },
+      "everyday": {
+        "total": 10,
+        "correct": 8,
+        "accuracy": 0.8
+      }
+    }
+  },
+  "target_accuracy": 0.9,
+  "passed_target": false,
+  "comparison": {
+    "old_l78_on_packed_accuracy": 0.63,
+    "clean_base_plus_l78_reference_accuracy": 0.92,
+    "delta_vs_old_l78_on_packed": 0.05,
+    "delta_vs_clean_base_l78_reference": -0.24
+  },
+  "required_load_order": "load student_pruned -> materialize mlp_ternary_2bit.bin using manifest.json -> apply this adapter with PeftModel.from_pretrained",
+  "packed_bin_sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+  "manifest_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/manifest.json",
+  "bin_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/mlp_ternary_2bit.bin"
+}
