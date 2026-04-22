@@ -1,0 +1,122 @@
+{
+  "purpose": "Reference eval of original Gemma 2B and local bases on the same 100-question suite.",
+  "results": [
+    {
+      "label": "hf_gemma_2_2b_it_original",
+      "path": "/content/drive/MyDrive/RPT/gemma4_theory/results/reference_eval/16_reference_hf_gemma_2_2b_it_original_20260422_181209.json",
+      "summary": {
+        "total_questions": 100,
+        "correct": 90,
+        "accuracy": 0.9,
+        "by_category": {
+          "factual": {
+            "total": 20,
+            "correct": 20,
+            "accuracy": 1.0
+          },
+          "math": {
+            "total": 10,
+            "correct": 10,
+            "accuracy": 1.0
+          },
+          "science": {
+            "total": 10,
+            "correct": 7,
+            "accuracy": 0.7
+          },
+          "history": {
+            "total": 10,
+            "correct": 10,
+            "accuracy": 1.0
+          },
+          "logic": {
+            "total": 10,
+            "correct": 8,
+            "accuracy": 0.8
+          },
+          "coding": {
+            "total": 10,
+            "correct": 10,
+            "accuracy": 1.0
+          },
+          "language": {
+            "total": 10,
+            "correct": 8,
+            "accuracy": 0.8
+          },
+          "sports": {
+            "total": 10,
+            "correct": 8,
+            "accuracy": 0.8
+          },
+          "everyday": {
+            "total": 10,
+            "correct": 9,
+            "accuracy": 0.9
+          }
+        }
+      }
+    },
+    {
+      "label": "student_pruned",
+      "path": "/content/drive/MyDrive/RPT/gemma4_theory/results/reference_eval/16_reference_student_pruned_20260422_181457.json",
+      "summary": {
+        "total_questions": 100,
+        "correct": 92,
+        "accuracy": 0.92,
+        "by_category": {
+          "factual": {
+            "total": 20,
+            "correct": 20,
+            "accuracy": 1.0
+          },
+          "math": {
+            "total": 10,
+            "correct": 10,
+            "accuracy": 1.0
+          },
+          "science": {
+            "total": 10,
+            "correct": 9,
+            "accuracy": 0.9
+          },
+          "history": {
+            "total": 10,
+            "correct": 10,
+            "accuracy": 1.0
+          },
+          "logic": {
+            "total": 10,
+            "correct": 8,
+            "accuracy": 0.8
+          },
+          "coding": {
+            "total": 10,
+            "correct": 10,
+            "accuracy": 1.0
+          },
+          "language": {
+            "total": 10,
+            "correct": 8,
+            "accuracy": 0.8
+          },
+          "sports": {
+            "total": 10,
+            "correct": 8,
+            "accuracy": 0.8
+          },
+          "everyday": {
+            "total": 10,
+            "correct": 9,
+            "accuracy": 0.9
+          }
+        }
+      }
+    }
+  ],
+  "interpretation_notes": [
+    "Use hf_gemma_2_2b_it_original as the true upstream Gemma 2B reference.",
+    "Use student_pruned to verify whether pruning changed the 100-question behavior.",
+    "Use student_pruned_plus_l78_clean_adapter only as clean-base adapter reference, not as packed ternary proof."
+  ]
+}
