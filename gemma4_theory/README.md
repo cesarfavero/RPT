@@ -147,6 +147,34 @@ Validação pós-marco:
 - resultado reproduzido: `1.00` (`100/100`)
 - arquivo: `results/packed_recovery/18_test_packed_recovered_l78_20260422_205445.json`
 
+Medição operacional:
+- notebook: `20_measure_and_build_packed_recovered_l78`
+- ambiente medido: Colab/T4 (`14.56 GB` VRAM)
+- tamanho bruto dos componentes:
+  - `student_pruned`: `4.90 GB`
+  - adapter recovered L78: `1016.65 MB`
+  - `mlp_ternary_2bit.bin`: `394.88 MB`
+  - `manifest.json`: `29.05 KB`
+- carga medida:
+  - tokenizer: `7.44s`
+  - `student_pruned`: `103.56s`
+  - materialização packed MLP: `26.93s`
+  - adapter recovered: `14.44s`
+  - total aproximado: `152.38s`
+- VRAM medida:
+  - após base: `4.87 GB`
+  - após adapter: `5.10 GB`
+  - pico: `5.33 GB`
+- smoke test de geração: `5` prompts, `13` tokens gerados, média `7.75 tokens/s`
+- arquivo: `results/packed_recovery/20_measure_and_build_packed_recovered_l78_20260422_211727.json`
+- build operacional gerado: `build/packed_recovered_l78/`
+
+Leitura operacional:
+- o caminho atual é funcional e cabe em T4, mas ainda depende do `student_pruned` como base densa
+- o `packed_bin` substitui somente os `78` MLPs; ele ainda não é um runtime ternário autônomo
+- o adapter recovered corrige o comportamento sobre a base + MLPs packed, mas não substitui o modelo base
+- o próximo marco de runtime deve remover duplicação dos MLPs densos ou criar execução nativa ternária, antes de afirmar redução real de memória/inferência
+
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
 - separa o problema de runtime/packing do problema de capacidade: o packed puro colapsa (`0.01`), mas o recovery T4 devolve desempenho acima da referência local

@@ -1,0 +1,221 @@
+{
+  "notebook": "20_measure_and_build_packed_recovered_l78",
+  "purpose": "Operational measurement and reproducible build metadata for packed recovered L78.",
+  "created_at": "2026-04-22 21:17:27",
+  "load_order": "student_pruned -> materialize mlp_ternary_2bit.bin -> PeftModel.from_pretrained(recovered adapter)",
+  "paths": {
+    "project_root": "/content/drive/MyDrive/RPT/gemma4_theory",
+    "student_pruned": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+    "adapter_recovered_l78": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_packed_ternary_recovered_l78_t4_resume",
+    "manifest": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/manifest.json",
+    "packed_bin": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/mlp_ternary_2bit.bin",
+    "build_dir": "/content/drive/MyDrive/RPT/gemma4_theory/build/packed_recovered_l78"
+  },
+  "packed_bin_sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+  "applied_packed_mlp_tensors": 78,
+  "sizes": {
+    "student_pruned": {
+      "path": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+      "bytes": 5263083118,
+      "human": "4.90 GB"
+    },
+    "adapter_recovered_l78": {
+      "path": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_packed_ternary_recovered_l78_t4_resume",
+      "bytes": 1066036856,
+      "human": "1016.65 MB"
+    },
+    "packed_bin": {
+      "path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/mlp_ternary_2bit.bin",
+      "bytes": 414056448,
+      "sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+      "human": "394.88 MB"
+    },
+    "packed_manifest": {
+      "path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/manifest.json",
+      "bytes": 29752,
+      "human": "29.05 KB"
+    }
+  },
+  "environment": {
+    "platform": "Linux-6.6.113+-x86_64-with-glibc2.35",
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128",
+    "cuda_available": true,
+    "cuda_device": "Tesla T4",
+    "cuda_total_memory_human": "14.56 GB"
+  },
+  "load_steps": [
+    {
+      "label": "load_tokenizer",
+      "elapsed_sec": 7.442889953999952,
+      "before": {
+        "label": "load_tokenizer:before",
+        "rss_bytes": 947462144,
+        "rss_human": "903.57 MB",
+        "cuda_device": "Tesla T4",
+        "cuda_allocated_bytes": 0,
+        "cuda_reserved_bytes": 0,
+        "cuda_max_allocated_bytes": 0,
+        "cuda_allocated_human": "0.00 B",
+        "cuda_reserved_human": "0.00 B",
+        "cuda_max_allocated_human": "0.00 B"
+      },
+      "after": {
+        "label": "load_tokenizer:after",
+        "rss_bytes": 1424982016,
+        "rss_human": "1.33 GB",
+        "cuda_device": "Tesla T4",
+        "cuda_allocated_bytes": 0,
+        "cuda_reserved_bytes": 0,
+        "cuda_max_allocated_bytes": 0,
+        "cuda_allocated_human": "0.00 B",
+        "cuda_reserved_human": "0.00 B",
+        "cuda_max_allocated_human": "0.00 B"
+      }
+    },
+    {
+      "label": "load_student_pruned",
+      "elapsed_sec": 103.56476386499992,
+      "before": {
+        "label": "load_student_pruned:before",
+        "rss_bytes": 1424982016,
+        "rss_human": "1.33 GB",
+        "cuda_device": "Tesla T4",
+        "cuda_allocated_bytes": 0,
+        "cuda_reserved_bytes": 0,
+        "cuda_max_allocated_bytes": 0,
+        "cuda_allocated_human": "0.00 B",
+        "cuda_reserved_human": "0.00 B",
+        "cuda_max_allocated_human": "0.00 B"
+      },
+      "after": {
+        "label": "load_student_pruned:after",
+        "rss_bytes": 1400774656,
+        "rss_human": "1.30 GB",
+        "cuda_device": "Tesla T4",
+        "cuda_allocated_bytes": 5228684800,
+        "cuda_reserved_bytes": 5230297088,
+        "cuda_max_allocated_bytes": 5228684800,
+        "cuda_allocated_human": "4.87 GB",
+        "cuda_reserved_human": "4.87 GB",
+        "cuda_max_allocated_human": "4.87 GB"
+      }
+    },
+    {
+      "label": "materialize_packed_mlp",
+      "elapsed_sec": 26.93346692399996,
+      "before": {
+        "label": "materialize_packed_mlp:before",
+        "rss_bytes": 1400979456,
+        "rss_human": "1.30 GB",
+        "cuda_device": "Tesla T4",
+        "cuda_allocated_bytes": 5228684800,
+        "cuda_reserved_bytes": 5230297088,
+        "cuda_max_allocated_bytes": 5228684800,
+        "cuda_allocated_human": "4.87 GB",
+        "cuda_reserved_human": "4.87 GB",
+        "cuda_max_allocated_human": "4.87 GB"
+      },
+      "after": {
+        "label": "materialize_packed_mlp:after",
+        "rss_bytes": 1401389056,
+        "rss_human": "1.31 GB",
+        "cuda_device": "Tesla T4",
+        "cuda_allocated_bytes": 5228684800,
+        "cuda_reserved_bytes": 5274337280,
+        "cuda_max_allocated_bytes": 5271152128,
+        "cuda_allocated_human": "4.87 GB",
+        "cuda_reserved_human": "4.91 GB",
+        "cuda_max_allocated_human": "4.91 GB"
+      }
+    },
+    {
+      "label": "load_recovered_adapter",
+      "elapsed_sec": 14.443311074000007,
+      "before": {
+        "label": "load_recovered_adapter:before",
+        "rss_bytes": 1401462784,
+        "rss_human": "1.31 GB",
+        "cuda_device": "Tesla T4",
+        "cuda_allocated_bytes": 5228684800,
+        "cuda_reserved_bytes": 5230297088,
+        "cuda_max_allocated_bytes": 5228684800,
+        "cuda_allocated_human": "4.87 GB",
+        "cuda_reserved_human": "4.87 GB",
+        "cuda_max_allocated_human": "4.87 GB"
+      },
+      "after": {
+        "label": "load_recovered_adapter:after",
+        "rss_bytes": 1410641920,
+        "rss_human": "1.31 GB",
+        "cuda_device": "Tesla T4",
+        "cuda_allocated_bytes": 5477885440,
+        "cuda_reserved_bytes": 5786042368,
+        "cuda_max_allocated_bytes": 5727086080,
+        "cuda_allocated_human": "5.10 GB",
+        "cuda_reserved_human": "5.39 GB",
+        "cuda_max_allocated_human": "5.33 GB"
+      }
+    }
+  ],
+  "generation_summary": {
+    "num_prompts": 5,
+    "total_generated_tokens": 13,
+    "total_elapsed_sec": 2.694606656000019,
+    "avg_tokens_per_sec": 7.746480522791005
+  },
+  "generation_rows": [
+    {
+      "question": "Qual a capital da França?",
+      "answer": "Paris",
+      "prompt_tokens": 22,
+      "generated_tokens": 2,
+      "elapsed_sec": 1.5264157389999582,
+      "tokens_per_sec": 1.310259026358254
+    },
+    {
+      "question": "Qual a capital da Alemanha?",
+      "answer": "Berlim",
+      "prompt_tokens": 22,
+      "generated_tokens": 3,
+      "elapsed_sec": 0.31233738399998856,
+      "tokens_per_sec": 9.604998164421168
+    },
+    {
+      "question": "Qual a capital da Itália?",
+      "answer": "Roma",
+      "prompt_tokens": 22,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.24052385499999218,
+      "tokens_per_sec": 8.315183539695324
+    },
+    {
+      "question": "Qual a capital da Espanha?",
+      "answer": "Madri",
+      "prompt_tokens": 22,
+      "generated_tokens": 3,
+      "elapsed_sec": 0.30870030599999154,
+      "tokens_per_sec": 9.718163350314535
+    },
+    {
+      "question": "Qual a capital de Portugal?",
+      "answer": "Lisboa",
+      "prompt_tokens": 22,
+      "generated_tokens": 3,
+      "elapsed_sec": 0.30662937200008855,
+      "tokens_per_sec": 9.783798533165745
+    }
+  ],
+  "baselines": {
+    "hf_gemma_2_2b_it_original_reference_accuracy": 0.9,
+    "student_pruned_reference_accuracy": 0.92,
+    "clean_base_plus_l78_reference_accuracy": 0.92,
+    "packed_base_no_adapter_accuracy": 0.01,
+    "old_l78_on_packed_accuracy": 0.63,
+    "recovered_packed_l78_local_accuracy": 1.0
+  },
+  "source_results": {
+    "reproduced_eval": "results/packed_recovery/18_test_packed_recovered_l78_20260422_205445.json",
+    "recovery_report": "results/packed_recovery/17_t4_resume_report.json"
+  }
+}
