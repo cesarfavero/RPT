@@ -137,6 +137,14 @@ Resultado oficial do run:
 - delta contra adapter antigo no packed: `+0.37`
 - delta contra referência limpa: `+0.08`
 
+Validação pós-marco:
+- notebook: `18_test_packed_recovered_l78`
+- sem retreino: sim
+- tensores packed MLP aplicados: `78`
+- SHA do packed bin confirmado: `0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116`
+- resultado reproduzido: `1.00` (`100/100`)
+- arquivo: `results/packed_recovery/18_test_packed_recovered_l78_20260422_205445.json`
+
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
 - separa o problema de runtime/packing do problema de capacidade: o packed puro colapsa (`0.01`), mas o recovery T4 devolve desempenho acima da referência local
@@ -148,11 +156,11 @@ Arquivos registrados:
 - `results/packed_recovery/17_t4_resume_progress.json`
 - `results/packed_recovery/17_t4_resume_phase_1200_20260422_203242.json`
 - `results/packed_recovery/packed_base_required.json`
+- `results/packed_recovery/18_test_packed_recovered_l78_20260422_205445.json`
 
-Conclusão atualizada da fase MLP: concluída com sucesso no benchmark local e no caminho packed/materialized. O claim honesto é que o resultado atingiu `1.00` no benchmark local de 100 perguntas, acima da referência `0.92`; próximos passos exigem benchmark maior/externo, medição de custo/tamanho/latência e teste de robustez fora dessa bateria.
+Conclusão atualizada da fase MLP: concluída com sucesso no benchmark local e no caminho packed/materialized. O claim honesto é que o resultado atingiu e reproduziu `1.00` no benchmark local de 100 perguntas, acima da referência `0.92`; próximos passos exigem benchmark maior/externo, medição de custo/tamanho/latência e teste de robustez fora dessa bateria.
 
 Próximos passos após o marco:
-- reproduzir o `100/100` com `18_test_packed_recovered_l78.ipynb` sem retreino
 - criar uma bateria maior e inédita para medir generalização fora das 100 perguntas locais
 - comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
 - medir tamanho, latência, VRAM/RAM e custo real do caminho packed/materialized

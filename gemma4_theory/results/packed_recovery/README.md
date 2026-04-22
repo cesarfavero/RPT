@@ -13,10 +13,13 @@ Este diretório registra o fechamento do recovery T4 para o caminho packed/mater
 - referência limpa `student_pruned + l78`: `0.92`
 - packed base sem adapter: `0.01`
 - adapter antigo `l78` no packed: `0.63`
+- validação sem retreino (`18_test_packed_recovered_l78`): `1.00` (`100/100`)
 
 ## Importância
 
 Este run mostra que o artefato packed/materialized (`mlp_ternary_2bit.bin`) pode ser recuperado funcionalmente. O packed puro praticamente colapsa no benchmark local, mas o adapter treinado especificamente para esse caminho recupera o desempenho e supera a referência local de `0.92` nessa bateria.
+
+A validação `18_test_packed_recovered_l78_20260422_205445.json` reproduziu o `100/100` sem retreinar, aplicando novamente os `78` tensores MLP packed e o adapter recuperado. Isso torna o marco mais forte: o resultado não é apenas o log final do treinamento, mas também um teste de carregamento/reprodução do artefato final.
 
 ## Ordem obrigatória de carregamento
 
@@ -43,3 +46,4 @@ packed bin:
 - `17_t4_resume_progress.json`: estado consolidado resumable.
 - `17_t4_resume_phase_1200_20260422_203242.json`: avaliação detalhada da fase final.
 - `packed_base_required.json`: cópia do estado/base obrigatório para reprodução.
+- `18_test_packed_recovered_l78_20260422_205445.json`: reprodução pós-marco sem retreino.
