@@ -1,0 +1,1746 @@
+{
+  "notebook": "22_native_ternary_mlp_runtime",
+  "purpose": "Structural native ternary MLP runtime prototype for packed recovered L78.",
+  "created_at": "2026-04-22 23:22:25",
+  "runtime_kind": "native_structural_prototype",
+  "is_native_ternary_runtime": true,
+  "is_optimized_kernel": false,
+  "cache_unpacked": false,
+  "load_elapsed_sec": 115.06107612799997,
+  "memory_before_load": {
+    "label": "before_native_load",
+    "rss_bytes": 1003307008,
+    "rss_human": "956.83 MB",
+    "cuda_device": "Tesla T4",
+    "cuda_allocated_bytes": 0,
+    "cuda_reserved_bytes": 0,
+    "cuda_max_allocated_bytes": 0,
+    "cuda_allocated_human": "0.00 B",
+    "cuda_reserved_human": "0.00 B",
+    "cuda_max_allocated_human": "0.00 B"
+  },
+  "memory_after_load": {
+    "label": "after_native_load",
+    "rss_bytes": 1436381184,
+    "rss_human": "1.34 GB",
+    "cuda_device": "Tesla T4",
+    "cuda_allocated_bytes": 2579490304,
+    "cuda_reserved_bytes": 5666504704,
+    "cuda_max_allocated_bytes": 5727086080,
+    "cuda_allocated_human": "2.40 GB",
+    "cuda_reserved_human": "5.28 GB",
+    "cuda_max_allocated_human": "5.33 GB"
+  },
+  "native_report": {
+    "model_dir": "/content/drive/MyDrive/RPT/gemma4_theory/build/distributable_packed_recovered_l78",
+    "load_order": "student_pruned -> recovered adapter -> replace MLP base layers with PackedTernaryLinear",
+    "packed_sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+    "runtime_kind": "native_structural_prototype",
+    "is_native_ternary_runtime": true,
+    "is_optimized_kernel": false,
+    "replaced_count": 78,
+    "replaced": [
+      "model.layers.0.mlp.gate_proj.weight",
+      "model.layers.0.mlp.up_proj.weight",
+      "model.layers.0.mlp.down_proj.weight",
+      "model.layers.1.mlp.gate_proj.weight",
+      "model.layers.1.mlp.up_proj.weight",
+      "model.layers.1.mlp.down_proj.weight",
+      "model.layers.2.mlp.gate_proj.weight",
+      "model.layers.2.mlp.up_proj.weight",
+      "model.layers.2.mlp.down_proj.weight",
+      "model.layers.3.mlp.gate_proj.weight",
+      "model.layers.3.mlp.up_proj.weight",
+      "model.layers.3.mlp.down_proj.weight",
+      "model.layers.4.mlp.gate_proj.weight",
+      "model.layers.4.mlp.up_proj.weight",
+      "model.layers.4.mlp.down_proj.weight",
+      "model.layers.5.mlp.gate_proj.weight",
+      "model.layers.5.mlp.up_proj.weight",
+      "model.layers.5.mlp.down_proj.weight",
+      "model.layers.6.mlp.gate_proj.weight",
+      "model.layers.6.mlp.up_proj.weight",
+      "model.layers.6.mlp.down_proj.weight",
+      "model.layers.7.mlp.gate_proj.weight",
+      "model.layers.7.mlp.up_proj.weight",
+      "model.layers.7.mlp.down_proj.weight",
+      "model.layers.8.mlp.gate_proj.weight",
+      "model.layers.8.mlp.up_proj.weight",
+      "model.layers.8.mlp.down_proj.weight",
+      "model.layers.9.mlp.gate_proj.weight",
+      "model.layers.9.mlp.up_proj.weight",
+      "model.layers.9.mlp.down_proj.weight",
+      "model.layers.10.mlp.gate_proj.weight",
+      "model.layers.10.mlp.up_proj.weight",
+      "model.layers.10.mlp.down_proj.weight",
+      "model.layers.11.mlp.gate_proj.weight",
+      "model.layers.11.mlp.up_proj.weight",
+      "model.layers.11.mlp.down_proj.weight",
+      "model.layers.12.mlp.gate_proj.weight",
+      "model.layers.12.mlp.up_proj.weight",
+      "model.layers.12.mlp.down_proj.weight",
+      "model.layers.13.mlp.gate_proj.weight",
+      "model.layers.13.mlp.up_proj.weight",
+      "model.layers.13.mlp.down_proj.weight",
+      "model.layers.14.mlp.gate_proj.weight",
+      "model.layers.14.mlp.up_proj.weight",
+      "model.layers.14.mlp.down_proj.weight",
+      "model.layers.15.mlp.gate_proj.weight",
+      "model.layers.15.mlp.up_proj.weight",
+      "model.layers.15.mlp.down_proj.weight",
+      "model.layers.16.mlp.gate_proj.weight",
+      "model.layers.16.mlp.up_proj.weight",
+      "model.layers.16.mlp.down_proj.weight",
+      "model.layers.17.mlp.gate_proj.weight",
+      "model.layers.17.mlp.up_proj.weight",
+      "model.layers.17.mlp.down_proj.weight",
+      "model.layers.18.mlp.gate_proj.weight",
+      "model.layers.18.mlp.up_proj.weight",
+      "model.layers.18.mlp.down_proj.weight",
+      "model.layers.19.mlp.gate_proj.weight",
+      "model.layers.19.mlp.up_proj.weight",
+      "model.layers.19.mlp.down_proj.weight",
+      "model.layers.20.mlp.gate_proj.weight",
+      "model.layers.20.mlp.up_proj.weight",
+      "model.layers.20.mlp.down_proj.weight",
+      "model.layers.21.mlp.gate_proj.weight",
+      "model.layers.21.mlp.up_proj.weight",
+      "model.layers.21.mlp.down_proj.weight",
+      "model.layers.22.mlp.gate_proj.weight",
+      "model.layers.22.mlp.up_proj.weight",
+      "model.layers.22.mlp.down_proj.weight",
+      "model.layers.23.mlp.gate_proj.weight",
+      "model.layers.23.mlp.up_proj.weight",
+      "model.layers.23.mlp.down_proj.weight",
+      "model.layers.24.mlp.gate_proj.weight",
+      "model.layers.24.mlp.up_proj.weight",
+      "model.layers.24.mlp.down_proj.weight",
+      "model.layers.25.mlp.gate_proj.weight",
+      "model.layers.25.mlp.up_proj.weight",
+      "model.layers.25.mlp.down_proj.weight"
+    ],
+    "replaced_lora_base_layers": [
+      "model.layers.0.mlp.gate_proj",
+      "model.layers.0.mlp.up_proj",
+      "model.layers.0.mlp.down_proj",
+      "model.layers.1.mlp.gate_proj",
+      "model.layers.1.mlp.up_proj",
+      "model.layers.1.mlp.down_proj",
+      "model.layers.2.mlp.gate_proj",
+      "model.layers.2.mlp.up_proj",
+      "model.layers.2.mlp.down_proj",
+      "model.layers.3.mlp.gate_proj",
+      "model.layers.3.mlp.up_proj",
+      "model.layers.3.mlp.down_proj",
+      "model.layers.4.mlp.gate_proj",
+      "model.layers.4.mlp.up_proj",
+      "model.layers.4.mlp.down_proj",
+      "model.layers.5.mlp.gate_proj",
+      "model.layers.5.mlp.up_proj",
+      "model.layers.5.mlp.down_proj",
+      "model.layers.6.mlp.gate_proj",
+      "model.layers.6.mlp.up_proj",
+      "model.layers.6.mlp.down_proj",
+      "model.layers.7.mlp.gate_proj",
+      "model.layers.7.mlp.up_proj",
+      "model.layers.7.mlp.down_proj",
+      "model.layers.8.mlp.gate_proj",
+      "model.layers.8.mlp.up_proj",
+      "model.layers.8.mlp.down_proj",
+      "model.layers.9.mlp.gate_proj",
+      "model.layers.9.mlp.up_proj",
+      "model.layers.9.mlp.down_proj",
+      "model.layers.10.mlp.gate_proj",
+      "model.layers.10.mlp.up_proj",
+      "model.layers.10.mlp.down_proj",
+      "model.layers.11.mlp.gate_proj",
+      "model.layers.11.mlp.up_proj",
+      "model.layers.11.mlp.down_proj",
+      "model.layers.12.mlp.gate_proj",
+      "model.layers.12.mlp.up_proj",
+      "model.layers.12.mlp.down_proj",
+      "model.layers.13.mlp.gate_proj",
+      "model.layers.13.mlp.up_proj",
+      "model.layers.13.mlp.down_proj",
+      "model.layers.14.mlp.gate_proj",
+      "model.layers.14.mlp.up_proj",
+      "model.layers.14.mlp.down_proj",
+      "model.layers.15.mlp.gate_proj",
+      "model.layers.15.mlp.up_proj",
+      "model.layers.15.mlp.down_proj",
+      "model.layers.16.mlp.gate_proj",
+      "model.layers.16.mlp.up_proj",
+      "model.layers.16.mlp.down_proj",
+      "model.layers.17.mlp.gate_proj",
+      "model.layers.17.mlp.up_proj",
+      "model.layers.17.mlp.down_proj",
+      "model.layers.18.mlp.gate_proj",
+      "model.layers.18.mlp.up_proj",
+      "model.layers.18.mlp.down_proj",
+      "model.layers.19.mlp.gate_proj",
+      "model.layers.19.mlp.up_proj",
+      "model.layers.19.mlp.down_proj",
+      "model.layers.20.mlp.gate_proj",
+      "model.layers.20.mlp.up_proj",
+      "model.layers.20.mlp.down_proj",
+      "model.layers.21.mlp.gate_proj",
+      "model.layers.21.mlp.up_proj",
+      "model.layers.21.mlp.down_proj",
+      "model.layers.22.mlp.gate_proj",
+      "model.layers.22.mlp.up_proj",
+      "model.layers.22.mlp.down_proj",
+      "model.layers.23.mlp.gate_proj",
+      "model.layers.23.mlp.up_proj",
+      "model.layers.23.mlp.down_proj",
+      "model.layers.24.mlp.gate_proj",
+      "model.layers.24.mlp.up_proj",
+      "model.layers.24.mlp.down_proj",
+      "model.layers.25.mlp.gate_proj",
+      "model.layers.25.mlp.up_proj",
+      "model.layers.25.mlp.down_proj"
+    ],
+    "replaced_direct_modules": [],
+    "cache_unpacked": false
+  },
+  "smoke_rows": [
+    {
+      "question": "Qual a capital da França?",
+      "answer": "Paris",
+      "prompt_tokens": 22,
+      "generated_tokens": 2,
+      "elapsed_sec": 2.0159042919999592,
+      "tokens_per_sec": 0.992110591726465
+    },
+    {
+      "question": "Quanto é 12 x 8?",
+      "answer": "96",
+      "prompt_tokens": 25,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.4982580349999353,
+      "tokens_per_sec": 2.669767093890588
+    },
+    {
+      "question": "Quem desenvolveu a teoria da relatividade?",
+      "answer": "Albert Einstein",
+      "prompt_tokens": 25,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.148490587000083,
+      "tokens_per_sec": 2.612124151436152
+    },
+    {
+      "question": "Em Python, qual palavra-chave define uma função?",
+      "answer": "def",
+      "prompt_tokens": 27,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8037135170000056,
+      "tokens_per_sec": 2.4884488784826373
+    },
+    {
+      "question": "Se hoje é segunda-feira, que dia será depois de 3 dias?",
+      "answer": "Quinta-feira",
+      "prompt_tokens": 32,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.49974673600002,
+      "tokens_per_sec": 2.6671169898115026
+    }
+  ],
+  "smoke_summary": {
+    "num_prompts": 5,
+    "total_generated_tokens": 15,
+    "total_elapsed_sec": 6.966113167000003,
+    "avg_tokens_per_sec": 2.285913541069469
+  },
+  "eval_summary": {
+    "total_questions": 100,
+    "correct": 100,
+    "accuracy": 1.0
+  },
+  "eval_rows": [
+    {
+      "question": "Qual a capital da França?",
+      "answer": "Paris",
+      "prompt_tokens": 22,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8050882789999605,
+      "tokens_per_sec": 2.484199624026694,
+      "expected": "Paris",
+      "accepted_answers": [
+        "Paris"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital da Alemanha?",
+      "answer": "Berlim",
+      "prompt_tokens": 22,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1597318379999706,
+      "tokens_per_sec": 2.586804898944299,
+      "expected": "Berlim",
+      "accepted_answers": [
+        "Berlim",
+        "Berlin"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital da Itália?",
+      "answer": "Roma",
+      "prompt_tokens": 22,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8127081559999851,
+      "tokens_per_sec": 2.4609079965970424,
+      "expected": "Roma",
+      "accepted_answers": [
+        "Roma",
+        "Rome"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital da Espanha?",
+      "answer": "Madri",
+      "prompt_tokens": 22,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1576252639999893,
+      "tokens_per_sec": 2.591512204591993,
+      "expected": "Madri",
+      "accepted_answers": [
+        "Madri",
+        "Madrid"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital de Portugal?",
+      "answer": "Lisboa",
+      "prompt_tokens": 22,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1615197520000038,
+      "tokens_per_sec": 2.5828230599043573,
+      "expected": "Lisboa",
+      "accepted_answers": [
+        "Lisboa"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital do Japão?",
+      "answer": "Tóquio",
+      "prompt_tokens": 22,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1570370350000303,
+      "tokens_per_sec": 2.592829710070535,
+      "expected": "Tóquio",
+      "accepted_answers": [
+        "Tóquio",
+        "Toquio",
+        "Tokyo"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital da China?",
+      "answer": "Pequim",
+      "prompt_tokens": 22,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.497120257000006,
+      "tokens_per_sec": 2.6717960573290034,
+      "expected": "Pequim",
+      "accepted_answers": [
+        "Pequim",
+        "Beijing",
+        "Pekin"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital da Argentina?",
+      "answer": "**Buenos Aires",
+      "prompt_tokens": 22,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.496766105000006,
+      "tokens_per_sec": 2.6724282348710613,
+      "expected": "Buenos Aires",
+      "accepted_answers": [
+        "Buenos Aires"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital do Canadá?",
+      "answer": "**Ottawa",
+      "prompt_tokens": 22,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1520933890000151,
+      "tokens_per_sec": 2.603955572216169,
+      "expected": "Ottawa",
+      "accepted_answers": [
+        "Ottawa"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual a capital da Austrália?",
+      "answer": "Camberra",
+      "prompt_tokens": 23,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.151194921999945,
+      "tokens_per_sec": 2.6059878676220767,
+      "expected": "Camberra",
+      "accepted_answers": [
+        "Camberra",
+        "Canberra"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Quem pintou a Mona Lisa?",
+      "answer": "Leonardo da Vinci",
+      "prompt_tokens": 23,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.4976980070000536,
+      "tokens_per_sec": 2.670765388819708,
+      "expected": "Leonardo da Vinci",
+      "accepted_answers": [
+        "Leonardo da Vinci",
+        "Da Vinci"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Quem escreveu Dom Quixote?",
+      "answer": "Miguel de Cervantes",
+      "prompt_tokens": 21,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.4996833889999834,
+      "tokens_per_sec": 2.667229649497734,
+      "expected": "Miguel de Cervantes",
+      "accepted_answers": [
+        "Miguel de Cervantes",
+        "Cervantes"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Quem escreveu Hamlet?",
+      "answer": "William Shakespeare",
+      "prompt_tokens": 20,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1574045589999287,
+      "tokens_per_sec": 2.5920063789900665,
+      "expected": "William Shakespeare",
+      "accepted_answers": [
+        "William Shakespeare",
+        "Shakespeare"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Quem descobriu a penicilina?",
+      "answer": "Alexander Fleming",
+      "prompt_tokens": 24,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1583756079999148,
+      "tokens_per_sec": 2.589833538691209,
+      "expected": "Alexander Fleming",
+      "accepted_answers": [
+        "Alexander Fleming",
+        "Fleming"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Quem desenvolveu a teoria da relatividade?",
+      "answer": "Albert Einstein",
+      "prompt_tokens": 25,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.157711661999997,
+      "tokens_per_sec": 2.5913188045608613,
+      "expected": "Albert Einstein",
+      "accepted_answers": [
+        "Albert Einstein",
+        "Einstein"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual planeta é conhecido como Planeta Vermelho?",
+      "answer": "Marte",
+      "prompt_tokens": 25,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1602043510000613,
+      "tokens_per_sec": 2.5857513785516235,
+      "expected": "Marte",
+      "accepted_answers": [
+        "Marte",
+        "Mars"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual é o maior planeta do Sistema Solar?",
+      "answer": "Júpiter",
+      "prompt_tokens": 25,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.4997848900000008,
+      "tokens_per_sec": 2.6670491392935674,
+      "expected": "Júpiter",
+      "accepted_answers": [
+        "Júpiter",
+        "Jupiter"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Quantos continentes existem tradicionalmente?",
+      "answer": "7",
+      "prompt_tokens": 24,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.15399663900007,
+      "tokens_per_sec": 2.599660951005437,
+      "expected": "7",
+      "accepted_answers": [
+        "7",
+        "sete"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual é o oceano mais extenso da Terra?",
+      "answer": "Pacífico",
+      "prompt_tokens": 25,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8067463369999359,
+      "tokens_per_sec": 2.4790939955642575,
+      "expected": "Oceano Pacífico",
+      "accepted_answers": [
+        "Oceano Pacífico",
+        "Pacífico",
+        "Pacific Ocean"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual é o metal cujo símbolo químico é Au?",
+      "answer": "Ouro",
+      "prompt_tokens": 26,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1540341280000348,
+      "tokens_per_sec": 2.599576500565943,
+      "expected": "Ouro",
+      "accepted_answers": [
+        "Ouro",
+        "Gold"
+      ],
+      "ok": true,
+      "category": "factual"
+    },
+    {
+      "question": "Qual é o resultado de 12 x 8?",
+      "answer": "96",
+      "prompt_tokens": 28,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5024386090000235,
+      "tokens_per_sec": 2.6623383984136804,
+      "expected": "96",
+      "accepted_answers": [
+        "96"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Quanto é 144 dividido por 12?",
+      "answer": "12",
+      "prompt_tokens": 28,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5025791299999582,
+      "tokens_per_sec": 2.662089416881566,
+      "expected": "12",
+      "accepted_answers": [
+        "12"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Quanto é 15 ao quadrado?",
+      "answer": "225",
+      "prompt_tokens": 24,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8477704470000162,
+      "tokens_per_sec": 2.705963832313612,
+      "expected": "225",
+      "accepted_answers": [
+        "225"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Qual é a raiz quadrada de 81?",
+      "answer": "9",
+      "prompt_tokens": 27,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1609212910000224,
+      "tokens_per_sec": 2.584154518706249,
+      "expected": "9",
+      "accepted_answers": [
+        "9"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Quanto é 7 + 18?",
+      "answer": "25",
+      "prompt_tokens": 25,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5106423160000304,
+      "tokens_per_sec": 2.6478802808804143,
+      "expected": "25",
+      "accepted_answers": [
+        "25"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Quanto é 100 - 37?",
+      "answer": "63",
+      "prompt_tokens": 27,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5107210170000371,
+      "tokens_per_sec": 2.647742339577117,
+      "expected": "63",
+      "accepted_answers": [
+        "63"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Quanto é 9 x 9?",
+      "answer": "81",
+      "prompt_tokens": 24,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5015745780000316,
+      "tokens_per_sec": 2.6638703522322924,
+      "expected": "81",
+      "accepted_answers": [
+        "81"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Quanto é 5! (fatorial de 5)?",
+      "answer": "120",
+      "prompt_tokens": 28,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8485704209999767,
+      "tokens_per_sec": 2.7047928189261357,
+      "expected": "120",
+      "accepted_answers": [
+        "120"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Qual é o próximo número na sequência 2, 4, 8, 16, ...?",
+      "answer": "32",
+      "prompt_tokens": 38,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.50875634800002,
+      "tokens_per_sec": 2.651190170833301,
+      "expected": "32",
+      "accepted_answers": [
+        "32"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "Se um triângulo tem lados 3, 4 e 5, ele é retângulo?",
+      "answer": "Sim",
+      "prompt_tokens": 38,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8140247979999913,
+      "tokens_per_sec": 2.456927608242251,
+      "expected": "Sim",
+      "accepted_answers": [
+        "Sim",
+        "sim",
+        "Yes"
+      ],
+      "ok": true,
+      "category": "math"
+    },
+    {
+      "question": "A água ferve a aproximadamente quantos graus Celsius ao nível do mar?",
+      "answer": "100",
+      "prompt_tokens": 31,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8493993219999538,
+      "tokens_per_sec": 2.703580530457297,
+      "expected": "100",
+      "accepted_answers": [
+        "100",
+        "100°C",
+        "100 graus Celsius"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Qual gás as plantas absorvem principalmente para fazer fotossíntese?",
+      "answer": "Dióxido de carbono",
+      "prompt_tokens": 31,
+      "generated_tokens": 6,
+      "elapsed_sec": 2.199127929000042,
+      "tokens_per_sec": 2.7283542357302695,
+      "expected": "Dióxido de carbono",
+      "accepted_answers": [
+        "Dióxido de carbono",
+        "CO2",
+        "Gás carbônico"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Qual é a fórmula química da água?",
+      "answer": "H2O",
+      "prompt_tokens": 24,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5114260379999678,
+      "tokens_per_sec": 2.6465072715652695,
+      "expected": "H2O",
+      "accepted_answers": [
+        "H2O"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Qual partícula tem carga elétrica negativa?",
+      "answer": "Elétron",
+      "prompt_tokens": 24,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5118311140000742,
+      "tokens_per_sec": 2.6457981734590783,
+      "expected": "Elétron",
+      "accepted_answers": [
+        "Elétron",
+        "Eletron",
+        "Electron"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Qual órgão do corpo humano bombeia sangue?",
+      "answer": "Coração",
+      "prompt_tokens": 26,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.162934678000056,
+      "tokens_per_sec": 2.5796805760055386,
+      "expected": "Coração",
+      "accepted_answers": [
+        "Coração",
+        "Coracao"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Qual é o satélite natural da Terra?",
+      "answer": "**Lua",
+      "prompt_tokens": 24,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1577342290000843,
+      "tokens_per_sec": 2.5912682935798226,
+      "expected": "Lua",
+      "accepted_answers": [
+        "Lua",
+        "Moon"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Qual é o processo pelo qual um líquido vira vapor?",
+      "answer": "Evaporação",
+      "prompt_tokens": 27,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5059651719999465,
+      "tokens_per_sec": 2.6561039221696836,
+      "expected": "Evaporação",
+      "accepted_answers": [
+        "Evaporação",
+        "Evaporacao"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Quantos cromossomos tem um ser humano típico em células somáticas?",
+      "answer": "46",
+      "prompt_tokens": 31,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5067574030000515,
+      "tokens_per_sec": 2.6547073815836186,
+      "expected": "46",
+      "accepted_answers": [
+        "46"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Qual é a camada da atmosfera onde vivemos?",
+      "answer": "Troposfera",
+      "prompt_tokens": 26,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5066542079999863,
+      "tokens_per_sec": 2.6548892099865533,
+      "expected": "Troposfera",
+      "accepted_answers": [
+        "Troposfera"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "O DNA tem forma clássica de qual estrutura?",
+      "answer": "Dupla hélice",
+      "prompt_tokens": 26,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.850218830000017,
+      "tokens_per_sec": 2.702383047306871,
+      "expected": "Dupla hélice",
+      "accepted_answers": [
+        "Dupla hélice",
+        "Dupla helix",
+        "Double helix"
+      ],
+      "ok": true,
+      "category": "science"
+    },
+    {
+      "question": "Em que ano o homem pisou na Lua pela primeira vez?",
+      "answer": "1969",
+      "prompt_tokens": 29,
+      "generated_tokens": 6,
+      "elapsed_sec": 2.199622713999929,
+      "tokens_per_sec": 2.727740517413203,
+      "expected": "1969",
+      "accepted_answers": [
+        "1969"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Quem foi o primeiro presidente do Brasil?",
+      "answer": "Deodoro da Fonseca",
+      "prompt_tokens": 24,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8618214419999504,
+      "tokens_per_sec": 2.68554217241641,
+      "expected": "Deodoro da Fonseca",
+      "accepted_answers": [
+        "Deodoro da Fonseca"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Quem foi o líder sul-africano associado ao fim do apartheid e eleito presidente em 1994?",
+      "answer": "**Nelson Mandela",
+      "prompt_tokens": 42,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5267158460000019,
+      "tokens_per_sec": 2.6200029366826882,
+      "expected": "Nelson Mandela",
+      "accepted_answers": [
+        "Nelson Mandela",
+        "Mandela"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Em que país começou a Revolução Industrial?",
+      "answer": "Reino Unido",
+      "prompt_tokens": 25,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1611779370000477,
+      "tokens_per_sec": 2.583583363416831,
+      "expected": "Reino Unido",
+      "accepted_answers": [
+        "Reino Unido",
+        "Inglaterra",
+        "Grã-Bretanha",
+        "Great Britain"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Qual império construiu o Coliseu?",
+      "answer": "Império Romano",
+      "prompt_tokens": 26,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.509150419999969,
+      "tokens_per_sec": 2.650497887414087,
+      "expected": "Império Romano",
+      "accepted_answers": [
+        "Império Romano",
+        "Roman Empire",
+        "Roma"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Em que ano caiu o Muro de Berlim?",
+      "answer": "1989",
+      "prompt_tokens": 26,
+      "generated_tokens": 6,
+      "elapsed_sec": 2.201723083000047,
+      "tokens_per_sec": 2.725138345656283,
+      "expected": "1989",
+      "accepted_answers": [
+        "1989"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Quem liderou a independência da Índia com estratégia de não violência?",
+      "answer": "Mahatma Gandhi",
+      "prompt_tokens": 31,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8544707060000292,
+      "tokens_per_sec": 2.6961871027796764,
+      "expected": "Mahatma Gandhi",
+      "accepted_answers": [
+        "Mahatma Gandhi",
+        "Gandhi"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Qual civilização antiga construiu Machu Picchu?",
+      "answer": "Inca",
+      "prompt_tokens": 25,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1623181390000354,
+      "tokens_per_sec": 2.581048939476207,
+      "expected": "Inca",
+      "accepted_answers": [
+        "Inca",
+        "Império Inca"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Quem foi o imperador francês derrotado em Waterloo?",
+      "answer": "Napoleão Bonaparte",
+      "prompt_tokens": 27,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8555441529999825,
+      "tokens_per_sec": 2.6946273371701586,
+      "expected": "Napoleão Bonaparte",
+      "accepted_answers": [
+        "Napoleão Bonaparte",
+        "Napoleon Bonaparte",
+        "Napoleão"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Em que continente fica o Egito?",
+      "answer": "**África",
+      "prompt_tokens": 24,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5194201000000476,
+      "tokens_per_sec": 2.6325833125413274,
+      "expected": "África",
+      "accepted_answers": [
+        "África",
+        "Africa"
+      ],
+      "ok": true,
+      "category": "history"
+    },
+    {
+      "question": "Se todos os gatos são mamíferos e Mimi é um gato, Mimi é mamífero?",
+      "answer": "Sim",
+      "prompt_tokens": 34,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.827989032000005,
+      "tokens_per_sec": 2.415490933701146,
+      "expected": "Sim",
+      "accepted_answers": [
+        "Sim",
+        "sim",
+        "Yes"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Se hoje é segunda-feira, que dia será depois de 3 dias?",
+      "answer": "Quinta-feira",
+      "prompt_tokens": 32,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5173885960000462,
+      "tokens_per_sec": 2.6361078569750096,
+      "expected": "Quinta-feira",
+      "accepted_answers": [
+        "Quinta-feira",
+        "Quinta",
+        "Thursday"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Qual palavra não pertence ao grupo: maçã, banana, cenoura, uva?",
+      "answer": "Cenoura",
+      "prompt_tokens": 33,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1651459189999969,
+      "tokens_per_sec": 2.5747847982635452,
+      "expected": "Cenoura",
+      "accepted_answers": [
+        "Cenoura"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Se João é mais alto que Maria e Maria é mais alta que Ana, quem é a mais alta?",
+      "answer": "**João**",
+      "prompt_tokens": 37,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5144874339999888,
+      "tokens_per_sec": 2.6411576023680827,
+      "expected": "João",
+      "accepted_answers": [
+        "João",
+        "Joao"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Um carro percorre 60 km em 1 hora. Em 3 horas, mantendo a velocidade, percorre quantos km?",
+      "answer": "180",
+      "prompt_tokens": 45,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8615965650000135,
+      "tokens_per_sec": 2.685866580335017,
+      "expected": "180",
+      "accepted_answers": [
+        "180"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Se 2 canetas custam 10 reais, quanto custam 5 canetas ao mesmo preço unitário?",
+      "answer": "25",
+      "prompt_tokens": 41,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.513049001000013,
+      "tokens_per_sec": 2.6436685113015486,
+      "expected": "25",
+      "accepted_answers": [
+        "25",
+        "25 reais",
+        "R$25"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Qual número é ímpar: 14, 22, 31, 48?",
+      "answer": "31",
+      "prompt_tokens": 38,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5111001880000003,
+      "tokens_per_sec": 2.6470779580102857,
+      "expected": "31",
+      "accepted_answers": [
+        "31"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Se A implica B e A é verdadeiro, o que se conclui sobre B?",
+      "answer": "B é verdadeiro",
+      "prompt_tokens": 33,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.509579561999999,
+      "tokens_per_sec": 2.649744406118293,
+      "expected": "B é verdadeiro",
+      "accepted_answers": [
+        "B é verdadeiro",
+        "verdadeiro",
+        "B true"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Se uma receita pede 2 ovos para 1 bolo, quantos ovos são necessários para 4 bolos?",
+      "answer": "8",
+      "prompt_tokens": 38,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1673080819999768,
+      "tokens_per_sec": 2.5700156164943433,
+      "expected": "8",
+      "accepted_answers": [
+        "8"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Qual alternativa completa melhor: livro está para leitura assim como garfo está para ...?",
+      "answer": "**Comer",
+      "prompt_tokens": 33,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1709767450000754,
+      "tokens_per_sec": 2.5619637732428298,
+      "expected": "Comer",
+      "accepted_answers": [
+        "Comer",
+        "alimentação",
+        "eat"
+      ],
+      "ok": true,
+      "category": "logic"
+    },
+    {
+      "question": "Em Python, qual palavra-chave define uma função?",
+      "answer": "def",
+      "prompt_tokens": 27,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8227766799999472,
+      "tokens_per_sec": 2.4307932499984424,
+      "expected": "def",
+      "accepted_answers": [
+        "def"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Qual estrutura em Python normalmente guarda pares chave-valor?",
+      "answer": "dicionário",
+      "prompt_tokens": 27,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1685929259999739,
+      "tokens_per_sec": 2.5671899369345206,
+      "expected": "dicionário",
+      "accepted_answers": [
+        "dicionário",
+        "dicionario",
+        "dict"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Em JavaScript, qual valor booleano representa verdade?",
+      "answer": "true",
+      "prompt_tokens": 26,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8197198330000219,
+      "tokens_per_sec": 2.4398580093888573,
+      "expected": "true",
+      "accepted_answers": [
+        "true"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Qual comando Git cria um novo commit com as mudanças staged?",
+      "answer": "git commit",
+      "prompt_tokens": 28,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1608286599999929,
+      "tokens_per_sec": 2.58436072727565,
+      "expected": "git commit",
+      "accepted_answers": [
+        "git commit"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Qual protocolo é usado normalmente para páginas web seguras?",
+      "answer": "**HTTPS**",
+      "prompt_tokens": 26,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5058272119999856,
+      "tokens_per_sec": 2.6563472675509323,
+      "expected": "HTTPS",
+      "accepted_answers": [
+        "HTTPS"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Qual comando Linux lista arquivos de um diretório?",
+      "answer": "ls",
+      "prompt_tokens": 26,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8129677449999235,
+      "tokens_per_sec": 2.460122203249513,
+      "expected": "ls",
+      "accepted_answers": [
+        "ls"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Em SQL, qual comando retorna linhas de uma tabela?",
+      "answer": "SELECT",
+      "prompt_tokens": 27,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8137833090000868,
+      "tokens_per_sec": 2.457656697895959,
+      "expected": "SELECT",
+      "accepted_answers": [
+        "SELECT"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Em HTML, qual tag principal representa um link?",
+      "answer": "`<a>`.",
+      "prompt_tokens": 26,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8518592010000248,
+      "tokens_per_sec": 2.6999892849844866,
+      "expected": "<a>",
+      "accepted_answers": [
+        "<a>",
+        "a"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Em CSS, qual propriedade muda a cor do texto?",
+      "answer": "color",
+      "prompt_tokens": 27,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8149385169999732,
+      "tokens_per_sec": 2.4541728710560697,
+      "expected": "color",
+      "accepted_answers": [
+        "color"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Qual estrutura de dados usa a política LIFO?",
+      "answer": "pilha",
+      "prompt_tokens": 26,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1597802659999843,
+      "tokens_per_sec": 2.5866968838388913,
+      "expected": "pilha",
+      "accepted_answers": [
+        "pilha",
+        "stack"
+      ],
+      "ok": true,
+      "category": "coding"
+    },
+    {
+      "question": "Qual é o idioma oficial mais falado no Brasil?",
+      "answer": "Português",
+      "prompt_tokens": 27,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.508655269999963,
+      "tokens_per_sec": 2.6513677972305087,
+      "expected": "Português",
+      "accepted_answers": [
+        "Português",
+        "Portugues"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Qual é o antônimo de “rápido”?",
+      "answer": "Lento",
+      "prompt_tokens": 26,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1662018969999508,
+      "tokens_per_sec": 2.572453369967487,
+      "expected": "Lento",
+      "accepted_answers": [
+        "Lento"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Complete: cachorro está para latir assim como gato está para ...?",
+      "answer": "**miar**",
+      "prompt_tokens": 30,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5209150410000802,
+      "tokens_per_sec": 2.629995688233705,
+      "expected": "miar",
+      "accepted_answers": [
+        "miar"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Qual é o plural de “papel” em português?",
+      "answer": "**papéis",
+      "prompt_tokens": 27,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8624312910000071,
+      "tokens_per_sec": 2.68466279758182,
+      "expected": "papéis",
+      "accepted_answers": [
+        "papéis",
+        "papeis"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Qual palavra é um verbo: azul, correr, mesa, janela?",
+      "answer": "**correr**",
+      "prompt_tokens": 30,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8514675529999067,
+      "tokens_per_sec": 2.7005604240261034,
+      "expected": "correr",
+      "accepted_answers": [
+        "correr"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Qual é o sinônimo mais próximo de “feliz”?",
+      "answer": "**contente**",
+      "prompt_tokens": 27,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8508776239999634,
+      "tokens_per_sec": 2.701421171862467,
+      "expected": "contente",
+      "accepted_answers": [
+        "contente",
+        "alegre"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Qual é a forma correta: “a gente fomos” ou “a gente foi”?",
+      "answer": "a gente foi",
+      "prompt_tokens": 34,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5072610040000427,
+      "tokens_per_sec": 2.6538203996418703,
+      "expected": "a gente foi",
+      "accepted_answers": [
+        "a gente foi"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Em inglês, como se traduz “casa”?",
+      "answer": "**house**",
+      "prompt_tokens": 26,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5047903849999784,
+      "tokens_per_sec": 2.6581775374648324,
+      "expected": "house",
+      "accepted_answers": [
+        "house"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Qual dessas palavras é um adjetivo: bonito, correr, pedra, ontem?",
+      "answer": "**bonito**",
+      "prompt_tokens": 32,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8536839460000465,
+      "tokens_per_sec": 2.6973314468138976,
+      "expected": "bonito",
+      "accepted_answers": [
+        "bonito"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Qual palavra está escrita corretamente: exceção ou excessão?",
+      "answer": "**exceção",
+      "prompt_tokens": 28,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8626360060000025,
+      "tokens_per_sec": 2.684367736849168,
+      "expected": "exceção",
+      "accepted_answers": [
+        "exceção",
+        "excecao"
+      ],
+      "ok": true,
+      "category": "language"
+    },
+    {
+      "question": "Qual país venceu a Copa do Mundo de 2002?",
+      "answer": "**Brasil**",
+      "prompt_tokens": 31,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.513799173999928,
+      "tokens_per_sec": 2.642358424222651,
+      "expected": "Brasil",
+      "accepted_answers": [
+        "Brasil",
+        "Brazil"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Quantos jogadores cada time tem em campo no futebol tradicional?",
+      "answer": "11",
+      "prompt_tokens": 28,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5142602670000542,
+      "tokens_per_sec": 2.6415538247757886,
+      "expected": "11",
+      "accepted_answers": [
+        "11",
+        "onze"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Em que esporte se usa uma cesta e uma bola laranja?",
+      "answer": "**basquete",
+      "prompt_tokens": 28,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5054880420000245,
+      "tokens_per_sec": 2.6569457135548173,
+      "expected": "basquete",
+      "accepted_answers": [
+        "basquete",
+        "basketball"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Em qual esporte Rafael Nadal ficou mundialmente famoso?",
+      "answer": "tênis",
+      "prompt_tokens": 26,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8114797350000345,
+      "tokens_per_sec": 2.464633328150721,
+      "expected": "tênis",
+      "accepted_answers": [
+        "tênis",
+        "tenis",
+        "tennis"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Qual país sediou as Olimpíadas de 2016?",
+      "answer": "**Brasil**",
+      "prompt_tokens": 31,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5034020560000272,
+      "tokens_per_sec": 2.660632253385669,
+      "expected": "Brasil",
+      "accepted_answers": [
+        "Brasil",
+        "Brazil"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Qual piloto brasileiro é tricampeão mundial de Fórmula 1 e morreu em 1994?",
+      "answer": "Ayrton Senna",
+      "prompt_tokens": 37,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5077427090000128,
+      "tokens_per_sec": 2.652972537106771,
+      "expected": "Ayrton Senna",
+      "accepted_answers": [
+        "Ayrton Senna",
+        "Senna"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "No xadrez, quantas casas tem um tabuleiro?",
+      "answer": "64",
+      "prompt_tokens": 27,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5066824689999976,
+      "tokens_per_sec": 2.654839411953101,
+      "expected": "64",
+      "accepted_answers": [
+        "64"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Qual esporte usa raquete, rede e peteca?",
+      "answer": "**badminton",
+      "prompt_tokens": 27,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5055373910000753,
+      "tokens_per_sec": 2.6568586233138594,
+      "expected": "badminton",
+      "accepted_answers": [
+        "badminton"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Em que esporte se faz touchdown?",
+      "answer": "**futebol americano",
+      "prompt_tokens": 23,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8557240110000066,
+      "tokens_per_sec": 2.6943661721042322,
+      "expected": "futebol americano",
+      "accepted_answers": [
+        "futebol americano",
+        "football americano",
+        "american football"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Qual seleção é conhecida como La Albiceleste?",
+      "answer": "Argentina",
+      "prompt_tokens": 26,
+      "generated_tokens": 2,
+      "elapsed_sec": 0.8208856189999096,
+      "tokens_per_sec": 2.436393029319497,
+      "expected": "Argentina",
+      "accepted_answers": [
+        "Argentina"
+      ],
+      "ok": true,
+      "category": "sports"
+    },
+    {
+      "question": "Se você misturar azul com amarelo, qual cor obtém normalmente?",
+      "answer": "**verde**",
+      "prompt_tokens": 31,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.512859343999935,
+      "tokens_per_sec": 2.6439999302408195,
+      "expected": "verde",
+      "accepted_answers": [
+        "verde"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Qual eletrodoméstico é usado para manter alimentos congelados?",
+      "answer": "**freezer",
+      "prompt_tokens": 29,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5081436179999628,
+      "tokens_per_sec": 2.6522672988562146,
+      "expected": "freezer",
+      "accepted_answers": [
+        "freezer",
+        "congelador"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Quantos minutos tem 2 horas?",
+      "answer": "120",
+      "prompt_tokens": 24,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8498563109999395,
+      "tokens_per_sec": 2.702912637196805,
+      "expected": "120",
+      "accepted_answers": [
+        "120"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Qual objeto é usado para cortar papel com as mãos?",
+      "answer": "**tesoura**",
+      "prompt_tokens": 27,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.853193895000004,
+      "tokens_per_sec": 2.6980447180892475,
+      "expected": "tesoura",
+      "accepted_answers": [
+        "tesoura"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Qual é o mês que vem depois de abril?",
+      "answer": "**maio**",
+      "prompt_tokens": 26,
+      "generated_tokens": 5,
+      "elapsed_sec": 1.8567166029999953,
+      "tokens_per_sec": 2.6929257765677517,
+      "expected": "maio",
+      "accepted_answers": [
+        "maio"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Se um produto custa 50 reais e recebe desconto de 10 reais, quanto passa a custar?",
+      "answer": "40",
+      "prompt_tokens": 39,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5083738470000299,
+      "tokens_per_sec": 2.6518624729244067,
+      "expected": "40",
+      "accepted_answers": [
+        "40",
+        "40 reais",
+        "R$40"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Qual bebida é tradicionalmente feita a partir de grãos de café torrados?",
+      "answer": "**café**",
+      "prompt_tokens": 32,
+      "generated_tokens": 4,
+      "elapsed_sec": 1.5054617739999685,
+      "tokens_per_sec": 2.6569920731843726,
+      "expected": "café",
+      "accepted_answers": [
+        "café",
+        "cafe"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Qual direção é oposta ao norte?",
+      "answer": "**sul",
+      "prompt_tokens": 24,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1652926579999985,
+      "tokens_per_sec": 2.574460569543899,
+      "expected": "sul",
+      "accepted_answers": [
+        "sul",
+        "south"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Qual animal normalmente põe ovos e tem penas?",
+      "answer": "**ave",
+      "prompt_tokens": 26,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.1669756950000192,
+      "tokens_per_sec": 2.570747628124295,
+      "expected": "ave",
+      "accepted_answers": [
+        "ave",
+        "pássaro",
+        "passaro",
+        "bird"
+      ],
+      "ok": true,
+      "category": "everyday"
+    },
+    {
+      "question": "Quantos dias tem uma semana?",
+      "answer": "7",
+      "prompt_tokens": 23,
+      "generated_tokens": 3,
+      "elapsed_sec": 1.165329030999942,
+      "tokens_per_sec": 2.5743802138231886,
+      "expected": "7",
+      "accepted_answers": [
+        "7",
+        "sete"
+      ],
+      "ok": true,
+      "category": "everyday"
+    }
+  ],
+  "baseline_notebook_20": {
+    "materialized_hybrid_peak_vram": "5.33 GB",
+    "materialized_hybrid_avg_tokens_per_sec_smoke": 7.746480522791005,
+    "materialized_hybrid_load_elapsed_approx_sec": 152.38
+  },
+  "next_step": "If functional quality is preserved, implement optimized CUDA/Triton ternary matmul to avoid forward-time full unpack."
+}

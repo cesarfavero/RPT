@@ -91,12 +91,29 @@ Primeiro smoke test reportado:
 - média: `2.22 tokens/s`
 - avaliação 100 perguntas: ainda não rodada
 
+Validação completa posterior:
+
+- arquivo: `22_native_ternary_mlp_runtime_20260422_232225.json`
+- `replaced_count`: `78`
+- `runtime_kind`: `native_structural_prototype`
+- `is_native_ternary_runtime`: `true`
+- `is_optimized_kernel`: `false`
+- load: `115.06s`
+- VRAM alocada após load: `2.40 GB`
+- VRAM reservada após load: `5.28 GB`
+- pico CUDA: `5.33 GB`
+- smoke test: `5` prompts coerentes
+- tokens gerados no smoke: `15`
+- média do smoke: `2.29 tokens/s`
+- avaliação 100 perguntas: `100/100` (`1.00`)
+- falhas: `0`
+
 Comparação com o notebook 20:
 
 - materialized hybrid após adapter: `5.10 GB` alocados
 - native structural após load: `2.40 GB` alocados
 - ganho observado em memória persistente alocada: aproximadamente `2.70 GB`
-- trade-off: geração caiu de `~7.75 tokens/s` para `~2.22 tokens/s`, esperado porque o protótipo ainda desempacota pesos no `forward`
+- trade-off: geração caiu de `~7.75 tokens/s` para `~2.29 tokens/s`, esperado porque o protótipo ainda desempacota pesos no `forward`
 
 Comando esperado no pacote distribuível:
 
@@ -104,7 +121,7 @@ Comando esperado no pacote distribuível:
 python runtime/run_native_inference.py --model-dir . --prompt "Qual a capital da França?"
 ```
 
-Limitação: ainda não é kernel otimizado. O protótipo desempacota no `forward`, então pode ser lento. Se preservar qualidade, o próximo marco é CUDA/Triton para matmul ternária.
+Limitação: ainda não é kernel otimizado. O protótipo desempacota no `forward`, então é lento. Como preservou `100/100`, o próximo marco é CUDA/Triton para matmul ternária.
 
 O notebook `22_native_ternary_mlp_runtime.ipynb` roda a avaliação das 100 perguntas por padrão. Para depuração rápida, definir `RPT_NATIVE_RUN_FULL_100=0` antes da célula de avaliação.
 O avaliador usa `expected_answer` e `accepted_answers`, que é o formato real de `data/gemma4_100_questions.json`.

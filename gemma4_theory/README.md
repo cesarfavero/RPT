@@ -210,6 +210,16 @@ Runtime nativo estrutural:
   - pico CUDA: `5.33 GB`
   - smoke test: `5` prompts coerentes, `15` tokens gerados, média `2.22 tokens/s`
   - avaliação 100 perguntas: ainda não rodada nesse primeiro teste
+- validação completa posterior:
+  - arquivo: `results/packed_recovery/22_native_ternary_mlp_runtime_20260422_232225.json`
+  - `replaced_count`: `78`
+  - acurácia: `1.00` (`100/100`)
+  - falhas: `0`
+  - load: `115.06s`
+  - VRAM alocada após load: `2.40 GB`
+  - VRAM reservada após load: `5.28 GB`
+  - pico CUDA: `5.33 GB`
+  - smoke test: `5` prompts, `15` tokens, média `2.29 tokens/s`
 - leitura: o protótipo reduziu a memória persistente alocada em relação ao materialized hybrid (`5.10 GB` -> `2.40 GB`), mas ficou mais lento porque ainda desempacota no `forward`
 - limitação: serve para validar compatibilidade antes de CUDA/Triton; performance real exige kernel otimizado
 - nota de ambiente: se o Colab tiver `torchao 0.10.0` com PEFT novo, atualizar para `torchao>=0.16.0`; o notebook 22 faz essa correção no bootstrap
@@ -234,8 +244,7 @@ Próximos passos após o marco:
 - comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
 - executar `20_measure_and_build_packed_recovered_l78.ipynb` para medir tamanho, latência, VRAM/RAM, throughput e gerar um build operacional reproduzível
 - executar `21_build_distributable_packed_recovered_l78.ipynb` para gerar o pacote baixável/executável
-- executar `22_native_ternary_mlp_runtime.ipynb` para fechar acurácia no runtime nativo estrutural
-- se a acurácia se preservar, iniciar `23_triton_ternary_mlp_kernel.ipynb` para remover o gargalo de unpack no `forward`
+- iniciar `23_triton_ternary_mlp_kernel.ipynb` para remover o gargalo de unpack no `forward`, já que o runtime nativo estrutural preservou `100/100`
 - só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
 
 ## Regra do projeto
