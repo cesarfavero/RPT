@@ -106,6 +106,8 @@ python runtime/run_native_inference.py --model-dir . --prompt "Qual a capital da
 
 Limitação: ainda não é kernel otimizado. O protótipo desempacota no `forward`, então pode ser lento. Se preservar qualidade, o próximo marco é CUDA/Triton para matmul ternária.
 
+O notebook `22_native_ternary_mlp_runtime.ipynb` roda a avaliação das 100 perguntas por padrão. Para depuração rápida, definir `RPT_NATIVE_RUN_FULL_100=0` antes da célula de avaliação.
+
 ## Importância
 
 Este run mostra que o artefato packed/materialized (`mlp_ternary_2bit.bin`) pode ser recuperado funcionalmente. O packed puro praticamente colapsa no benchmark local, mas o adapter treinado especificamente para esse caminho recupera o desempenho e supera a referência local de `0.92` nessa bateria.

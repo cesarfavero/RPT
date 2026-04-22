@@ -198,6 +198,7 @@ Runtime nativo estrutural:
 - notebook: `22_native_ternary_mlp_runtime`
 - abordagem: carrega o adapter recovered e substitui as bases MLP por `PackedTernaryLinear`
 - status: protótipo estrutural validado em smoke test, ainda sem kernel otimizado
+- o notebook 22 agora roda as 100 perguntas por padrão; para pular em depuração rápida, definir `RPT_NATIVE_RUN_FULL_100=0`
 - resultado reportado do primeiro run:
   - `replaced_count`: `78`
   - runtime: `native_structural_prototype`
@@ -231,7 +232,7 @@ Próximos passos após o marco:
 - comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
 - executar `20_measure_and_build_packed_recovered_l78.ipynb` para medir tamanho, latência, VRAM/RAM, throughput e gerar um build operacional reproduzível
 - executar `21_build_distributable_packed_recovered_l78.ipynb` para gerar o pacote baixável/executável
-- executar `22_native_ternary_mlp_runtime.ipynb` com `RPT_NATIVE_RUN_FULL_100=1` para fechar acurácia no runtime nativo estrutural
+- executar `22_native_ternary_mlp_runtime.ipynb` para fechar acurácia no runtime nativo estrutural
 - se a acurácia se preservar, iniciar `23_triton_ternary_mlp_kernel.ipynb` para remover o gargalo de unpack no `forward`
 - só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
 
