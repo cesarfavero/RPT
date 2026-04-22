@@ -1,0 +1,1864 @@
+{
+  "status": "passed",
+  "summary": {
+    "manifest_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/manifest.json",
+    "bin_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/mlp_ternary_2bit.bin",
+    "bin_size_bytes": 414056448,
+    "bin_size_human": "394.88 MB",
+    "bin_sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+    "num_tensors": 78,
+    "total_numel": 1656225792,
+    "expected_final_offset": 414056448,
+    "offset_matches_file_size": true,
+    "manifest_summary": {
+      "package_type": "packed ternary MLP base + LoRA recovery adapter",
+      "num_tensors": 78,
+      "fp16_total_bytes": 3312451584,
+      "fp16_total_human": "3.08 GB",
+      "packed_total_bytes": 414056448,
+      "packed_total_human": "394.88 MB",
+      "compression_vs_fp16": 8.0,
+      "max_abs_reconstruction_error": 0.0,
+      "adapter_size_bytes": 899854988,
+      "adapter_size_human": "858.17 MB",
+      "hybrid_package_bytes_excluding_base_non_mlp": 1313911436,
+      "hybrid_package_human_excluding_base_non_mlp": "1.22 GB"
+    },
+    "code_totals": {
+      "0": 516312149,
+      "1": 569548721,
+      "2": 570364922,
+      "3": 0
+    },
+    "global_zero_ratio": 0.31174019,
+    "global_positive_ratio": 0.3438835,
+    "global_negative_ratio": 0.34437631,
+    "global_reserved_ratio": 0.0,
+    "structural_errors": [],
+    "selected_reconstruction_checks": [
+      {
+        "name": "model.layers.0.mlp.gate_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.006388030014932156,
+          0.0,
+          0.006388030014932156
+        ],
+        "abs_max": 0.006388030014932156,
+        "mean_abs": 0.004402317572385073
+      },
+      {
+        "name": "model.layers.0.mlp.up_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.006174345035105944,
+          0.0,
+          0.006174345035105944
+        ],
+        "abs_max": 0.006174345035105944,
+        "mean_abs": 0.004237666260451078
+      },
+      {
+        "name": "model.layers.0.mlp.down_proj.weight",
+        "shape": [
+          2304,
+          9216
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005880442913621664,
+          0.0,
+          0.005880442913621664
+        ],
+        "abs_max": 0.005880442913621664,
+        "mean_abs": 0.0040574646554887295
+      },
+      {
+        "name": "model.layers.13.mlp.gate_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005814889911562204,
+          0.0,
+          0.005814889911562204
+        ],
+        "abs_max": 0.005814889911562204,
+        "mean_abs": 0.0039503611624240875
+      },
+      {
+        "name": "model.layers.25.mlp.gate_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005667983088642359,
+          0.0,
+          0.005667983088642359
+        ],
+        "abs_max": 0.005667983088642359,
+        "mean_abs": 0.0038856780156493187
+      },
+      {
+        "name": "model.layers.25.mlp.up_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005924960132688284,
+          0.0,
+          0.005924960132688284
+        ],
+        "abs_max": 0.005924960132688284,
+        "mean_abs": 0.004082132130861282
+      },
+      {
+        "name": "model.layers.25.mlp.down_proj.weight",
+        "shape": [
+          2304,
+          9216
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005372247658669949,
+          0.0,
+          0.005372247658669949
+        ],
+        "abs_max": 0.005372247658669949,
+        "mean_abs": 0.00368978432379663
+      }
+    ]
+  },
+  "tensor_rows": [
+    {
+      "name": "model.layers.0.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006388030014932156,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6600459,
+        "1": 7335156,
+        "2": 7298049,
+        "3": 0
+      },
+      "zero_ratio": 0.3108488,
+      "positive_ratio": 0.34544938,
+      "negative_ratio": 0.34370182,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006174345035105944,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6660270,
+        "1": 7288339,
+        "2": 7285055,
+        "3": 0
+      },
+      "zero_ratio": 0.3136656,
+      "positive_ratio": 0.34324453,
+      "negative_ratio": 0.34308987,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005880442913621664,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6582585,
+        "1": 7323592,
+        "2": 7327487,
+        "3": 0
+      },
+      "zero_ratio": 0.31000702,
+      "positive_ratio": 0.34490477,
+      "negative_ratio": 0.34508821,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.1.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006309930235147476,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6537482,
+        "1": 7369234,
+        "2": 7326948,
+        "3": 0
+      },
+      "zero_ratio": 0.3078829,
+      "positive_ratio": 0.34705428,
+      "negative_ratio": 0.34506282,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.1.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0061631579883396626,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6646280,
+        "1": 7294130,
+        "2": 7293254,
+        "3": 0
+      },
+      "zero_ratio": 0.31300674,
+      "positive_ratio": 0.34351726,
+      "negative_ratio": 0.343476,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.1.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.0058610341511666775,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6554171,
+        "1": 7339265,
+        "2": 7340228,
+        "3": 0
+      },
+      "zero_ratio": 0.30866887,
+      "positive_ratio": 0.34564289,
+      "negative_ratio": 0.34568824,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.2.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006279062945395708,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6529869,
+        "1": 7371984,
+        "2": 7331811,
+        "3": 0
+      },
+      "zero_ratio": 0.30752436,
+      "positive_ratio": 0.34718379,
+      "negative_ratio": 0.34529184,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.2.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005955064669251442,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6575875,
+        "1": 7323241,
+        "2": 7334548,
+        "3": 0
+      },
+      "zero_ratio": 0.30969102,
+      "positive_ratio": 0.34488824,
+      "negative_ratio": 0.34542074,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.2.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005789004731923342,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6539648,
+        "1": 7348331,
+        "2": 7345685,
+        "3": 0
+      },
+      "zero_ratio": 0.30798491,
+      "positive_ratio": 0.34606985,
+      "negative_ratio": 0.34594524,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.3.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006340341176837683,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6526197,
+        "1": 7371423,
+        "2": 7336044,
+        "3": 0
+      },
+      "zero_ratio": 0.30735143,
+      "positive_ratio": 0.34715737,
+      "negative_ratio": 0.3454912,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.3.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005951622501015663,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6567955,
+        "1": 7332601,
+        "2": 7333108,
+        "3": 0
+      },
+      "zero_ratio": 0.30931802,
+      "positive_ratio": 0.34532905,
+      "negative_ratio": 0.34535293,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.3.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005831292364746332,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6570485,
+        "1": 7331072,
+        "2": 7332107,
+        "3": 0
+      },
+      "zero_ratio": 0.30943717,
+      "positive_ratio": 0.34525704,
+      "negative_ratio": 0.34530578,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.4.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006094314623624086,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6591139,
+        "1": 7322900,
+        "2": 7319625,
+        "3": 0
+      },
+      "zero_ratio": 0.31040988,
+      "positive_ratio": 0.34487218,
+      "negative_ratio": 0.34471794,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.4.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005858979653567076,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6576704,
+        "1": 7331791,
+        "2": 7325169,
+        "3": 0
+      },
+      "zero_ratio": 0.30973006,
+      "positive_ratio": 0.3452909,
+      "negative_ratio": 0.34497904,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.4.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005682712886482477,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6637267,
+        "1": 7300214,
+        "2": 7296183,
+        "3": 0
+      },
+      "zero_ratio": 0.31258228,
+      "positive_ratio": 0.34380378,
+      "negative_ratio": 0.34361394,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.5.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006038859486579895,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6657876,
+        "1": 7283359,
+        "2": 7292429,
+        "3": 0
+      },
+      "zero_ratio": 0.31355286,
+      "positive_ratio": 0.34301,
+      "negative_ratio": 0.34343715,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.5.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005860569886863232,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6641214,
+        "1": 7296520,
+        "2": 7295930,
+        "3": 0
+      },
+      "zero_ratio": 0.31276816,
+      "positive_ratio": 0.34362981,
+      "negative_ratio": 0.34360203,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.5.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005603316705673933,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6651252,
+        "1": 7291588,
+        "2": 7290824,
+        "3": 0
+      },
+      "zero_ratio": 0.3132409,
+      "positive_ratio": 0.34339754,
+      "negative_ratio": 0.34336156,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.6.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005832238122820854,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6613464,
+        "1": 7302463,
+        "2": 7317737,
+        "3": 0
+      },
+      "zero_ratio": 0.31146127,
+      "positive_ratio": 0.3439097,
+      "negative_ratio": 0.34462903,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.6.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005712750367820263,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6625412,
+        "1": 7300810,
+        "2": 7307442,
+        "3": 0
+      },
+      "zero_ratio": 0.31202396,
+      "positive_ratio": 0.34383185,
+      "negative_ratio": 0.34414419,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.6.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005690989084541798,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6641808,
+        "1": 7294544,
+        "2": 7297312,
+        "3": 0
+      },
+      "zero_ratio": 0.31279613,
+      "positive_ratio": 0.34353675,
+      "negative_ratio": 0.34366711,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.7.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0060497671365737915,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6733066,
+        "1": 7214540,
+        "2": 7286058,
+        "3": 0
+      },
+      "zero_ratio": 0.31709393,
+      "positive_ratio": 0.33976896,
+      "negative_ratio": 0.34313711,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.7.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005993709899485111,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6634998,
+        "1": 7297406,
+        "2": 7301260,
+        "3": 0
+      },
+      "zero_ratio": 0.31247542,
+      "positive_ratio": 0.34367154,
+      "negative_ratio": 0.34385304,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.7.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005713042337447405,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6651218,
+        "1": 7289262,
+        "2": 7293184,
+        "3": 0
+      },
+      "zero_ratio": 0.3132393,
+      "positive_ratio": 0.343288,
+      "negative_ratio": 0.3434727,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.8.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006144322920590639,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6701785,
+        "1": 7231935,
+        "2": 7299944,
+        "3": 0
+      },
+      "zero_ratio": 0.31562075,
+      "positive_ratio": 0.34058818,
+      "negative_ratio": 0.34379107,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.8.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0059991031885147095,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6601697,
+        "1": 7314680,
+        "2": 7317287,
+        "3": 0
+      },
+      "zero_ratio": 0.3109071,
+      "positive_ratio": 0.34448506,
+      "negative_ratio": 0.34460784,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.8.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005730184260755777,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6615757,
+        "1": 7309177,
+        "2": 7308730,
+        "3": 0
+      },
+      "zero_ratio": 0.31156926,
+      "positive_ratio": 0.3442259,
+      "negative_ratio": 0.34420484,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.9.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006073225289583206,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6704695,
+        "1": 7244141,
+        "2": 7284828,
+        "3": 0
+      },
+      "zero_ratio": 0.3157578,
+      "positive_ratio": 0.34116302,
+      "negative_ratio": 0.34307918,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.9.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005944191478192806,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6582024,
+        "1": 7326559,
+        "2": 7325081,
+        "3": 0
+      },
+      "zero_ratio": 0.3099806,
+      "positive_ratio": 0.3450445,
+      "negative_ratio": 0.34497489,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.9.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005667369347065687,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6597468,
+        "1": 7317205,
+        "2": 7318991,
+        "3": 0
+      },
+      "zero_ratio": 0.31070794,
+      "positive_ratio": 0.34460397,
+      "negative_ratio": 0.34468809,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.10.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005941774696111679,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6685875,
+        "1": 7251943,
+        "2": 7295846,
+        "3": 0
+      },
+      "zero_ratio": 0.31487147,
+      "positive_ratio": 0.34153046,
+      "negative_ratio": 0.34359807,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.10.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005861913785338402,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6598396,
+        "1": 7318296,
+        "2": 7316972,
+        "3": 0
+      },
+      "zero_ratio": 0.31075164,
+      "positive_ratio": 0.34465535,
+      "negative_ratio": 0.344593,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.10.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005608889739960432,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6587452,
+        "1": 7323962,
+        "2": 7322250,
+        "3": 0
+      },
+      "zero_ratio": 0.31023624,
+      "positive_ratio": 0.3449222,
+      "negative_ratio": 0.34484157,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.11.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005920242518186569,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6730478,
+        "1": 7227242,
+        "2": 7275944,
+        "3": 0
+      },
+      "zero_ratio": 0.31697205,
+      "positive_ratio": 0.34036716,
+      "negative_ratio": 0.34266079,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.11.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005828625988215208,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6578450,
+        "1": 7328207,
+        "2": 7327007,
+        "3": 0
+      },
+      "zero_ratio": 0.30981229,
+      "positive_ratio": 0.34512211,
+      "negative_ratio": 0.3450656,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.11.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005540833808481693,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6593861,
+        "1": 7319965,
+        "2": 7319838,
+        "3": 0
+      },
+      "zero_ratio": 0.31053807,
+      "positive_ratio": 0.34473396,
+      "negative_ratio": 0.34472798,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.12.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0056459433399140835,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6729760,
+        "1": 7227831,
+        "2": 7276073,
+        "3": 0
+      },
+      "zero_ratio": 0.31693824,
+      "positive_ratio": 0.3403949,
+      "negative_ratio": 0.34266686,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.12.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005620026960968971,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6631279,
+        "1": 7299993,
+        "2": 7302392,
+        "3": 0
+      },
+      "zero_ratio": 0.31230027,
+      "positive_ratio": 0.34379337,
+      "negative_ratio": 0.34390636,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.12.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.0055182576179504395,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6584247,
+        "1": 7322421,
+        "2": 7326996,
+        "3": 0
+      },
+      "zero_ratio": 0.3100853,
+      "positive_ratio": 0.34484962,
+      "negative_ratio": 0.34506508,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.13.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005814889911562204,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6808516,
+        "1": 7192375,
+        "2": 7232773,
+        "3": 0
+      },
+      "zero_ratio": 0.32064725,
+      "positive_ratio": 0.3387251,
+      "negative_ratio": 0.34062765,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.13.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005805275868624449,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6654437,
+        "1": 7290390,
+        "2": 7288837,
+        "3": 0
+      },
+      "zero_ratio": 0.3133909,
+      "positive_ratio": 0.34334112,
+      "negative_ratio": 0.34326798,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.13.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005500721745193005,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6681188,
+        "1": 7277300,
+        "2": 7275176,
+        "3": 0
+      },
+      "zero_ratio": 0.31465074,
+      "positive_ratio": 0.34272465,
+      "negative_ratio": 0.34262462,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.14.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005709618330001831,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6769029,
+        "1": 7208132,
+        "2": 7256503,
+        "3": 0
+      },
+      "zero_ratio": 0.31878761,
+      "positive_ratio": 0.33946718,
+      "negative_ratio": 0.34174521,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.14.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0057412441819906235,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6669600,
+        "1": 7282580,
+        "2": 7281484,
+        "3": 0
+      },
+      "zero_ratio": 0.314105,
+      "positive_ratio": 0.34297331,
+      "negative_ratio": 0.34292169,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.14.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005528109148144722,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6664892,
+        "1": 7287786,
+        "2": 7280986,
+        "3": 0
+      },
+      "zero_ratio": 0.31388328,
+      "positive_ratio": 0.34321849,
+      "negative_ratio": 0.34289824,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0057777296751737595,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6794804,
+        "1": 7201930,
+        "2": 7236930,
+        "3": 0
+      },
+      "zero_ratio": 0.32000148,
+      "positive_ratio": 0.33917509,
+      "negative_ratio": 0.34082342,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005812919232994318,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6660329,
+        "1": 7285825,
+        "2": 7287510,
+        "3": 0
+      },
+      "zero_ratio": 0.31366838,
+      "positive_ratio": 0.34312613,
+      "negative_ratio": 0.34320549,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005601266864687204,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6629176,
+        "1": 7299087,
+        "2": 7305401,
+        "3": 0
+      },
+      "zero_ratio": 0.31220123,
+      "positive_ratio": 0.34375071,
+      "negative_ratio": 0.34404806,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.16.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005796791985630989,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6706473,
+        "1": 7240505,
+        "2": 7286686,
+        "3": 0
+      },
+      "zero_ratio": 0.31584153,
+      "positive_ratio": 0.34099179,
+      "negative_ratio": 0.34316668,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.16.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.00589413195848465,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6637964,
+        "1": 7298766,
+        "2": 7296934,
+        "3": 0
+      },
+      "zero_ratio": 0.3126151,
+      "positive_ratio": 0.34373559,
+      "negative_ratio": 0.34364931,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.16.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005686220712959766,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6595553,
+        "1": 7317915,
+        "2": 7320196,
+        "3": 0
+      },
+      "zero_ratio": 0.31061775,
+      "positive_ratio": 0.34463741,
+      "negative_ratio": 0.34474484,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.17.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005854057148098946,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6710700,
+        "1": 7235021,
+        "2": 7287943,
+        "3": 0
+      },
+      "zero_ratio": 0.3160406,
+      "positive_ratio": 0.34073352,
+      "negative_ratio": 0.34322588,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.17.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0058693489991128445,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6626137,
+        "1": 7303758,
+        "2": 7303769,
+        "3": 0
+      },
+      "zero_ratio": 0.31205811,
+      "positive_ratio": 0.34397069,
+      "negative_ratio": 0.34397121,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.17.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005657096393406391,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6580591,
+        "1": 7326548,
+        "2": 7326525,
+        "3": 0
+      },
+      "zero_ratio": 0.30991312,
+      "positive_ratio": 0.34504398,
+      "negative_ratio": 0.3450429,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.18.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0059557813219726086,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6716456,
+        "1": 7230529,
+        "2": 7286679,
+        "3": 0
+      },
+      "zero_ratio": 0.31631168,
+      "positive_ratio": 0.34052197,
+      "negative_ratio": 0.34316635,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.18.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.0059213475324213505,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6618880,
+        "1": 7308008,
+        "2": 7306776,
+        "3": 0
+      },
+      "zero_ratio": 0.31171634,
+      "positive_ratio": 0.34417084,
+      "negative_ratio": 0.34411282,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.18.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005713645834475756,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6581168,
+        "1": 7327694,
+        "2": 7324802,
+        "3": 0
+      },
+      "zero_ratio": 0.30994029,
+      "positive_ratio": 0.34509795,
+      "negative_ratio": 0.34496176,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.19.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006031349301338196,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6673039,
+        "1": 7259331,
+        "2": 7301294,
+        "3": 0
+      },
+      "zero_ratio": 0.31426696,
+      "positive_ratio": 0.3418784,
+      "negative_ratio": 0.34385465,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.19.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005931674502789974,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6578341,
+        "1": 7324574,
+        "2": 7330749,
+        "3": 0
+      },
+      "zero_ratio": 0.30980715,
+      "positive_ratio": 0.34495102,
+      "negative_ratio": 0.34524183,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.19.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005782975349575281,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6556984,
+        "1": 7338079,
+        "2": 7338601,
+        "3": 0
+      },
+      "zero_ratio": 0.30880134,
+      "positive_ratio": 0.34558704,
+      "negative_ratio": 0.34561162,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.20.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006034671328961849,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6625533,
+        "1": 7276518,
+        "2": 7331613,
+        "3": 0
+      },
+      "zero_ratio": 0.31202966,
+      "positive_ratio": 0.34268782,
+      "negative_ratio": 0.34528252,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.20.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005938379094004631,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6546463,
+        "1": 7342258,
+        "2": 7344943,
+        "3": 0
+      },
+      "zero_ratio": 0.30830586,
+      "positive_ratio": 0.34578385,
+      "negative_ratio": 0.3459103,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.20.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005835405550897121,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6545030,
+        "1": 7342888,
+        "2": 7345746,
+        "3": 0
+      },
+      "zero_ratio": 0.30823837,
+      "positive_ratio": 0.34581352,
+      "negative_ratio": 0.34594811,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.21.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006047865375876427,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6622931,
+        "1": 7266935,
+        "2": 7343798,
+        "3": 0
+      },
+      "zero_ratio": 0.31190712,
+      "positive_ratio": 0.34223651,
+      "negative_ratio": 0.34585637,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.21.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005966505501419306,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6542734,
+        "1": 7347763,
+        "2": 7343167,
+        "3": 0
+      },
+      "zero_ratio": 0.30813024,
+      "positive_ratio": 0.3460431,
+      "negative_ratio": 0.34582666,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.21.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005885145161300898,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6511253,
+        "1": 7357566,
+        "2": 7364845,
+        "3": 0
+      },
+      "zero_ratio": 0.30664764,
+      "positive_ratio": 0.34650478,
+      "negative_ratio": 0.34684758,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.22.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006069072522222996,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6575835,
+        "1": 7301291,
+        "2": 7356538,
+        "3": 0
+      },
+      "zero_ratio": 0.30968913,
+      "positive_ratio": 0.3438545,
+      "negative_ratio": 0.34645636,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.22.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006005988921970129,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6509500,
+        "1": 7359037,
+        "2": 7365127,
+        "3": 0
+      },
+      "zero_ratio": 0.30656508,
+      "positive_ratio": 0.34657405,
+      "negative_ratio": 0.34686086,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.22.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005918217822909355,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6499031,
+        "1": 7364268,
+        "2": 7370365,
+        "3": 0
+      },
+      "zero_ratio": 0.30607205,
+      "positive_ratio": 0.34682041,
+      "negative_ratio": 0.34710755,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.23.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006052508018910885,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6610455,
+        "1": 7302841,
+        "2": 7320368,
+        "3": 0
+      },
+      "zero_ratio": 0.31131956,
+      "positive_ratio": 0.3439275,
+      "negative_ratio": 0.34475294,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.23.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.00603062380105257,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6516839,
+        "1": 7359447,
+        "2": 7357378,
+        "3": 0
+      },
+      "zero_ratio": 0.30691071,
+      "positive_ratio": 0.34659336,
+      "negative_ratio": 0.34649592,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.23.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005889762192964554,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6508488,
+        "1": 7363660,
+        "2": 7361516,
+        "3": 0
+      },
+      "zero_ratio": 0.30651742,
+      "positive_ratio": 0.34679177,
+      "negative_ratio": 0.3466908,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.24.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005953511223196983,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6648110,
+        "1": 7278033,
+        "2": 7307521,
+        "3": 0
+      },
+      "zero_ratio": 0.31309293,
+      "positive_ratio": 0.34275917,
+      "negative_ratio": 0.34414791,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.24.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.006017737556248903,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6550604,
+        "1": 7342249,
+        "2": 7340811,
+        "3": 0
+      },
+      "zero_ratio": 0.30850088,
+      "positive_ratio": 0.34578342,
+      "negative_ratio": 0.3457157,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.24.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005806244909763336,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6584056,
+        "1": 7325370,
+        "2": 7324238,
+        "3": 0
+      },
+      "zero_ratio": 0.3100763,
+      "positive_ratio": 0.34498851,
+      "negative_ratio": 0.34493519,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.25.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005667983088642359,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6676956,
+        "1": 7260226,
+        "2": 7296482,
+        "3": 0
+      },
+      "zero_ratio": 0.31445143,
+      "positive_ratio": 0.34192055,
+      "negative_ratio": 0.34362802,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.25.mlp.up_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "numel": 21233664,
+      "scale": 0.005924960132688284,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6604262,
+        "1": 7315584,
+        "2": 7313818,
+        "3": 0
+      },
+      "zero_ratio": 0.3110279,
+      "positive_ratio": 0.34452763,
+      "negative_ratio": 0.34444446,
+      "reserved_ratio": 0.0
+    },
+    {
+      "name": "model.layers.25.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "numel": 21233664,
+      "scale": 0.005372247658669949,
+      "packed_bytes": 5308416,
+      "fp16_bytes": 42467328,
+      "compression_vs_fp16": 8.0,
+      "code_histogram": {
+        "0": 6649894,
+        "1": 7289332,
+        "2": 7294438,
+        "3": 0
+      },
+      "zero_ratio": 0.31317694,
+      "positive_ratio": 0.34329129,
+      "negative_ratio": 0.34353176,
+      "reserved_ratio": 0.0
+    }
+  ]
+}

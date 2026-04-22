@@ -1,0 +1,215 @@
+{
+  "status": "functional_regression_detected",
+  "what_this_proves": "The packed 2-bit MLP artifact is structurally valid and can be decoded/materialized into the model; it produces a partially functional model with the current l78 adapter.",
+  "what_this_does_not_prove": "It does not reproduce the prior 0.92 L78 quality when the packed ternary MLPs are actually used. It also does not prove efficient 2-bit runtime.",
+  "structural_report_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/deployment_audit/packed_ternary_reconstruction_structural.json",
+  "functional_report_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/deployment_audit/packed_ternary_reconstruction_functional_eval.json",
+  "structural_summary": {
+    "manifest_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/manifest.json",
+    "bin_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/mlp_ternary_2bit.bin",
+    "bin_size_bytes": 414056448,
+    "bin_size_human": "394.88 MB",
+    "bin_sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+    "num_tensors": 78,
+    "total_numel": 1656225792,
+    "expected_final_offset": 414056448,
+    "offset_matches_file_size": true,
+    "manifest_summary": {
+      "package_type": "packed ternary MLP base + LoRA recovery adapter",
+      "num_tensors": 78,
+      "fp16_total_bytes": 3312451584,
+      "fp16_total_human": "3.08 GB",
+      "packed_total_bytes": 414056448,
+      "packed_total_human": "394.88 MB",
+      "compression_vs_fp16": 8.0,
+      "max_abs_reconstruction_error": 0.0,
+      "adapter_size_bytes": 899854988,
+      "adapter_size_human": "858.17 MB",
+      "hybrid_package_bytes_excluding_base_non_mlp": 1313911436,
+      "hybrid_package_human_excluding_base_non_mlp": "1.22 GB"
+    },
+    "code_totals": {
+      "0": 516312149,
+      "1": 569548721,
+      "2": 570364922,
+      "3": 0
+    },
+    "global_zero_ratio": 0.31174019,
+    "global_positive_ratio": 0.3438835,
+    "global_negative_ratio": 0.34437631,
+    "global_reserved_ratio": 0.0,
+    "structural_errors": [],
+    "selected_reconstruction_checks": [
+      {
+        "name": "model.layers.0.mlp.gate_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.006388030014932156,
+          0.0,
+          0.006388030014932156
+        ],
+        "abs_max": 0.006388030014932156,
+        "mean_abs": 0.004402317572385073
+      },
+      {
+        "name": "model.layers.0.mlp.up_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.006174345035105944,
+          0.0,
+          0.006174345035105944
+        ],
+        "abs_max": 0.006174345035105944,
+        "mean_abs": 0.004237666260451078
+      },
+      {
+        "name": "model.layers.0.mlp.down_proj.weight",
+        "shape": [
+          2304,
+          9216
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005880442913621664,
+          0.0,
+          0.005880442913621664
+        ],
+        "abs_max": 0.005880442913621664,
+        "mean_abs": 0.0040574646554887295
+      },
+      {
+        "name": "model.layers.13.mlp.gate_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005814889911562204,
+          0.0,
+          0.005814889911562204
+        ],
+        "abs_max": 0.005814889911562204,
+        "mean_abs": 0.0039503611624240875
+      },
+      {
+        "name": "model.layers.25.mlp.gate_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005667983088642359,
+          0.0,
+          0.005667983088642359
+        ],
+        "abs_max": 0.005667983088642359,
+        "mean_abs": 0.0038856780156493187
+      },
+      {
+        "name": "model.layers.25.mlp.up_proj.weight",
+        "shape": [
+          9216,
+          2304
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005924960132688284,
+          0.0,
+          0.005924960132688284
+        ],
+        "abs_max": 0.005924960132688284,
+        "mean_abs": 0.004082132130861282
+      },
+      {
+        "name": "model.layers.25.mlp.down_proj.weight",
+        "shape": [
+          2304,
+          9216
+        ],
+        "unique_values_count": 3,
+        "unique_values": [
+          -0.005372247658669949,
+          0.0,
+          0.005372247658669949
+        ],
+        "abs_max": 0.005372247658669949,
+        "mean_abs": 0.00368978432379663
+      }
+    ]
+  },
+  "functional_summary": {
+    "total_questions": 100,
+    "correct": 63,
+    "accuracy": 0.63,
+    "by_category": {
+      "factual": {
+        "total": 20,
+        "correct": 19,
+        "accuracy": 0.95
+      },
+      "math": {
+        "total": 10,
+        "correct": 9,
+        "accuracy": 0.9
+      },
+      "science": {
+        "total": 10,
+        "correct": 3,
+        "accuracy": 0.3
+      },
+      "history": {
+        "total": 10,
+        "correct": 7,
+        "accuracy": 0.7
+      },
+      "logic": {
+        "total": 10,
+        "correct": 8,
+        "accuracy": 0.8
+      },
+      "coding": {
+        "total": 10,
+        "correct": 2,
+        "accuracy": 0.2
+      },
+      "language": {
+        "total": 10,
+        "correct": 3,
+        "accuracy": 0.3
+      },
+      "sports": {
+        "total": 10,
+        "correct": 5,
+        "accuracy": 0.5
+      },
+      "everyday": {
+        "total": 10,
+        "correct": 7,
+        "accuracy": 0.7
+      }
+    }
+  },
+  "expected_reference_accuracy": {
+    "local_l78_previous": 0.92,
+    "external_scaled500_delta_range": "[-0.006, +0.006] vs student_pruned_base"
+  },
+  "functional_gap": {
+    "packed_reconstructed_plus_l78_accuracy": 0.63,
+    "previous_clean_base_plus_l78_accuracy": 0.92,
+    "pre_recovery_ternary_accuracy": 0.01,
+    "delta_vs_previous_clean_base_adapter": -0.29,
+    "delta_vs_pre_recovery_ternary": 0.62
+  },
+  "diagnosis": "The previous 0.92 L78 path evaluated a PEFT adapter loaded on student_pruned via adapter_config base_model_name_or_path. It did not prove execution of the packed ternary MLP base. Notebook 14 is the first materialized packed-base evaluation and it reaches 0.63.",
+  "next_required_step": "Train/evaluate recovery with the packed ternary MLP base in the actual load path, or export a new package that includes the effective recovered weights/deltas needed to reproduce 0.92 from the packed representation."
+}
