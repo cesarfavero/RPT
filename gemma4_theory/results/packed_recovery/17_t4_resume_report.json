@@ -1,0 +1,75 @@
+{
+  "status": "target_met",
+  "notebook": "17_t4_resume_packed_recovery",
+  "purpose": "T4 resumable recovery for packed/materialized ternary MLP path.",
+  "adapter_path": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_packed_ternary_recovered_l78_t4_resume",
+  "completed_steps": 1200,
+  "best_phase": "phase_1200",
+  "best_accuracy": 1.0,
+  "final_accuracy": 1.0,
+  "target_accuracy": 0.9,
+  "phases": [
+    {
+      "phase": "phase_1200",
+      "total_steps": 1200,
+      "accuracy": 1.0,
+      "comparison": {
+        "packed_base_no_adapter_accuracy": 0.01,
+        "old_l78_on_packed_accuracy": 0.63,
+        "clean_base_plus_l78_reference_accuracy": 0.92,
+        "delta_vs_old_l78_on_packed": 0.37,
+        "delta_vs_clean_base_l78_reference": 0.08
+      }
+    }
+  ],
+  "baselines": {
+    "packed_base_no_adapter_accuracy": 0.01,
+    "old_l78_on_packed_accuracy": 0.63,
+    "clean_base_plus_l78_reference_accuracy": 0.92,
+    "student_pruned_reference_accuracy": 0.92,
+    "hf_gemma_2_2b_it_original_reference_accuracy": 0.9
+  },
+  "method": {
+    "resumable": true,
+    "answer_only_labels": true,
+    "ce_weight": 0.7,
+    "kl_weight": 0.3,
+    "temperature": 2.0,
+    "lora_r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.05,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "train_phases": [
+      {
+        "name": "phase_100",
+        "total_steps": 100,
+        "continue_if_accuracy_at_least": 0.66
+      },
+      {
+        "name": "phase_200",
+        "total_steps": 200,
+        "continue_if_accuracy_at_least": 0.7
+      },
+      {
+        "name": "phase_400",
+        "total_steps": 400,
+        "continue_if_accuracy_at_least": 0.74
+      },
+      {
+        "name": "phase_800",
+        "total_steps": 800,
+        "continue_if_accuracy_at_least": 0.8
+      },
+      {
+        "name": "phase_1200",
+        "total_steps": 1200,
+        "continue_if_accuracy_at_least": 0.86
+      }
+    ]
+  },
+  "required_load_order": "load student_pruned -> materialize mlp_ternary_2bit.bin using manifest.json -> apply this adapter with PeftModel.from_pretrained",
+  "packed_bin_sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+  "manifest_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/manifest.json",
+  "bin_path": "/content/drive/MyDrive/RPT/gemma4_theory/exports/ternary_mlp_l78/mlp_ternary_2bit.bin"
+}

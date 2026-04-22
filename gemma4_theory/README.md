@@ -112,7 +112,36 @@ Resultado do `78`: todos os MLPs ternarizados.
 - pré-recovery: `0.01`
 - pós-recovery: `0.92`
 
-Conclusão da fase MLP: concluída com sucesso no benchmark local. O próximo passo não deve ser ternarizar attention imediatamente; deve ser consolidar resultados, validar em benchmarks maiores e medir custo/tamanho/latência.
+Conclusão inicial da fase MLP: concluída com sucesso no benchmark local. O próximo passo não deve ser ternarizar attention imediatamente; deve ser consolidar resultados, validar em benchmarks maiores e medir custo/tamanho/latência.
+
+## Marco packed/materialized L78
+
+O teste `17_t4_resume_packed_recovery` fecha a recuperação do caminho realmente empacotado/materializado (`mlp_ternary_2bit.bin`) para `78` projeções MLP ternarizadas.
+
+Resultado oficial do run:
+- fase final: `phase_1200`
+- passos concluídos: `1200`
+- acurácia final: `1.00` (`100/100`)
+- target mínimo: `0.90`
+- referência limpa `student_pruned + l78`: `0.92`
+- packed base sem adapter: `0.01`
+- adapter antigo `l78` aplicado no caminho packed: `0.63`
+- delta contra adapter antigo no packed: `+0.37`
+- delta contra referência limpa: `+0.08`
+
+Importância:
+- prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
+- separa o problema de runtime/packing do problema de capacidade: o packed puro colapsa (`0.01`), mas o recovery T4 devolve desempenho acima da referência local
+- fixa a ordem reprodutível de carregamento: carregar `student_pruned`, materializar `mlp_ternary_2bit.bin` via `manifest.json`, depois aplicar o adapter `student_packed_ternary_recovered_l78_t4_resume` com `PeftModel.from_pretrained`
+- estabelece o checkpoint packed recuperado como o melhor artefato local para validações seguintes, sujeito a confirmação em benchmarks maiores
+
+Arquivos registrados:
+- `results/packed_recovery/17_t4_resume_report.json`
+- `results/packed_recovery/17_t4_resume_progress.json`
+- `results/packed_recovery/17_t4_resume_phase_1200_20260422_203242.json`
+- `results/packed_recovery/packed_base_required.json`
+
+Conclusão atualizada da fase MLP: concluída com sucesso no benchmark local e no caminho packed/materialized. O claim honesto é que o resultado atingiu `1.00` no benchmark local de 100 perguntas, acima da referência `0.92`; próximos passos exigem benchmark maior/externo, medição de custo/tamanho/latência e teste de robustez fora dessa bateria.
 
 ## Regra do projeto
 
