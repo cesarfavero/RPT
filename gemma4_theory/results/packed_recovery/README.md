@@ -128,6 +128,23 @@ O avaliador usa `expected_answer` e `accepted_answers`, que é o formato real de
 
 Se o ambiente falhar com `Found an incompatible version of torchao`, atualizar para `torchao>=0.16.0`. O bootstrap do notebook 22 foi ajustado para corrigir automaticamente `torchao 0.10.0` quando detectado.
 
+## Spike Triton
+
+O próximo notebook é `23_triton_ternary_matmul_spike.ipynb`.
+
+Escopo:
+
+- validar matmul ternária packed fora do modelo completo
+- testar shapes reais:
+  - `gate/up`: `[9216, 2304]`
+  - `down`: `[2304, 9216]`
+- comparar:
+  - `F.linear` com peso reconstruído
+  - unpack PyTorch a cada forward
+  - kernel Triton lendo packed
+
+Critério para avançar ao notebook 24: erro numérico aceitável e ganho real contra o caminho `unpack_then_linear`.
+
 ## Importância
 
 Este run mostra que o artefato packed/materialized (`mlp_ternary_2bit.bin`) pode ser recuperado funcionalmente. O packed puro praticamente colapsa no benchmark local, mas o adapter treinado especificamente para esse caminho recupera o desempenho e supera a referência local de `0.92` nessa bateria.

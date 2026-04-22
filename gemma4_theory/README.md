@@ -26,6 +26,7 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `notebooks/20_measure_and_build_packed_recovered_l78.ipynb`: mede custo operacional do checkpoint packed recuperado e gera pacote de build reproduzível.
 - `notebooks/21_build_distributable_packed_recovered_l78.ipynb`: monta uma pasta distribuível executável do modelo packed recovered L78.
 - `notebooks/22_native_ternary_mlp_runtime.ipynb`: testa o protótipo nativo estrutural com `PackedTernaryLinear`.
+- `notebooks/23_triton_ternary_matmul_spike.ipynb`: spike de kernel Triton para matmul ternária packed nos shapes reais.
 - `runtime/packed_recovered_l78/`: runtime CLI versionado para carregar e executar o pacote distribuível.
 - `notebooks/06_result_analysis_gemma4.ipynb`: consolidação dos resultados que você vai me devolver.
 - `utils/eval_utils.py`: utilitários compartilhados de avaliação e logging.
@@ -50,7 +51,8 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 15. Medir carga, tamanho, RAM/VRAM, throughput e gerar build operacional em `20_measure_and_build_packed_recovered_l78.ipynb`.
 16. Montar pacote distribuível executável em `21_build_distributable_packed_recovered_l78.ipynb`.
 17. Testar runtime nativo estrutural em `22_native_ternary_mlp_runtime.ipynb`.
-18. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
+18. Validar spike de kernel Triton em `23_triton_ternary_matmul_spike.ipynb`.
+19. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
 
 ## Estado atual da hipótese
 
@@ -245,6 +247,7 @@ Próximos passos após o marco:
 - executar `20_measure_and_build_packed_recovered_l78.ipynb` para medir tamanho, latência, VRAM/RAM, throughput e gerar um build operacional reproduzível
 - executar `21_build_distributable_packed_recovered_l78.ipynb` para gerar o pacote baixável/executável
 - iniciar `23_triton_ternary_mlp_kernel.ipynb` para remover o gargalo de unpack no `forward`, já que o runtime nativo estrutural preservou `100/100`
+- executar `23_triton_ternary_matmul_spike.ipynb` antes de integrar kernel no modelo completo; ele compara dense, unpack no forward e kernel Triton nos shapes reais
 - só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
 
 ## Regra do projeto
