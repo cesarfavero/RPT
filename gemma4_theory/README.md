@@ -226,6 +226,20 @@ Runtime nativo estrutural:
 - limitação: serve para validar compatibilidade antes de CUDA/Triton; performance real exige kernel otimizado
 - nota de ambiente: se o Colab tiver `torchao 0.10.0` com PEFT novo, atualizar para `torchao>=0.16.0`; o notebook 22 faz essa correção no bootstrap
 
+Spike Triton:
+- notebook: `23_triton_ternary_matmul_spike`
+- arquivo: `results/packed_recovery/23_triton_ternary_matmul_spike_20260422_234112.json`
+- ambiente: Colab/T4, PyTorch `2.10.0+cu128`, Triton `3.6.0`
+- resultado: `success=true`
+- casos testados: `4`
+- shapes reais:
+  - `gate/up`: `[9216, 2304]`
+  - `down`: `[2304, 9216]`
+- erro máximo observado: `0.00137`
+- speedup médio contra `unpack_then_linear`: `187.43x`
+- speedup médio contra dense materializado: `0.109x`
+- leitura: o kernel Triton remove o gargalo extremo do unpack no `forward`, mas ainda não vence `F.linear` denso materializado; o próximo passo é integrar no runtime nativo e medir tokens/s do modelo completo
+
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
 - separa o problema de runtime/packing do problema de capacidade: o packed puro colapsa (`0.01`), mas o recovery T4 devolve desempenho acima da referência local
@@ -246,8 +260,7 @@ Próximos passos após o marco:
 - comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
 - executar `20_measure_and_build_packed_recovered_l78.ipynb` para medir tamanho, latência, VRAM/RAM, throughput e gerar um build operacional reproduzível
 - executar `21_build_distributable_packed_recovered_l78.ipynb` para gerar o pacote baixável/executável
-- iniciar `23_triton_ternary_mlp_kernel.ipynb` para remover o gargalo de unpack no `forward`, já que o runtime nativo estrutural preservou `100/100`
-- executar `23_triton_ternary_matmul_spike.ipynb` antes de integrar kernel no modelo completo; ele compara dense, unpack no forward e kernel Triton nos shapes reais
+- iniciar `24_integrate_triton_ternary_runtime.ipynb`, usando o spike 23 como base, para medir o modelo completo com kernel Triton
 - só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
 
 ## Regra do projeto

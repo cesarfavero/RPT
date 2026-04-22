@@ -145,6 +145,18 @@ Escopo:
 
 Critério para avançar ao notebook 24: erro numérico aceitável e ganho real contra o caminho `unpack_then_linear`.
 
+Resultado do spike:
+
+- arquivo: `23_triton_ternary_matmul_spike_20260422_234112.json`
+- ambiente: Tesla T4, PyTorch `2.10.0+cu128`, Triton `3.6.0`
+- `success`: `true`
+- casos: `4`
+- erro máximo: `0.00137`
+- speedup médio contra `unpack_then_linear`: `187.43x`
+- speedup médio contra `F.linear` denso materializado: `0.109x`
+
+Interpretação: o kernel Triton é correto o suficiente para o spike e elimina o gargalo absurdo de reconstruir o peso em PyTorch a cada forward. Porém ele ainda é mais lento que o caminho dense materializado. O próximo passo é integrar no runtime nativo (`24`) para medir o efeito real em tokens/s, VRAM e `100/100`.
+
 ## Importância
 
 Este run mostra que o artefato packed/materialized (`mlp_ternary_2bit.bin`) pode ser recuperado funcionalmente. O packed puro praticamente colapsa no benchmark local, mas o adapter treinado especificamente para esse caminho recupera o desempenho e supera a referência local de `0.92` nessa bateria.

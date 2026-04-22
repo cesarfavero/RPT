@@ -1,0 +1,160 @@
+{
+  "notebook": "23_triton_ternary_matmul_spike",
+  "purpose": "Triton packed ternary matmul spike before full runtime integration.",
+  "created_at": "2026-04-22 23:41:12",
+  "environment": {
+    "platform": "Linux-6.6.113+-x86_64-with-glibc2.35",
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128",
+    "triton": "3.6.0",
+    "cuda_device": "Tesla T4"
+  },
+  "packed_sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+  "summary": {
+    "success": true,
+    "num_cases": 4,
+    "max_abs_err_max": 0.0013723373413085938,
+    "mean_speedup_vs_unpack": 187.42602802943765,
+    "mean_speedup_vs_dense": 0.10893170014070011
+  },
+  "cases": [
+    {
+      "label": "gate_proj_real_shape",
+      "tensor_name": "model.layers.0.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "m_tokens": 1,
+      "dtype": "torch.float16",
+      "block_m": 16,
+      "block_n": 16,
+      "block_k": 64,
+      "max_abs_err": 0.0002442598342895508,
+      "mean_abs_err": 3.609186751418747e-05,
+      "ref_abs_mean": 0.2067990005016327,
+      "dense_bench": {
+        "iters": 30,
+        "total_sec": 0.007051475999958257,
+        "avg_ms": 0.23504919999860854
+      },
+      "unpack_then_linear_bench": {
+        "iters": 10,
+        "total_sec": 4.034087881000005,
+        "avg_ms": 403.4087881000005
+      },
+      "triton_bench": {
+        "iters": 30,
+        "total_sec": 0.054680217999987235,
+        "avg_ms": 1.8226739333329078
+      },
+      "speedup_vs_unpack": 221.32800646483963,
+      "speedup_vs_dense": 0.1289584470925098
+    },
+    {
+      "label": "down_proj_real_shape",
+      "tensor_name": "model.layers.0.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "m_tokens": 1,
+      "dtype": "torch.float16",
+      "block_m": 16,
+      "block_n": 16,
+      "block_k": 64,
+      "max_abs_err": 0.0004781484603881836,
+      "mean_abs_err": 6.566778756678104e-05,
+      "ref_abs_mean": 0.3671778738498688,
+      "dense_bench": {
+        "iters": 30,
+        "total_sec": 0.005479447000027449,
+        "avg_ms": 0.1826482333342483
+      },
+      "unpack_then_linear_bench": {
+        "iters": 10,
+        "total_sec": 3.3758282819999863,
+        "avg_ms": 337.58282819999863
+      },
+      "triton_bench": {
+        "iters": 30,
+        "total_sec": 0.06832997300000443,
+        "avg_ms": 2.2776657666668143
+      },
+      "speedup_vs_unpack": 148.21438384000683,
+      "speedup_vs_dense": 0.08019097270866905
+    },
+    {
+      "label": "gate_proj_real_shape",
+      "tensor_name": "model.layers.0.mlp.gate_proj.weight",
+      "shape": [
+        9216,
+        2304
+      ],
+      "m_tokens": 16,
+      "dtype": "torch.float16",
+      "block_m": 16,
+      "block_n": 16,
+      "block_k": 64,
+      "max_abs_err": 0.0004636049270629883,
+      "mean_abs_err": 3.5645603929879144e-05,
+      "ref_abs_mean": 0.20222105085849762,
+      "dense_bench": {
+        "iters": 30,
+        "total_sec": 0.007034206000014365,
+        "avg_ms": 0.23447353333381216
+      },
+      "unpack_then_linear_bench": {
+        "iters": 10,
+        "total_sec": 3.4658998770000267,
+        "avg_ms": 346.58998770000267
+      },
+      "triton_bench": {
+        "iters": 30,
+        "total_sec": 0.05543670399998746,
+        "avg_ms": 1.8478901333329152
+      },
+      "speedup_vs_unpack": 187.55984538695577,
+      "speedup_vs_dense": 0.12688716125720528
+    },
+    {
+      "label": "down_proj_real_shape",
+      "tensor_name": "model.layers.0.mlp.down_proj.weight",
+      "shape": [
+        2304,
+        9216
+      ],
+      "m_tokens": 16,
+      "dtype": "torch.float16",
+      "block_m": 16,
+      "block_n": 16,
+      "block_k": 64,
+      "max_abs_err": 0.0013723373413085938,
+      "mean_abs_err": 0.00011935219663428143,
+      "ref_abs_mean": 0.37456879019737244,
+      "dense_bench": {
+        "iters": 30,
+        "total_sec": 0.0069108529999653,
+        "avg_ms": 0.23036176666551
+      },
+      "unpack_then_linear_bench": {
+        "iters": 10,
+        "total_sec": 4.4505979359999515,
+        "avg_ms": 445.0597935999951
+      },
+      "triton_bench": {
+        "iters": 30,
+        "total_sec": 0.06932327999999188,
+        "avg_ms": 2.3107759999997293
+      },
+      "speedup_vs_unpack": 192.60187642594835,
+      "speedup_vs_dense": 0.09969021950441627
+    }
+  ],
+  "baseline_context": {
+    "notebook_22_native_structural_accuracy": 1.0,
+    "notebook_22_native_structural_tokens_per_sec": 2.285913541069469,
+    "notebook_20_materialized_tokens_per_sec": 7.746480522791005
+  },
+  "next_step": "If success is true and speedup_vs_unpack is meaningful, integrate kernel into PackedTernaryLinear in notebook 24."
+}
