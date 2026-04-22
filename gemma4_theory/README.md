@@ -24,6 +24,8 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `notebooks/17_t4_resume_packed_recovery.ipynb`: recovery T4 retomável do caminho packed/materialized.
 - `notebooks/18_test_packed_recovered_l78.ipynb`: validação pós-marco do checkpoint packed recuperado, sem retreino.
 - `notebooks/20_measure_and_build_packed_recovered_l78.ipynb`: mede custo operacional do checkpoint packed recuperado e gera pacote de build reproduzível.
+- `notebooks/21_build_distributable_packed_recovered_l78.ipynb`: monta uma pasta distribuível executável do modelo packed recovered L78.
+- `runtime/packed_recovered_l78/`: runtime CLI versionado para carregar e executar o pacote distribuível.
 - `notebooks/06_result_analysis_gemma4.ipynb`: consolidação dos resultados que você vai me devolver.
 - `utils/eval_utils.py`: utilitários compartilhados de avaliação e logging.
 - `results/`: saídas JSON/CSV de cada execução.
@@ -45,7 +47,8 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 13. Validar/recover o caminho packed/materialized em `14`, `15` e `17_t4_resume_packed_recovery.ipynb`.
 14. Reproduzir o checkpoint packed recuperado sem retreino em `18_test_packed_recovered_l78.ipynb`.
 15. Medir carga, tamanho, RAM/VRAM, throughput e gerar build operacional em `20_measure_and_build_packed_recovered_l78.ipynb`.
-16. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
+16. Montar pacote distribuível executável em `21_build_distributable_packed_recovered_l78.ipynb`.
+17. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
 
 ## Estado atual da hipótese
 
@@ -175,6 +178,18 @@ Leitura operacional:
 - o adapter recovered corrige o comportamento sobre a base + MLPs packed, mas não substitui o modelo base
 - o próximo marco de runtime deve remover duplicação dos MLPs densos ou criar execução nativa ternária, antes de afirmar redução real de memória/inferência
 
+Distribuição executável:
+- runtime versionado: `runtime/packed_recovered_l78/`
+- notebook de empacotamento: `21_build_distributable_packed_recovered_l78`
+- layout gerado: `build/distributable_packed_recovered_l78/`
+- comando esperado após montar/baixar o pacote:
+
+```bash
+python runtime/run_inference.py --model-dir . --prompt "Qual a capital da França?"
+```
+
+Este é o formato "baixei e executei". Ele ainda é `materialized_hybrid`: executável e reproduzível, mas não deve ser vendido como runtime ternário nativo até existir execução packed sem materializar os MLPs em float.
+
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
 - separa o problema de runtime/packing do problema de capacidade: o packed puro colapsa (`0.01`), mas o recovery T4 devolve desempenho acima da referência local
@@ -194,6 +209,7 @@ Próximos passos após o marco:
 - criar uma bateria maior e inédita para medir generalização fora das 100 perguntas locais
 - comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
 - executar `20_measure_and_build_packed_recovered_l78.ipynb` para medir tamanho, latência, VRAM/RAM, throughput e gerar um build operacional reproduzível
+- executar `21_build_distributable_packed_recovered_l78.ipynb` para gerar o pacote baixável/executável
 - só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
 
 ## Regra do projeto

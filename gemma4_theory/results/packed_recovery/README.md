@@ -41,6 +41,30 @@ Este diretório registra o fechamento do recovery T4 para o caminho packed/mater
 
 Leitura: o artefato é utilizável em T4, mas ainda não é um modelo autônomo nem um runtime ternário real. O `student_pruned` continua necessário como base densa; o `packed_bin` troca somente os MLPs, e o adapter recovered atua como correção funcional sobre essa composição.
 
+## Distribuição executável
+
+O runtime versionado fica em `../../runtime/packed_recovered_l78/` e o pacote distribuível deve ser montado com `21_build_distributable_packed_recovered_l78.ipynb`.
+
+Layout esperado:
+
+```text
+build/distributable_packed_recovered_l78/
+  student_pruned/
+  adapter_recovered_l78/
+  packed/
+  runtime/
+  README.md
+  package_manifest.json
+```
+
+Comando de inferência no pacote:
+
+```bash
+python runtime/run_inference.py --model-dir . --prompt "Qual a capital da França?"
+```
+
+Este formato resolve a experiência de execução para terceiros, mas ainda não resolve a leveza plena. A leveza real exige remover MLPs densos duplicados ou executar os MLPs packed diretamente.
+
 ## Importância
 
 Este run mostra que o artefato packed/materialized (`mlp_ternary_2bit.bin`) pode ser recuperado funcionalmente. O packed puro praticamente colapsa no benchmark local, mas o adapter treinado especificamente para esse caminho recupera o desempenho e supera a referência local de `0.92` nessa bateria.
@@ -75,3 +99,4 @@ packed bin:
 - `18_test_packed_recovered_l78_20260422_205445.json`: reprodução pós-marco sem retreino.
 - `20_measure_and_build_packed_recovered_l78_20260422_211727.json`: medição operacional de carga, tamanho, VRAM e throughput.
 - `../../build/packed_recovered_l78/`: loader standalone e manifesto operacional gerados pelo notebook 20.
+- `../../runtime/packed_recovered_l78/`: runtime CLI versionado para distribuição.

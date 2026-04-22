@@ -1,0 +1,20 @@
+{
+  "name": "rpt-packed-recovered-l78",
+  "version": "0.1.0",
+  "runtime_kind": "materialized_hybrid",
+  "is_native_ternary_runtime": false,
+  "load_order": "student_pruned -> packed MLP materialization -> recovered adapter",
+  "expected_packed_sha256": "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116",
+  "expected_packed_mlp_tensors": 78,
+  "validated_local_accuracy": {
+    "benchmark": "gemma4_100_questions",
+    "correct": 100,
+    "total": 100,
+    "accuracy": 1.0
+  },
+  "known_limitations": [
+    "This package still requires the dense student_pruned base.",
+    "The packed MLP tensors are materialized into the base model before inference.",
+    "This is not yet a native ternary kernel/runtime."
+  ]
+}
