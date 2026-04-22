@@ -77,6 +77,27 @@ O protótipo nativo estrutural fica em:
 
 Ele substitui os 78 MLPs por `PackedTernaryLinear`, mantendo os bytes 2-bit como buffer persistente. O objetivo é validar que o modelo + adapter recovered continuam funcionais sem manter os MLPs como parâmetros densos persistentes.
 
+Primeiro smoke test reportado:
+
+- load: `102.06s`
+- `replaced_count`: `78`
+- `runtime_kind`: `native_structural_prototype`
+- VRAM alocada após load: `2.40 GB`
+- VRAM reservada após load: `5.28 GB`
+- pico CUDA: `5.33 GB`
+- smoke test: `5` prompts coerentes
+- tokens gerados: `15`
+- tempo total de geração: `7.12s`
+- média: `2.22 tokens/s`
+- avaliação 100 perguntas: ainda não rodada
+
+Comparação com o notebook 20:
+
+- materialized hybrid após adapter: `5.10 GB` alocados
+- native structural após load: `2.40 GB` alocados
+- ganho observado em memória persistente alocada: aproximadamente `2.70 GB`
+- trade-off: geração caiu de `~7.75 tokens/s` para `~2.22 tokens/s`, esperado porque o protótipo ainda desempacota pesos no `forward`
+
 Comando esperado no pacote distribuível:
 
 ```bash

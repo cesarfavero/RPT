@@ -197,8 +197,19 @@ Runtime nativo estrutural:
 - CLI: `runtime/packed_recovered_l78/run_native_inference.py`
 - notebook: `22_native_ternary_mlp_runtime`
 - abordagem: carrega o adapter recovered e substitui as bases MLP por `PackedTernaryLinear`
-- status: protótipo estrutural, ainda sem kernel otimizado
-- limitação: desempacota no `forward`, então pode ser lento; serve para validar compatibilidade antes de CUDA/Triton
+- status: protótipo estrutural validado em smoke test, ainda sem kernel otimizado
+- resultado reportado do primeiro run:
+  - `replaced_count`: `78`
+  - runtime: `native_structural_prototype`
+  - `is_native_ternary_runtime`: `true`
+  - load: `102.06s`
+  - VRAM alocada após load: `2.40 GB`
+  - VRAM reservada após load: `5.28 GB`
+  - pico CUDA: `5.33 GB`
+  - smoke test: `5` prompts coerentes, `15` tokens gerados, média `2.22 tokens/s`
+  - avaliação 100 perguntas: ainda não rodada nesse primeiro teste
+- leitura: o protótipo reduziu a memória persistente alocada em relação ao materialized hybrid (`5.10 GB` -> `2.40 GB`), mas ficou mais lento porque ainda desempacota no `forward`
+- limitação: serve para validar compatibilidade antes de CUDA/Triton; performance real exige kernel otimizado
 
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
@@ -220,7 +231,8 @@ Próximos passos após o marco:
 - comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
 - executar `20_measure_and_build_packed_recovered_l78.ipynb` para medir tamanho, latência, VRAM/RAM, throughput e gerar um build operacional reproduzível
 - executar `21_build_distributable_packed_recovered_l78.ipynb` para gerar o pacote baixável/executável
-- executar `22_native_ternary_mlp_runtime.ipynb` para validar o runtime nativo estrutural antes de investir em kernel otimizado
+- executar `22_native_ternary_mlp_runtime.ipynb` com `RPT_NATIVE_RUN_FULL_100=1` para fechar acurácia no runtime nativo estrutural
+- se a acurácia se preservar, iniciar `23_triton_ternary_mlp_kernel.ipynb` para remover o gargalo de unpack no `forward`
 - só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
 
 ## Regra do projeto
