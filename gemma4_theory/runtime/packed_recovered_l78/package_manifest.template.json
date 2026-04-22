@@ -15,6 +15,6 @@
   "known_limitations": [
     "This package still requires the dense student_pruned base.",
     "The packed MLP tensors are materialized into the base model before inference.",
-    "This is not yet a native ternary kernel/runtime."
+    "The structural native prototype is available but is not yet an optimized ternary kernel runtime."
   ]
 }

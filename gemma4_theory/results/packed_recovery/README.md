@@ -65,6 +65,26 @@ python runtime/run_inference.py --model-dir . --prompt "Qual a capital da Franç
 
 Este formato resolve a experiência de execução para terceiros, mas ainda não resolve a leveza plena. A leveza real exige remover MLPs densos duplicados ou executar os MLPs packed diretamente.
 
+## Runtime nativo estrutural
+
+O protótipo nativo estrutural fica em:
+
+```text
+../../runtime/packed_recovered_l78/native_loader.py
+../../runtime/packed_recovered_l78/run_native_inference.py
+../../notebooks/22_native_ternary_mlp_runtime.ipynb
+```
+
+Ele substitui os 78 MLPs por `PackedTernaryLinear`, mantendo os bytes 2-bit como buffer persistente. O objetivo é validar que o modelo + adapter recovered continuam funcionais sem manter os MLPs como parâmetros densos persistentes.
+
+Comando esperado no pacote distribuível:
+
+```bash
+python runtime/run_native_inference.py --model-dir . --prompt "Qual a capital da França?"
+```
+
+Limitação: ainda não é kernel otimizado. O protótipo desempacota no `forward`, então pode ser lento. Se preservar qualidade, o próximo marco é CUDA/Triton para matmul ternária.
+
 ## Importância
 
 Este run mostra que o artefato packed/materialized (`mlp_ternary_2bit.bin`) pode ser recuperado funcionalmente. O packed puro praticamente colapsa no benchmark local, mas o adapter treinado especificamente para esse caminho recupera o desempenho e supera a referência local de `0.92` nessa bateria.

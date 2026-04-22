@@ -53,6 +53,23 @@ python runtime/run_inference.py \
   --prompt "Qual a capital da França?"
 ```
 
+## Protótipo nativo estrutural
+
+O runtime também inclui um protótipo nativo estrutural:
+
+```bash
+python runtime/run_native_inference.py \
+  --model-dir /path/to/MODEL_DIR \
+  --prompt "Qual a capital da França?"
+```
+
+Diferença:
+
+- `run_inference.py`: materializa os 78 MLPs packed nos pesos densos antes da inferência.
+- `run_native_inference.py`: substitui as bases MLP por `PackedTernaryLinear`, mantendo o packed como buffer persistente.
+
+O protótipo nativo ainda não tem kernel otimizado. Ele desempacota no `forward`, então pode ser mais lento; o objetivo é validar compatibilidade funcional antes de implementar CUDA/Triton.
+
 ## Verificação rápida
 
 ```bash

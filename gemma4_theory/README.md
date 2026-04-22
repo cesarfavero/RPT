@@ -25,6 +25,7 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 - `notebooks/18_test_packed_recovered_l78.ipynb`: validação pós-marco do checkpoint packed recuperado, sem retreino.
 - `notebooks/20_measure_and_build_packed_recovered_l78.ipynb`: mede custo operacional do checkpoint packed recuperado e gera pacote de build reproduzível.
 - `notebooks/21_build_distributable_packed_recovered_l78.ipynb`: monta uma pasta distribuível executável do modelo packed recovered L78.
+- `notebooks/22_native_ternary_mlp_runtime.ipynb`: testa o protótipo nativo estrutural com `PackedTernaryLinear`.
 - `runtime/packed_recovered_l78/`: runtime CLI versionado para carregar e executar o pacote distribuível.
 - `notebooks/06_result_analysis_gemma4.ipynb`: consolidação dos resultados que você vai me devolver.
 - `utils/eval_utils.py`: utilitários compartilhados de avaliação e logging.
@@ -48,7 +49,8 @@ Esta pasta separa a nova trilha experimental para validar a teoria incrementalme
 14. Reproduzir o checkpoint packed recuperado sem retreino em `18_test_packed_recovered_l78.ipynb`.
 15. Medir carga, tamanho, RAM/VRAM, throughput e gerar build operacional em `20_measure_and_build_packed_recovered_l78.ipynb`.
 16. Montar pacote distribuível executável em `21_build_distributable_packed_recovered_l78.ipynb`.
-17. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
+17. Testar runtime nativo estrutural em `22_native_ternary_mlp_runtime.ipynb`.
+18. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
 
 ## Estado atual da hipótese
 
@@ -190,6 +192,14 @@ python runtime/run_inference.py --model-dir . --prompt "Qual a capital da Franç
 
 Este é o formato "baixei e executei". Ele ainda é `materialized_hybrid`: executável e reproduzível, mas não deve ser vendido como runtime ternário nativo até existir execução packed sem materializar os MLPs em float.
 
+Runtime nativo estrutural:
+- runtime: `runtime/packed_recovered_l78/native_loader.py`
+- CLI: `runtime/packed_recovered_l78/run_native_inference.py`
+- notebook: `22_native_ternary_mlp_runtime`
+- abordagem: carrega o adapter recovered e substitui as bases MLP por `PackedTernaryLinear`
+- status: protótipo estrutural, ainda sem kernel otimizado
+- limitação: desempacota no `forward`, então pode ser lento; serve para validar compatibilidade antes de CUDA/Triton
+
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
 - separa o problema de runtime/packing do problema de capacidade: o packed puro colapsa (`0.01`), mas o recovery T4 devolve desempenho acima da referência local
@@ -210,6 +220,7 @@ Próximos passos após o marco:
 - comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
 - executar `20_measure_and_build_packed_recovered_l78.ipynb` para medir tamanho, latência, VRAM/RAM, throughput e gerar um build operacional reproduzível
 - executar `21_build_distributable_packed_recovered_l78.ipynb` para gerar o pacote baixável/executável
+- executar `22_native_ternary_mlp_runtime.ipynb` para validar o runtime nativo estrutural antes de investir em kernel otimizado
 - só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
 
 ## Regra do projeto
