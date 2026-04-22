@@ -1,0 +1,76 @@
+{
+  "status": "scaled500_complete",
+  "interpretation": "L78 adapter is functionally tied with student_pruned_base on limit=500 external eval. Deltas are within +/-0.006 across tracked metrics.",
+  "limit": 500,
+  "tasks": [
+    "arc_easy",
+    "arc_challenge",
+    "hellaswag",
+    "truthfulqa_mc1"
+  ],
+  "baseline_key": "student_pruned_base_scaled500",
+  "candidate_key": "l78_adapter_scaled500",
+  "delta_min": -0.006,
+  "delta_max": 0.006,
+  "delta_mean": -0.000857,
+  "wins": 3,
+  "losses": 4,
+  "ties": 0,
+  "rows": [
+    {
+      "task": "arc_challenge",
+      "metric": "acc",
+      "student_pruned_base": 0.492,
+      "l78_adapter": 0.486,
+      "delta_l78_minus_base": -0.006
+    },
+    {
+      "task": "arc_challenge",
+      "metric": "acc_norm",
+      "student_pruned_base": 0.514,
+      "l78_adapter": 0.508,
+      "delta_l78_minus_base": -0.006
+    },
+    {
+      "task": "arc_easy",
+      "metric": "acc",
+      "student_pruned_base": 0.792,
+      "l78_adapter": 0.788,
+      "delta_l78_minus_base": -0.004
+    },
+    {
+      "task": "arc_easy",
+      "metric": "acc_norm",
+      "student_pruned_base": 0.758,
+      "l78_adapter": 0.754,
+      "delta_l78_minus_base": -0.004
+    },
+    {
+      "task": "hellaswag",
+      "metric": "acc",
+      "student_pruned_base": 0.492,
+      "l78_adapter": 0.494,
+      "delta_l78_minus_base": 0.002
+    },
+    {
+      "task": "hellaswag",
+      "metric": "acc_norm",
+      "student_pruned_base": 0.638,
+      "l78_adapter": 0.644,
+      "delta_l78_minus_base": 0.006
+    },
+    {
+      "task": "truthfulqa_mc1",
+      "metric": "acc",
+      "student_pruned_base": 0.358,
+      "l78_adapter": 0.364,
+      "delta_l78_minus_base": 0.006
+    }
+  ],
+  "conclusion": {
+    "supports_theory": true,
+    "what_is_supported": "The recovered all-MLP ternary L78 adapter preserves external benchmark quality relative to the pruned base in this limit=500 test.",
+    "what_is_not_yet_supported": "This still does not prove packed ternary runtime speed or memory savings during actual inference using mlp_ternary_2bit.bin."
+  },
+  "recommended_next_step": "Run full/no-limit external eval only if we need stronger publication-grade evidence; otherwise move to runtime/loader proof."
+}

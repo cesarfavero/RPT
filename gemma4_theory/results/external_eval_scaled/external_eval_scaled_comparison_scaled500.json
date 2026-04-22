@@ -7,50 +7,50 @@
       "task": "arc_challenge",
       "metric": "acc",
       "student_pruned_base": 0.492,
-      "l78_adapter": null,
-      "delta_l78_minus_base": null
+      "l78_adapter": 0.486,
+      "delta_l78_minus_base": -0.006
     },
     {
       "task": "arc_challenge",
       "metric": "acc_norm",
       "student_pruned_base": 0.514,
-      "l78_adapter": null,
-      "delta_l78_minus_base": null
+      "l78_adapter": 0.508,
+      "delta_l78_minus_base": -0.006
     },
     {
       "task": "arc_easy",
       "metric": "acc",
       "student_pruned_base": 0.792,
-      "l78_adapter": null,
-      "delta_l78_minus_base": null
+      "l78_adapter": 0.788,
+      "delta_l78_minus_base": -0.004
     },
     {
       "task": "arc_easy",
       "metric": "acc_norm",
       "student_pruned_base": 0.758,
-      "l78_adapter": null,
-      "delta_l78_minus_base": null
+      "l78_adapter": 0.754,
+      "delta_l78_minus_base": -0.004
     },
     {
       "task": "hellaswag",
       "metric": "acc",
       "student_pruned_base": 0.492,
-      "l78_adapter": null,
-      "delta_l78_minus_base": null
+      "l78_adapter": 0.494,
+      "delta_l78_minus_base": 0.002
     },
     {
       "task": "hellaswag",
       "metric": "acc_norm",
       "student_pruned_base": 0.638,
-      "l78_adapter": null,
-      "delta_l78_minus_base": null
+      "l78_adapter": 0.644,
+      "delta_l78_minus_base": 0.006
     },
     {
       "task": "truthfulqa_mc1",
       "metric": "acc",
       "student_pruned_base": 0.358,
-      "l78_adapter": null,
-      "delta_l78_minus_base": null
+      "l78_adapter": 0.364,
+      "delta_l78_minus_base": 0.006
     }
   ]
 }

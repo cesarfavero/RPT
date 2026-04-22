@@ -61,7 +61,66 @@
     }
   },
   "l78_adapter_scaled500": {
-    "exists": false,
-    "requested_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500.json"
+    "exists": true,
+    "path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500_2026-04-22T14-33-54.783777.json",
+    "metrics": {
+      "arc_challenge": {
+        "acc": 0.486,
+        "acc_norm": 0.508
+      },
+      "arc_easy": {
+        "acc": 0.788,
+        "acc_norm": 0.754
+      },
+      "hellaswag": {
+        "acc": 0.494,
+        "acc_norm": 0.644
+      },
+      "truthfulqa_mc1": {
+        "acc": 0.364
+      }
+    },
+    "n_samples": {
+      "truthfulqa_mc1": {
+        "original": 817,
+        "effective": 500
+      },
+      "hellaswag": {
+        "original": 10042,
+        "effective": 500
+      },
+      "arc_challenge": {
+        "original": 1172,
+        "effective": 500
+      },
+      "arc_easy": {
+        "original": 2376,
+        "effective": 500
+      }
+    },
+    "config": {
+      "model": "hf",
+      "model_args": {
+        "pretrained": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned",
+        "peft": "/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78",
+        "trust_remote_code": true
+      },
+      "model_num_parameters": 2666258688,
+      "model_dtype": "torch.bfloat16",
+      "model_revision": "main",
+      "model_sha": "",
+      "peft_sha": "",
+      "batch_size": "1",
+      "batch_sizes": [],
+      "device": "cuda:0",
+      "use_cache": null,
+      "limit": 500.0,
+      "bootstrap_iters": 100000,
+      "gen_kwargs": {},
+      "random_seed": 0,
+      "numpy_seed": 1234,
+      "torch_seed": 1234,
+      "fewshot_seed": 1234
+    }
   }
 }

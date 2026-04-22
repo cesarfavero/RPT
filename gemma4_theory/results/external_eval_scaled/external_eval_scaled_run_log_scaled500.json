@@ -28,9 +28,7 @@
     "command": "lm_eval --model hf --model_args \"pretrained=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_pruned,peft=/content/drive/MyDrive/RPT/gemma4_theory/checkpoints/student_ternary_recovered_l78,trust_remote_code=True\" --tasks arc_easy,arc_challenge,hellaswag,truthfulqa_mc1 --batch_size 1 --limit 500 --output_path /content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500.json",
     "output_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500.json",
     "log_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500.log",
-    "status": "ok",
-    "returncode": 0,
-    "elapsed_seconds": 151.29,
-    "result_path": null
+    "status": "skipped_existing",
+    "result_path": "/content/drive/MyDrive/RPT/gemma4_theory/results/external_eval_scaled/l78_adapter_scaled500_2026-04-22T14-33-54.783777.json"
   }
 ]
