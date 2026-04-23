@@ -247,6 +247,7 @@ Runtime Triton integrado:
 - CLI: `runtime/packed_recovered_l78/run_triton_inference.py`
 - notebook: `24_integrate_triton_ternary_runtime`
 - objetivo: medir o modelo completo com `TritonPackedTernaryLinear`, mantendo `100/100` e VRAM baixa
+- se o Colab falhar com `ModuleNotFoundError: triton_loader`, atualizar a pasta `runtime/packed_recovered_l78` no Drive ou rodar `git pull origin main`
 
 Importância:
 - prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
