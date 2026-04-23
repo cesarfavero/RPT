@@ -175,7 +175,7 @@ O notebook 24 integra o kernel Triton no modelo completo e roda a avaliação da
 
 Critério: preservar `100/100`, manter VRAM baixa e superar claramente o notebook 22 em tokens/s.
 
-Se o notebook 24 falhar com `ModuleNotFoundError: triton_loader`, o Drive está com a pasta `runtime/packed_recovered_l78` antiga. Fazer `git pull origin main` em `/content/drive/MyDrive/RPT` ou subir novamente a pasta `runtime/packed_recovered_l78` completa.
+Se o Drive estiver com a pasta `runtime/packed_recovered_l78` antiga, o notebook 24 tenta baixar automaticamente do GitHub os arquivos versionados que estiverem ausentes antes de montar `build/distributable_packed_recovered_l78`.
 
 ## Importância
 
