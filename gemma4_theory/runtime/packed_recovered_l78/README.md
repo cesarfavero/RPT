@@ -1,43 +1,139 @@
-# RPT Packed Recovered L78 Runtime
+# Packed Recovered L78 Runtime
 
-Runtime de inferência para o artefato `packed/materialized L78`.
+This runtime is the execution layer for the packed ternary Gemma bundle.
 
-## Estado técnico
+It exists in three modes:
 
-Este runtime executa o modelo validado no marco packed recovered L78:
+1. materialized hybrid runtime
+2. native structural runtime
+3. Triton runtime
 
-```text
-student_pruned -> materialize packed MLP -> recovered adapter
+The current recommended production path is the Triton runtime.
+
+## Current Recommended Use
+
+If you downloaded the production bundle zip, the normal entrypoint is:
+
+```bash
+python runtime/run_triton_inference.py --model-dir . --prompt "Qual a capital da França?"
 ```
 
-Ele é executável e reproduzível, mas ainda não é um runtime ternário nativo. O `packed_bin` substitui os 78 MLPs no carregamento; a execução final ainda usa tensores materializados no modelo base.
+This assumes you are inside the extracted bundle directory:
 
-## Layout esperado do modelo
+```text
+production_triton_packed_recovered_l78/
+```
 
-Para uma pasta `MODEL_DIR`, coloque:
+## Expected Bundle Layout
 
 ```text
 MODEL_DIR/
   student_pruned/
-    config.json
-    tokenizer.json
-    tokenizer_config.json
-    model-*.safetensors ou pytorch_model*.bin
   adapter_recovered_l78/
-    adapter_config.json
-    adapter_model.safetensors
   packed/
     manifest.json
     mlp_ternary_2bit.bin
   runtime/
     loader.py
+    native_loader.py
+    triton_loader.py
     run_inference.py
+    run_native_inference.py
+    run_triton_inference.py
     requirements.txt
+  production_manifest.json
+  prewarm_profile.json
+  PRODUCTION_USAGE.txt
 ```
 
-O notebook `21_build_distributable_packed_recovered_l78.ipynb` monta essa estrutura automaticamente a partir do Drive/local.
+## Runtime Modes
 
-## Instalação
+### 1. Materialized Hybrid
+
+Command:
+
+```bash
+python runtime/run_inference.py --model-dir /path/to/MODEL_DIR --prompt "Qual a capital da França?"
+```
+
+Behavior:
+
+- loads `student_pruned`
+- materializes packed ternary MLPs into dense weights
+- applies the recovered adapter
+- runs as a hybrid dense execution path
+
+Use this when:
+
+- you want the simplest fallback path;
+- you do not need the Triton path.
+
+### 2. Native Structural Prototype
+
+Command:
+
+```bash
+python runtime/run_native_inference.py --model-dir /path/to/MODEL_DIR --prompt "Qual a capital da França?"
+```
+
+Behavior:
+
+- replaces the MLP base layers with `PackedTernaryLinear`
+- keeps packed tensors as persistent buffers
+- still uses a PyTorch unpack path in `forward`
+
+Use this when:
+
+- you want to validate packed structural execution;
+- performance is not the main goal.
+
+### 3. Triton Runtime
+
+Command:
+
+```bash
+python runtime/run_triton_inference.py --model-dir /path/to/MODEL_DIR --prompt "Qual a capital da França?"
+```
+
+Behavior:
+
+- replaces the MLP base layers with `TritonPackedTernaryLinear`
+- uses the Triton kernel for the packed MLP path
+- is the current best runtime path in this project
+
+Use this when:
+
+- you want the current production-style path;
+- you are on Linux/NVIDIA/Colab-compatible environment.
+
+## What Was Validated
+
+### Functional validation
+
+The Triton runtime preserved the packed recovered model behavior on the local suite:
+
+- `78` MLP base layers replaced
+- `packed_sha256` validated
+- local 100-question suite: `1.00`
+
+### Runtime diagnosis
+
+Initial benchmark:
+
+- good `p50`
+- very bad `p95`
+- cause: cold compile / shape warmup, not steady-state inference weakness
+
+After production prewarm:
+
+- latency stabilized to roughly `0.35s` to `1.02s` in the production verification set
+- average throughput around `5.66 tok/s`
+
+That is why the production bundle includes `prewarm_profile.json`.
+
+## Installation
+
+Inside the extracted bundle root:
 
 ```bash
 python -m venv .venv
@@ -45,62 +141,60 @@ source .venv/bin/activate
 pip install -r runtime/requirements.txt
 ```
 
-## Inferência
+If your environment needs Hugging Face authentication for base model access:
 
 ```bash
-python runtime/run_inference.py \
-  --model-dir /path/to/MODEL_DIR \
-  --prompt "Qual a capital da França?"
+export HF_TOKEN=your_token_here
 ```
 
-## Protótipo nativo estrutural
+## First Run
 
-O runtime também inclui um protótipo nativo estrutural:
+From the bundle root:
 
 ```bash
-python runtime/run_native_inference.py \
-  --model-dir /path/to/MODEL_DIR \
-  --prompt "Qual a capital da França?"
+python runtime/run_triton_inference.py --model-dir . --prompt "Qual a capital da França?"
 ```
 
-Diferença:
-
-- `run_inference.py`: materializa os 78 MLPs packed nos pesos densos antes da inferência.
-- `run_native_inference.py`: substitui as bases MLP por `PackedTernaryLinear`, mantendo o packed como buffer persistente.
-
-O protótipo nativo ainda não tem kernel otimizado. Ele desempacota no `forward`, então pode ser mais lento; o objetivo é validar compatibilidade funcional antes de implementar CUDA/Triton.
-
-## Protótipo Triton integrado
-
-Depois do spike de kernel, o runtime inclui uma CLI com `TritonPackedTernaryLinear`:
+If you want a second quick check:
 
 ```bash
-python runtime/run_triton_inference.py \
-  --model-dir /path/to/MODEL_DIR \
-  --prompt "Qual a capital da França?"
+python runtime/run_triton_inference.py --model-dir . --prompt "Quanto é 12 x 8?"
 ```
 
-Diferença:
+## What The User Actually Downloaded
 
-- `run_native_inference.py`: usa `PackedTernaryLinear` e desempacota com PyTorch no `forward`.
-- `run_triton_inference.py`: usa `TritonPackedTernaryLinear` e chama kernel Triton no `forward`.
+When you download the production zip, you are not downloading just a checkpoint.
 
-O caminho Triton ainda é experimental. Ele deve preservar a acurácia do notebook 22 e melhorar tokens/s contra o runtime nativo estrutural antes de virar default.
+You are downloading:
 
-## Verificação rápida
+- dense base checkpoint
+- recovered adapter
+- packed ternary artifact
+- runtime code
+- production manifest
+- prewarm profile
 
-```bash
-python runtime/run_inference.py \
-  --model-dir /path/to/MODEL_DIR \
-  --prompt "Quanto é 12 x 8?" \
-  --max-new-tokens 24
-```
+That is why the bundle is usable. It is the complete execution package for the supported environment.
 
-## Próximo marco de leveza real
+## Limitations
 
-Para reduzir memória de inferência de verdade, o próximo runtime precisa fazer uma destas duas coisas:
+Current limitations are still important:
 
-1. Remover os MLPs densos do checkpoint distribuído e materializar apenas a partir do packed no carregamento.
-2. Executar os MLPs packed diretamente com módulo/kernel ternário, sem materializar para float.
+- target environment is Linux/NVIDIA/Colab, not Apple Silicon or Ollama;
+- external benchmark coverage for the final bundle is still narrower than the local benchmark story;
+- some dependency versions may emit warnings (`peft`, `torchao`) even when execution succeeds;
+- this is a production-style engineering bundle, not a universal runtime distribution yet.
 
-Enquanto isso não existir, o pacote é executável e menor na parte empacotada, mas ainda depende da base densa.
+## Honest Positioning
+
+Correct positioning:
+
+- usable ternary packed Gemma-derived runtime bundle for Linux/NVIDIA/Colab
+- strong local benchmark and functional runtime validation
+- real packed artifact plus real execution path
+
+Incorrect positioning:
+
+- universal consumer installer
+- native M1/Ollama package
+- fully hardware-agnostic runtime

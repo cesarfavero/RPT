@@ -1,281 +1,264 @@
-# Gemma 4 Theory Track
+# Gemma 2B Ternary Runtime Track
 
-Esta pasta separa a nova trilha experimental para validar a teoria incrementalmente em um modelo denso moderno.
+This folder is the current practical track of the repository.
 
-## Estrutura
+Goal:
 
-- `data/gemma4_100_questions.json`: 100 perguntas com gabarito e categorias.
-- `notebooks/01_baseline_eval_gemma4.ipynb`: baseline do modelo e métrica inicial.
-- `notebooks/02_progressive_pruning_gemma4.ipynb`: pruning progressivo em modelo denso.
-- `notebooks/03_recovery_distillation_gemma4.ipynb`: recuperação guiada pelo teacher original.
-- `notebooks/04_quantization_gemma4.ipynb`: PTQ/QAT intermediário.
-- `notebooks/05_ternary_qat_ste_gemma4.ipynb`: tentativa de ternarização estilo BitNet.
-- `notebooks/06_ternary_recovery_gemma4.ipynb`: recovery leve após snap ternário parcial.
-- `notebooks/07_progressive_ternary_expansion_gemma4.ipynb`: expansão curricular do piloto ternário com recovery por estágios.
-- `notebooks/08_consolidate_mlp_ternary_results.ipynb`: consolidação dos resultados da fase MLP ternária.
-- `notebooks/09_ternary_deployment_audit.ipynb`: auditoria de deploy, estimativa de packing ternário e próximos passos de runtime.
-- `notebooks/10_export_packed_ternary_mlp.ipynb`: exporta os MLPs ternários em artefato 2-bit empacotado e testa reconstrução.
-- `notebooks/11_validate_hybrid_ternary_package.ipynb`: valida o pacote híbrido exportado e o adapter `l78`.
-- `notebooks/12_external_eval_l78_hybrid.ipynb`: prepara avaliação externa com `lm-evaluation-harness`.
-- `notebooks/13_external_eval_scaled_l78.ipynb`: avaliação externa ampliada do adapter `l78`.
-- `notebooks/14_validate_packed_ternary_reconstruction.ipynb`: valida reconstrução packed/materialized.
-- `notebooks/15_recover_packed_ternary_path.ipynb`: recovery inicial do caminho packed/materialized.
-- `notebooks/16_reference_gemma2b_question_eval.ipynb`: avaliação de referência HF original e `student_pruned`.
-- `notebooks/17_t4_resume_packed_recovery.ipynb`: recovery T4 retomável do caminho packed/materialized.
-- `notebooks/18_test_packed_recovered_l78.ipynb`: validação pós-marco do checkpoint packed recuperado, sem retreino.
-- `notebooks/20_measure_and_build_packed_recovered_l78.ipynb`: mede custo operacional do checkpoint packed recuperado e gera pacote de build reproduzível.
-- `notebooks/21_build_distributable_packed_recovered_l78.ipynb`: monta uma pasta distribuível executável do modelo packed recovered L78.
-- `notebooks/22_native_ternary_mlp_runtime.ipynb`: testa o protótipo nativo estrutural com `PackedTernaryLinear`.
-- `notebooks/23_triton_ternary_matmul_spike.ipynb`: spike de kernel Triton para matmul ternária packed nos shapes reais.
-- `notebooks/24_integrate_triton_ternary_runtime.ipynb`: integra o kernel Triton no modelo completo e reavalia o runtime.
-- `runtime/packed_recovered_l78/`: runtime CLI versionado para carregar e executar o pacote distribuível.
-- `notebooks/06_result_analysis_gemma4.ipynb`: consolidação dos resultados que você vai me devolver.
-- `utils/eval_utils.py`: utilitários compartilhados de avaliação e logging.
-- `results/`: saídas JSON/CSV de cada execução.
+- start from a dense modern Gemma 2B-class model;
+- prune it without losing function;
+- ternarize the full MLP path progressively;
+- recover the ternary path until it remains usable;
+- export the packed ternary artifact;
+- integrate a real runtime;
+- ship a usable bundle for Linux/NVIDIA/Colab.
 
-## Fluxo correto
+This is not only a theory folder anymore. It now contains a reproducible path from benchmarked model surgery to a production-style runtime bundle.
 
-1. Rodar `01_baseline_eval_gemma4.ipynb`.
-2. Me mandar os resultados salvos em `results/`.
-3. Rodar `02_progressive_pruning_gemma4.ipynb` com cortes pequenos.
-4. Se degradar, usar `03_recovery_distillation_gemma4.ipynb`.
-5. Só depois entrar em `04` e `05`.
-6. Validar `06_ternary_recovery_gemma4.ipynb`.
-7. Escalar em `07_progressive_ternary_expansion_gemma4.ipynb`.
-8. Consolidar a fase MLP em `08_consolidate_mlp_ternary_results.ipynb`.
-9. Auditar deploy/packing em `09_ternary_deployment_audit.ipynb`.
-10. Exportar artefato MLP ternário empacotado em `10_export_packed_ternary_mlp.ipynb`.
-11. Validar pacote híbrido em `11_validate_hybrid_ternary_package.ipynb`.
-12. Preparar benchmark externo em `12_external_eval_l78_hybrid.ipynb`.
-13. Validar/recover o caminho packed/materialized em `14`, `15` e `17_t4_resume_packed_recovery.ipynb`.
-14. Reproduzir o checkpoint packed recuperado sem retreino em `18_test_packed_recovered_l78.ipynb`.
-15. Medir carga, tamanho, RAM/VRAM, throughput e gerar build operacional em `20_measure_and_build_packed_recovered_l78.ipynb`.
-16. Montar pacote distribuível executável em `21_build_distributable_packed_recovered_l78.ipynb`.
-17. Testar runtime nativo estrutural em `22_native_ternary_mlp_runtime.ipynb`.
-18. Validar spike de kernel Triton em `23_triton_ternary_matmul_spike.ipynb`.
-19. Integrar Triton no runtime completo em `24_integrate_triton_ternary_runtime.ipynb`.
-20. Consolidar tudo em `06_result_analysis_gemma4.ipynb`.
+## Executive Summary
 
-## Estado atual da hipótese
+Local 100-question benchmark:
 
-- `01` baseline: `0.90`
-- `02` pruning progressivo: até `~15.96%` de sparsity global sem degradar, chegando a `0.92`
-- `03` checkpoint podado reconstruído: `0.92`
-- `04` quantização:
-  - `pruned_reference = 0.92`
-  - `pruned_8bit = 0.92`
-  - `pruned_4bit = 0.91`
-- `05` ternary snap direto em 8 camadas MLP: `0.76`
-- `06` ternary recovery após o snap parcial: `0.91`
-- `07` expansão para 12 projeções MLP:
-  - pré-recovery: `0.46`
-  - pós-recovery: `0.92`
-- `07` expansão para 16 projeções MLP:
-  - pré-recovery: `0.16`
-  - pós-recovery: `0.92`
-- `07` expansão para 18 projeções MLP:
-  - pré-recovery: `0.12`
-  - pós-recovery: `0.92`
-- `07` expansão para 21 projeções MLP:
-  - pré-recovery: `0.02`
-  - pós-recovery: `0.91`
-- `07` expansão para 21 projeções MLP com recovery forte:
-  - pré-recovery: `0.02`
-  - pós-recovery: `0.92`
-- `07` expansão para 24 projeções MLP com recovery forte:
-  - pré-recovery: `0.05`
-  - pós-recovery: `0.92`
-- `07` expansão para 36 projeções MLP com recovery forte:
-  - pré-recovery: `0.07`
-  - pós-recovery: `0.91`
-- `07` repetição de 36 projeções MLP com recovery mais forte:
-  - pré-recovery: `0.07`
-  - pós-recovery: `0.91`
-- `07` expansão para 48 projeções MLP com recovery forte:
-  - pré-recovery: `0.03`
-  - pós-recovery: `0.91`
+- original `google/gemma-2-2b-it`: `0.90`
+- `student_pruned`: `0.92`
+- packed ternary recovered path: `1.00`
+- Triton integrated runtime: `1.00`
 
-Leitura honesta:
-- a teoria está forte para `pruning + 8bit`
-- ternário direto sem adaptação falhou
-- ternário com adaptação ficou sustentado até `24` projeções MLP no platô `0.92`, usando recovery forte
-- em `36` projeções MLP, dois recoveries preservaram função em `0.91`, mas saíram do platô; antes de saltar para `48`, o próximo teste deve medir o intermediário `30`
+Operational result on T4 after production prewarm:
 
-## Estratégia de expansão
+- `avg_tokens_per_sec ~= 5.66`
+- `min_latency ~= 0.35s`
+- `max_latency ~= 1.02s`
 
-Não vamos varrer de `3 em 3` até o fim. Depois de validar `21` com recovery forte, a expansão passa a ser por saltos:
+Honest reading:
 
-```text
-24 -> 36 -> 48 -> 60 -> 78
-```
+- the local benchmark improved versus the original Gemma 2B reference;
+- the MLP path was fully converted to packed ternary;
+- the packed path is functionally recoverable;
+- the current runtime is usable in Linux/NVIDIA/Colab;
+- the remaining work is portability and broader external validation, not “does this pipeline work at all?”.
 
-Critério:
-- se o estágio mantiver `0.92`, avançar para o próximo salto
-- se cair para `0.91`, repetir o mesmo estágio com recovery mais forte antes de avançar
-- se cair abaixo de `0.90`, testar o ponto intermediário entre o último estágio bom e o estágio que falhou
-- `78` significa todos os MLPs ternarizados em um modelo com 26 blocos e 3 projeções MLP por bloco
+## What Was Proved
 
-Depois de `36` repetir `0.91` mesmo com recovery mais forte, existem duas rotas:
-- mapear o limite fino entre `24` e `36` usando `30`/`33`
-- ou avançar para o próximo regime com `48` usando recovery mais forte
+### 1. Pruning helped instead of hurting on the local suite
 
-Decisão operacional atual: testar `48` para observar se o regime colapsa, estabiliza em `0.91`, ou ainda consegue voltar a `0.92`.
+Reference evaluation:
 
-Resultado do `48`: estabilizou em `0.91`, sem colapsar. Próximo passo operacional: repetir `48` com recovery mais longo antes de tentar `60`.
+- original HF Gemma 2B: `0.90`
+- `student_pruned`: `0.92`
 
-Decisão revisada: `0.91` é aceitável para a fase exploratória de expansão. A partir de `48`, o claim deixa de ser "sem perda contra o melhor checkpoint" e passa a ser "preservação alta com perda de 1 ponto". O próximo teste operacional é `60`, mantendo recovery forte.
+That matters because the whole ternary track is built on top of `student_pruned`. The base checkpoint was not degraded; it improved locally.
 
-Resultado do `60`: pré-recovery `0.00`, pós-recovery `0.92`. Isso mostra recuperação total contra o melhor checkpoint mesmo após colapso bruto completo do benchmark. Próximo teste operacional: `78`, todos os MLPs ternarizados.
+### 2. Direct ternary snap alone was not enough
 
-Resultado do `78`: todos os MLPs ternarizados.
-- pré-recovery: `0.01`
-- pós-recovery: `0.92`
+The early ternary attempt degraded heavily. That established an important constraint:
 
-Conclusão inicial da fase MLP: concluída com sucesso no benchmark local. O próximo passo não deve ser ternarizar attention imediatamente; deve ser consolidar resultados, validar em benchmarks maiores e medir custo/tamanho/latência.
+- ternary conversion without guided recovery is not the product;
+- ternary conversion plus recovery is the product path.
 
-## Marco packed/materialized L78
+### 3. Progressive ternary expansion worked
 
-O teste `17_t4_resume_packed_recovery` fecha a recuperação do caminho realmente empacotado/materializado (`mlp_ternary_2bit.bin`) para `78` projeções MLP ternarizadas.
+The project did not jump directly from dense to fully ternary MLPs. It expanded in stages.
 
-Resultado oficial do run:
-- fase final: `phase_1200`
-- passos concluídos: `1200`
-- acurácia final: `1.00` (`100/100`)
-- target mínimo: `0.90`
-- referência limpa `student_pruned + l78`: `0.92`
-- packed base sem adapter: `0.01`
-- adapter antigo `l78` aplicado no caminho packed: `0.63`
-- delta contra adapter antigo no packed: `+0.37`
-- delta contra referência limpa: `+0.08`
+Important milestones:
 
-Validação pós-marco:
-- notebook: `18_test_packed_recovered_l78`
-- sem retreino: sim
-- tensores packed MLP aplicados: `78`
-- SHA do packed bin confirmado: `0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116`
-- resultado reproduzido: `1.00` (`100/100`)
-- arquivo: `results/packed_recovery/18_test_packed_recovered_l78_20260422_205445.json`
+- full MLP expansion at `78` ternary MLP projections reached post-recovery `0.92`
+- that proved the clean checkpoint path was viable
 
-Medição operacional:
-- notebook: `20_measure_and_build_packed_recovered_l78`
-- ambiente medido: Colab/T4 (`14.56 GB` VRAM)
-- tamanho bruto dos componentes:
-  - `student_pruned`: `4.90 GB`
-  - adapter recovered L78: `1016.65 MB`
-  - `mlp_ternary_2bit.bin`: `394.88 MB`
-  - `manifest.json`: `29.05 KB`
-- carga medida:
-  - tokenizer: `7.44s`
-  - `student_pruned`: `103.56s`
-  - materialização packed MLP: `26.93s`
-  - adapter recovered: `14.44s`
-  - total aproximado: `152.38s`
-- VRAM medida:
-  - após base: `4.87 GB`
-  - após adapter: `5.10 GB`
-  - pico: `5.33 GB`
-- smoke test de geração: `5` prompts, `13` tokens gerados, média `7.75 tokens/s`
-- arquivo: `results/packed_recovery/20_measure_and_build_packed_recovered_l78_20260422_211727.json`
-- build operacional gerado: `build/packed_recovered_l78/`
+### 4. Packed ternary export worked
 
-Leitura operacional:
-- o caminho atual é funcional e cabe em T4, mas ainda depende do `student_pruned` como base densa
-- o `packed_bin` substitui somente os `78` MLPs; ele ainda não é um runtime ternário autônomo
-- o adapter recovered corrige o comportamento sobre a base + MLPs packed, mas não substitui o modelo base
-- o próximo marco de runtime deve remover duplicação dos MLPs densos ou criar execução nativa ternária, antes de afirmar redução real de memória/inferência
+The ternary MLPs were exported into:
 
-Distribuição executável:
-- runtime versionado: `runtime/packed_recovered_l78/`
-- notebook de empacotamento: `21_build_distributable_packed_recovered_l78`
-- layout gerado: `build/distributable_packed_recovered_l78/`
-- comando esperado após montar/baixar o pacote:
+- `deploy/manifest.json`
+- `deploy/mlp_ternary_2bit.bin`
 
-```bash
-python runtime/run_inference.py --model-dir . --prompt "Qual a capital da França?"
-```
+This is the compact artifact that represents the ternary MLP path.
 
-Este é o formato "baixei e executei". Ele ainda é `materialized_hybrid`: executável e reproduzível, mas não deve ser vendido como runtime ternário nativo até existir execução packed sem materializar os MLPs em float.
+### 5. Packed path recovery worked
 
-Runtime nativo estrutural:
-- runtime: `runtime/packed_recovered_l78/native_loader.py`
-- CLI: `runtime/packed_recovered_l78/run_native_inference.py`
-- notebook: `22_native_ternary_mlp_runtime`
-- abordagem: carrega o adapter recovered e substitui as bases MLP por `PackedTernaryLinear`
-- status: protótipo estrutural validado em smoke test, ainda sem kernel otimizado
-- o notebook 22 agora roda as 100 perguntas por padrão; para pular em depuração rápida, definir `RPT_NATIVE_RUN_FULL_100=0`
-- avaliador usa `expected_answer` e `accepted_answers` do dataset local
-- resultado reportado do primeiro run:
-  - `replaced_count`: `78`
-  - runtime: `native_structural_prototype`
-  - `is_native_ternary_runtime`: `true`
-  - load: `102.06s`
-  - VRAM alocada após load: `2.40 GB`
-  - VRAM reservada após load: `5.28 GB`
-  - pico CUDA: `5.33 GB`
-  - smoke test: `5` prompts coerentes, `15` tokens gerados, média `2.22 tokens/s`
-  - avaliação 100 perguntas: ainda não rodada nesse primeiro teste
-- validação completa posterior:
-  - arquivo: `results/packed_recovery/22_native_ternary_mlp_runtime_20260422_232225.json`
-  - `replaced_count`: `78`
-  - acurácia: `1.00` (`100/100`)
-  - falhas: `0`
-  - load: `115.06s`
-  - VRAM alocada após load: `2.40 GB`
-  - VRAM reservada após load: `5.28 GB`
-  - pico CUDA: `5.33 GB`
-  - smoke test: `5` prompts, `15` tokens, média `2.29 tokens/s`
-- leitura: o protótipo reduziu a memória persistente alocada em relação ao materialized hybrid (`5.10 GB` -> `2.40 GB`), mas ficou mais lento porque ainda desempacota no `forward`
-- limitação: serve para validar compatibilidade antes de CUDA/Triton; performance real exige kernel otimizado
-- nota de ambiente: se o Colab tiver `torchao 0.10.0` com PEFT novo, atualizar para `torchao>=0.16.0`; o notebook 22 faz essa correção no bootstrap
+The packed/materialized path is much harder than the clean checkpoint path.
 
-Spike Triton:
-- notebook: `23_triton_ternary_matmul_spike`
-- arquivo: `results/packed_recovery/23_triton_ternary_matmul_spike_20260422_234112.json`
-- ambiente: Colab/T4, PyTorch `2.10.0+cu128`, Triton `3.6.0`
-- resultado: `success=true`
-- casos testados: `4`
-- shapes reais:
-  - `gate/up`: `[9216, 2304]`
-  - `down`: `[2304, 9216]`
-- erro máximo observado: `0.00137`
-- speedup médio contra `unpack_then_linear`: `187.43x`
-- speedup médio contra dense materializado: `0.109x`
-- leitura: o kernel Triton remove o gargalo extremo do unpack no `forward`, mas ainda não vence `F.linear` denso materializado; o próximo passo é integrar no runtime nativo e medir tokens/s do modelo completo
+Key transition:
 
-Runtime Triton integrado:
-- runtime: `runtime/packed_recovered_l78/triton_loader.py`
-- CLI: `runtime/packed_recovered_l78/run_triton_inference.py`
-- notebook: `24_integrate_triton_ternary_runtime`
-- objetivo: medir o modelo completo com `TritonPackedTernaryLinear`, mantendo `100/100` e VRAM baixa
-- se o Drive estiver com runtime antigo, o notebook 24 baixa automaticamente os arquivos versionados do GitHub antes de montar o pacote
+- packed base without adapter: `0.01`
+- older adapter on packed path: `0.63`
+- recovered packed path (`17`/`18`): `1.00`
 
-Importância:
-- prova que o caminho packed/materialized não é apenas estruturalmente reconstruível; ele também é recuperável funcionalmente com adapter específico
-- separa o problema de runtime/packing do problema de capacidade: o packed puro colapsa (`0.01`), mas o recovery T4 devolve desempenho acima da referência local
-- fixa a ordem reprodutível de carregamento: carregar `student_pruned`, materializar `mlp_ternary_2bit.bin` via `manifest.json`, depois aplicar o adapter `student_packed_ternary_recovered_l78_t4_resume` com `PeftModel.from_pretrained`
-- estabelece o checkpoint packed recuperado como o melhor artefato local para validações seguintes, sujeito a confirmação em benchmarks maiores
+That is the point where the project stopped being “interesting only in notebooks” and became a real runtime candidate.
 
-Arquivos registrados:
-- `results/packed_recovery/17_t4_resume_report.json`
-- `results/packed_recovery/17_t4_resume_progress.json`
-- `results/packed_recovery/17_t4_resume_phase_1200_20260422_203242.json`
-- `results/packed_recovery/packed_base_required.json`
-- `results/packed_recovery/18_test_packed_recovered_l78_20260422_205445.json`
+### 6. Triton runtime integration worked
 
-Conclusão atualizada da fase MLP: concluída com sucesso no benchmark local e no caminho packed/materialized. O claim honesto é que o resultado atingiu e reproduziu `1.00` no benchmark local de 100 perguntas, acima da referência `0.92`; próximos passos exigem benchmark maior/externo, medição de custo/tamanho/latência e teste de robustez fora dessa bateria.
+The Triton runtime replaced all `78` MLP base layers and preserved the packed recovered behavior.
 
-Próximos passos após o marco:
-- criar uma bateria maior e inédita para medir generalização fora das 100 perguntas locais
-- comparar em protocolo único: HF Gemma original, `student_pruned`, clean `l78`, old `l78` no packed e recovered packed `l78`
-- executar `20_measure_and_build_packed_recovered_l78.ipynb` para medir tamanho, latência, VRAM/RAM, throughput e gerar um build operacional reproduzível
-- executar `21_build_distributable_packed_recovered_l78.ipynb` para gerar o pacote baixável/executável
-- iniciar `24_integrate_triton_ternary_runtime.ipynb`, usando o spike 23 como base, para medir o modelo completo com kernel Triton
-- só depois decidir entre avançar attention, runtime/export, ou uma fase de robustez do adapter packed
+Validated facts:
 
-## Regra do projeto
+- `runtime_kind = native_triton_prototype`
+- `is_native_ternary_runtime = true`
+- `is_optimized_kernel = true`
+- `replaced_count = 78`
+- local suite under Triton runtime: `1.00`
 
-Cada notebook salva um artefato em `results/` com timestamp. Não edite resultados manualmente; rode novamente.
+### 7. The latency tail was diagnosed and controlled
 
-## Regra de git
+The first clean runtime benchmark showed a bad latency tail.
 
-Sempre fechar cada etapa útil com `commit` e `push` para `origin`, para não perder estado experimental.
+The diagnosis notebook proved that:
+
+- steady-state inference was not the issue;
+- the long tail came from cold compile / warmup per prompt shape;
+- after prewarm, rep1 and rep>1 converge to a stable latency range.
+
+That enabled the production bundle stage.
+
+## Product Claim
+
+The correct product claim today is:
+
+- a Gemma-derived packed ternary runtime bundle for Linux/NVIDIA/Colab that preserves the recovered local benchmark behavior and is operational after prewarm.
+
+The incorrect product claim would be:
+
+- “universal drop-in Gemma replacement everywhere”
+- “already optimized for M1/Ollama”
+- “globally benchmark-superior across external suites”
+
+## Folder Map
+
+### Data
+
+- `data/gemma4_100_questions.json`: local benchmark used throughout the track.
+
+### Notebooks
+
+Core notebook order:
+
+1. `01_baseline_eval_gemma4.ipynb`
+2. `02_progressive_pruning_gemma4.ipynb`
+3. `03_pruned_checkpoint_eval_gemma4.ipynb`
+4. `04_quantization_eval_gemma4.ipynb`
+5. `05_ternary_next_step_gemma4.ipynb`
+6. `06_ternary_recovery_gemma4.ipynb`
+7. `07_progressive_ternary_expansion_gemma4.ipynb`
+8. `08_consolidate_mlp_ternary_results.ipynb`
+9. `09_ternary_deployment_audit.ipynb`
+10. `10_export_packed_ternary_mlp.ipynb`
+11. `11_validate_hybrid_ternary_package.ipynb`
+12. `12_external_eval_l78_hybrid.ipynb`
+13. `13_external_eval_scaled_l78.ipynb`
+14. `14_validate_packed_ternary_reconstruction.ipynb`
+15. `15_recover_packed_ternary_path.ipynb`
+16. `16_reference_gemma2b_question_eval.ipynb`
+17. `17_t4_resume_packed_recovery.ipynb`
+18. `18_test_packed_recovered_l78.ipynb`
+19. `20_measure_and_build_packed_recovered_l78.ipynb`
+20. `21_build_distributable_packed_recovered_l78.ipynb`
+21. `22_native_ternary_mlp_runtime.ipynb`
+22. `23_triton_ternary_matmul_spike.ipynb`
+23. `24_integrate_triton_ternary_runtime.ipynb`
+24. `25_benchmark_triton_runtime.ipynb`
+25. `26_diagnose_triton_latency_tail.ipynb`
+26. `27_build_production_triton_bundle.ipynb`
+
+### Runtime and Bundle
+
+- `runtime/packed_recovered_l78/`: runtime source files and CLIs.
+- `deploy/`: packed MLP artifact metadata and compact package files.
+- `build/production_triton_packed_recovered_l78/`: generated production bundle directory.
+
+### Results
+
+- `results/`: timestamped JSON outputs that act as the canonical record.
+
+## Key Results
+
+### Reference vs Improved Base
+
+- original Gemma 2B reference: `0.90`
+- `student_pruned`: `0.92`
+
+### Quantization Stage
+
+- `pruned_reference = 0.92`
+- `pruned_8bit = 0.92`
+- `pruned_4bit = 0.91`
+
+### Full MLP Ternary Expansion
+
+- `78` ternary MLP projections
+- post-recovery clean path: `0.92`
+
+### Packed Recovered Path
+
+- packed base: `0.01`
+- old adapter on packed path: `0.63`
+- recovered packed path: `1.00`
+
+### Triton Runtime
+
+- full local suite: `1.00`
+- `78` MLP base layers replaced
+- persistent CUDA allocated after load: `2.40 GB`
+- persistent CUDA reserved after load: `5.28 GB`
+
+### Runtime Performance Diagnosis
+
+Cold benchmark without production prewarm:
+
+- `p50 ~= 0.46s`
+- `p95 ~= 22.67s`
+- clear shape-compilation tail on first use
+
+Post-prewarm diagnosis:
+
+- `warm p50 ~= 0.48s`
+- `warm p95 ~= 0.67s`
+- average unweighted throughput `~= 7.50 tok/s`
+
+Production bundle verification:
+
+- `avg_tokens_per_sec ~= 5.66`
+- `min_latency ~= 0.35s`
+- `max_latency ~= 1.02s`
+
+## Recommended Current Entry Points
+
+### If you want the research proof
+
+Read:
+
+- `results/packed_recovery/24_integrate_triton_ternary_runtime_20260424_192203.json`
+- `results/packed_recovery/runtime_benchmarks/25_benchmark_triton_runtime_20260424_202518.json`
+- `results/packed_recovery/runtime_benchmarks/26_diagnose_triton_latency_tail_20260424_204619.json`
+- `results/packed_recovery/production_bundle/27_build_production_triton_bundle_20260424_212734.json`
+
+### If you want the usable package
+
+Read:
+
+- [`deploy/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/deploy/README.md)
+- [`runtime/packed_recovered_l78/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/runtime/packed_recovered_l78/README.md)
+
+## What The User Gets Today
+
+Today the user gets:
+
+- a production-style zip bundle for Linux/NVIDIA/Colab;
+- a compact packed ternary MLP artifact plus recovered adapter;
+- Triton runtime entrypoint;
+- prewarm profile and production manifest;
+- a model that is locally stronger than the original Gemma reference on the project suite.
+
+## What Still Needs Work
+
+Still open:
+
+- broader external benchmark validation for the final production bundle itself;
+- portability to consumer Windows/Linux GPU environments beyond the current tested path;
+- Apple Silicon / Ollama-style runtime compatibility;
+- cleaner dependency pinning around `peft` / `torchao` warnings;
+- production API/server wrappers.
+
+## Rules of This Track
+
+- every notebook writes timestamped artifacts into `results/`;
+- results are never edited by hand;
+- the repository should close each useful stage with commit + push.

@@ -1,79 +1,128 @@
-# RPT: Thermodynamic Predictive Networks
+# RPT
 
-Research repository for RPT experiments on ternary language models (BitNet b1.58), sparse pruning, and QAT/STE deployment.
+Research and engineering repository for two related tracks:
 
-## Current Status (Important)
+1. `BitNet / sparsity / QAT-STE` research that supports the paper track.
+2. `gemma4_theory/`, which is the current applied product track: take a modern dense Gemma 2B-class model, prune it, ternarize the MLP path, recover function, and ship a usable Triton runtime bundle.
 
-- **Primary validated result (2026-02-08):** BitNet b1.58-2B-4T + sparsity + QAT/STE deploy pipeline.
-- **Canonical outcome:** PPL **25.13 -> 16.39** (**-34.8%**), **42.6%** sparsity, coherent CPU generation via GGUF i2_s.
-- **Scope note:** this repository also contains historical/auxiliary experiments. They provide context, but are **not** the main publication claim.
+## What Matters Right Now
 
-## Paper Status
+If you are coming here for the current practical outcome, start in [`gemma4_theory/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/README.md).
 
-- **arXiv:** submission in progress (**pending endorsement/moderation**).
-- **Current source of truth:** `paper/rpt_sparsity_paper.tex` in this repository.
-- The arXiv URL will be added here once it is publicly available.
+That track has already validated the following on the local 100-question benchmark:
 
-## Main Entry Points
+- `google/gemma-2-2b-it` original: `0.90`
+- `student_pruned`: `0.92`
+- packed ternary path after recovered adapter: `1.00`
+- Triton-integrated packed runtime: `1.00`
 
-- `paper/rpt_sparsity_paper.tex`: publication source for the primary claim.
-- `sessions/2026-02-08/tracking.md`: canonical metrics/log for the successful deploy run.
-- `deploy/rpt_deploy_a100.py`: end-to-end deploy script for the successful pipeline.
-- `RPT_BitNet_Progressive_Sparsity.ipynb`: progressive pruning experiment.
-- `RPT_BitNet_Sparsity_Test.ipynb`: raw pruning experiment.
+This is the clearest current claim of the repository:
 
-## Highlights
+- we improved the local benchmark result versus the original Gemma 2B baseline;
+- we converted the entire MLP path to a packed ternary representation;
+- we recovered functionality on top of that packed path;
+- we produced a Linux/NVIDIA/Colab production-style runtime bundle.
 
-- Raw magnitude pruning on BitNet 2B improves PPL by **26.1%** at 10% sparsity (no fine-tuning).
-- Progressive pruning + fine-tuning on H100 improves PPL by up to **40.4%**.
-- Deploy pipeline (A100, QAT/STE, ternary snap, GGUF i2_s) reaches **PPL 16.39** from baseline **25.13** (**-34.8%**), with **42.6% sparsity** and coherent CPU generation.
-- Criticality signal: Lyapunov exponent approximately **-0.002** (near edge-of-chaos regime).
+## Product View
 
-## Public Artifacts
+The product story is not “we made a toy notebook”.
 
-- Model weights: https://huggingface.co/CesarFavero/rpt-bitnet-2b-pruned
-- GGUF artifacts: https://huggingface.co/CesarFavero/rpt-bitnet-2b-pruned-GGUF
+The product story is:
 
-## Repository Contents
+- start from a model that already answers useful everyday prompts;
+- improve its local benchmark score through controlled pruning/recovery;
+- compress the MLP path into a packed ternary artifact;
+- recover the packed path until it remains usable;
+- ship a runtime bundle that a user can download and run in a compatible environment.
 
-- `paper/`: paper source (`rpt_sparsity_paper.tex`) and NeurIPS style file.
-- `deploy/`: deployment scripts/notebooks (no large binaries committed).
-- `sessions/2026-02-08/tracking.md`: deploy tracking and final metrics.
-- Core code: `bitnet.py`, `model.py`, `trainer.py`.
-- Experiment notebooks:
-  - `RPT_BitNet_Microsoft.ipynb`
-  - `RPT_BitNet_Sparsity_Test.ipynb`
-  - `RPT_BitNet_Progressive_Sparsity.ipynb`
-  - `RPT_BitNet_Predictive_Coding.ipynb`
-  - `RPT_BitNet_Criticality.ipynb`
-- Documentation:
-  - `RPT_DOCUMENTO_COMPLETO.md`
-  - `RPT_VALIDACAO_BITNET2B.md`
-  - `REPRODUCIBILITY.md`
-  - `MODEL_CARD.md`
-  - `KNOWN_ISSUES.md`
+What is sellable now:
 
-## Historical Context
+- a technically usable packed ternary Gemma-derived runtime bundle for Linux + NVIDIA + Colab;
+- a reproducible research-to-runtime pipeline;
+- a strong demonstration that ternary conversion plus recovery can preserve or even improve local task behavior.
 
-- Earlier architecture/conversion explorations are kept for transparency and reproducibility context.
-- They should be interpreted as intermediate research artifacts, not as the final validated deliverable.
+What is not honest to claim yet:
 
-## Quick Start
+- native Apple Silicon production runtime;
+- Ollama compatibility;
+- broad external benchmark superiority;
+- production SLA across many hardware classes.
+
+## Current Status by Track
+
+### 1. BitNet / Paper Track
+
+This repository still contains the earlier BitNet-focused work:
+
+- paper source: `paper/rpt_sparsity_paper.tex`
+- deployment scripts: `deploy/`
+- historical notebooks and tracking files
+
+That remains important for the research history, but it is not the only active value in the repository anymore.
+
+### 2. Gemma Production Track
+
+The practical current path lives in `gemma4_theory/`.
+
+Key validated milestones:
+
+- baseline original Gemma 2B reference on local suite: `0.90`
+- pruned dense checkpoint: `0.92`
+- full MLP ternary expansion recovered on local suite: `0.92`
+- packed/materialized recovered path: `1.00`
+- Triton integrated runtime: `1.00`
+- post-prewarm production bundle verification on T4:
+  - `avg_tokens_per_sec ~= 5.66`
+  - `min_latency ~= 0.35s`
+  - `max_latency ~= 1.02s`
+
+That means the project is past “theory only”. It already has a working runtime bundle for the supported environment.
+
+## Where To Start
+
+### If you want the research narrative
+
+Open:
+
+- [`gemma4_theory/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/README.md)
+
+### If you want the packed artifact/runtime view
+
+Open:
+
+- [`gemma4_theory/deploy/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/deploy/README.md)
+- [`gemma4_theory/runtime/packed_recovered_l78/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/runtime/packed_recovered_l78/README.md)
+
+### If you already downloaded the production zip
+
+The target flow is:
 
 ```bash
-pip install -r requirements.txt
+unzip production_triton_packed_recovered_l78.zip
+cd production_triton_packed_recovered_l78
+python -m venv .venv
+source .venv/bin/activate
+pip install -r runtime/requirements.txt
+python runtime/run_triton_inference.py --model-dir . --prompt "Qual a capital da França?"
 ```
 
-To inspect main results, open and run notebooks listed above.
+More detail is documented in the runtime and deploy READMEs.
 
-## Reproducibility Notes
+## Repository Layout
 
-- See `REPRODUCIBILITY.md` for expected numbers and experiment-by-experiment instructions.
-- Environment-specific baseline PPL differs across T4/H100/A100 due precision/runtime settings; compare within the same environment.
+- `paper/`: paper source and publication-related files.
+- `deploy/`: legacy BitNet deploy track.
+- `gemma4_theory/`: current dense-to-pruned-to-ternary-to-runtime track.
+- `sessions/`: historical experiment logs.
+- `results/`: JSON/CSV outputs for tracked experiments.
 
-## Citation
+## Reproducibility
 
-See `CITATION.cff`.
+The rule of this repository is simple:
+
+- notebooks save timestamped JSON artifacts;
+- results are not edited by hand;
+- every useful experimental stage should end with git commit + push.
 
 ## License
 
