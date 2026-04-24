@@ -1,9 +1,22 @@
 # RPT
 
+Language versions:
+
+- English: `README.md`
+- Português: [`README.pt-BR.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.pt-BR.md)
+- 中文: [`README.zh-CN.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.zh-CN.md)
+- Русский: [`README.ru.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.ru.md)
+
 Research and engineering repository for two related tracks:
 
 1. `BitNet / sparsity / QAT-STE` research that supported the early paper and methodology stage.
-2. `gemma4_theory/`, which is the current applied product track: take a modern dense Gemma 2B-class model, prune it, ternarize the MLP path, recover function, and ship a usable Triton runtime bundle with our own method and runtime stack.
+2. `gemma4_theory/`, which is the current applied track: take a modern dense Gemma 2B-class model, prune it, ternarize the MLP path, recover function, and ship a usable Triton runtime bundle with our own method and runtime stack.
+
+## Intent
+
+This repository is a research and engineering project.
+
+It documents what was tested, what worked, what failed, and what is currently usable. It is not written as a sales offer, and claims should be read as technical claims bounded by the benchmarks and environments actually validated here.
 
 ## What Matters Right Now
 
@@ -27,7 +40,7 @@ This is the clearest current claim of the repository:
 
 BitNet/Microsoft material was useful at the beginning as a conceptual guide for ternary thinking, pruning, and deployment discipline.
 
-But the current Gemma product track is not a Microsoft BitNet runtime clone. The practical stack now in this repository is our own:
+But the current Gemma track is not a Microsoft BitNet runtime clone. The practical stack now in this repository is our own:
 
 - our own pruning/recovery path over Gemma 2B
 - our own packed ternary MLP export
@@ -39,32 +52,6 @@ The honest phrasing is:
 
 - Microsoft/BitNet was a useful starting reference
 - the current functional method and runtime are ours
-
-## Product View
-
-The product story is not “we made a toy notebook”.
-
-The product story is:
-
-- start from a model that already answers useful everyday prompts;
-- improve its local benchmark score through controlled pruning/recovery;
-- compress the MLP path into a packed ternary artifact;
-- recover the packed path until it remains usable;
-- ship a runtime bundle that a user can download and run in a compatible environment.
-
-What is sellable now:
-
-- a technically usable packed ternary Gemma-derived runtime bundle for Linux + NVIDIA + Colab;
-- a reproducible research-to-runtime pipeline built on our own method and runtime stack;
-- a concrete benchmark story: the original HF Gemma 2B reference scored `0.90`, our improved dense checkpoint reached `0.92`, and our packed recovered runtime reached `1.00` on the local suite;
-- a strong demonstration that ternary conversion plus recovery can preserve and improve local task behavior while making the MLP path materially more compact.
-
-What is not honest to claim yet:
-
-- native Apple Silicon production runtime;
-- Ollama compatibility;
-- broad external benchmark superiority;
-- production SLA across many hardware classes.
 
 ## Current Status by Track
 
