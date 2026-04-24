@@ -1,6 +1,6 @@
 # Packed Recovered L78 Runtime
 
-This runtime is the execution layer for the packed ternary Gemma bundle.
+This runtime is the execution layer for the packed ternary Gemma bundle. It is part of our own runtime path for this project, not a Microsoft BitNet runtime wrapper.
 
 It exists in three modes:
 
@@ -192,6 +192,7 @@ Correct positioning:
 - usable ternary packed Gemma-derived runtime bundle for Linux/NVIDIA/Colab
 - strong local benchmark and functional runtime validation
 - real packed artifact plus real execution path
+- a runtime path that already beats the original HF Gemma local score in this project benchmark when used with the recovered packed model
 
 Incorrect positioning:
 

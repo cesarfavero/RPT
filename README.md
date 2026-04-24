@@ -2,8 +2,8 @@
 
 Research and engineering repository for two related tracks:
 
-1. `BitNet / sparsity / QAT-STE` research that supports the paper track.
-2. `gemma4_theory/`, which is the current applied product track: take a modern dense Gemma 2B-class model, prune it, ternarize the MLP path, recover function, and ship a usable Triton runtime bundle.
+1. `BitNet / sparsity / QAT-STE` research that supported the early paper and methodology stage.
+2. `gemma4_theory/`, which is the current applied product track: take a modern dense Gemma 2B-class model, prune it, ternarize the MLP path, recover function, and ship a usable Triton runtime bundle with our own method and runtime stack.
 
 ## What Matters Right Now
 
@@ -11,10 +11,10 @@ If you are coming here for the current practical outcome, start in [`gemma4_theo
 
 That track has already validated the following on the local 100-question benchmark:
 
-- `google/gemma-2-2b-it` original: `0.90`
-- `student_pruned`: `0.92`
-- packed ternary path after recovered adapter: `1.00`
-- Triton-integrated packed runtime: `1.00`
+- `google/gemma-2-2b-it` original HF reference: `0.90`
+- our improved dense checkpoint `student_pruned`: `0.92`
+- our packed ternary path after recovered adapter: `1.00`
+- our Triton-integrated packed runtime: `1.00`
 
 This is the clearest current claim of the repository:
 
@@ -22,6 +22,23 @@ This is the clearest current claim of the repository:
 - we converted the entire MLP path to a packed ternary representation;
 - we recovered functionality on top of that packed path;
 - we produced a Linux/NVIDIA/Colab production-style runtime bundle.
+
+## From Microsoft Guidance To Our Own Stack
+
+BitNet/Microsoft material was useful at the beginning as a conceptual guide for ternary thinking, pruning, and deployment discipline.
+
+But the current Gemma product track is not a Microsoft BitNet runtime clone. The practical stack now in this repository is our own:
+
+- our own pruning/recovery path over Gemma 2B
+- our own packed ternary MLP export
+- our own packed-path recovery process
+- our own structural and Triton runtime path
+- our own production bundle for Linux/NVIDIA/Colab
+
+The honest phrasing is:
+
+- Microsoft/BitNet was a useful starting reference
+- the current functional method and runtime are ours
 
 ## Product View
 
@@ -38,8 +55,9 @@ The product story is:
 What is sellable now:
 
 - a technically usable packed ternary Gemma-derived runtime bundle for Linux + NVIDIA + Colab;
-- a reproducible research-to-runtime pipeline;
-- a strong demonstration that ternary conversion plus recovery can preserve or even improve local task behavior.
+- a reproducible research-to-runtime pipeline built on our own method and runtime stack;
+- a concrete benchmark story: the original HF Gemma 2B reference scored `0.90`, our improved dense checkpoint reached `0.92`, and our packed recovered runtime reached `1.00` on the local suite;
+- a strong demonstration that ternary conversion plus recovery can preserve and improve local task behavior while making the MLP path materially more compact.
 
 What is not honest to claim yet:
 
@@ -66,8 +84,8 @@ The practical current path lives in `gemma4_theory/`.
 
 Key validated milestones:
 
-- baseline original Gemma 2B reference on local suite: `0.90`
-- pruned dense checkpoint: `0.92`
+- baseline original Gemma 2B HF reference on local suite: `0.90`
+- our improved dense checkpoint `student_pruned`: `0.92`
 - full MLP ternary expansion recovered on local suite: `0.92`
 - packed/materialized recovered path: `1.00`
 - Triton integrated runtime: `1.00`
@@ -76,7 +94,7 @@ Key validated milestones:
   - `min_latency ~= 0.35s`
   - `max_latency ~= 1.02s`
 
-That means the project is past “theory only”. It already has a working runtime bundle for the supported environment.
+That means the project is past “theory only”. It already has a working runtime bundle for the supported environment, and the current practical path is no longer dependent on Microsoft BitNet tooling.
 
 ## Where To Start
 

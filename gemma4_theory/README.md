@@ -12,16 +12,16 @@ Goal:
 - integrate a real runtime;
 - ship a usable bundle for Linux/NVIDIA/Colab.
 
-This is not only a theory folder anymore. It now contains a reproducible path from benchmarked model surgery to a production-style runtime bundle.
+This is not only a theory folder anymore. It now contains a reproducible path from benchmarked model surgery to a production-style runtime bundle. The current path is built with our own recovery/export/runtime stack; Microsoft BitNet served as early conceptual guidance, not as the current deployed runtime.
 
 ## Executive Summary
 
 Local 100-question benchmark:
 
-- original `google/gemma-2-2b-it`: `0.90`
-- `student_pruned`: `0.92`
-- packed ternary recovered path: `1.00`
-- Triton integrated runtime: `1.00`
+- original HF `google/gemma-2-2b-it`: `0.90`
+- our improved dense checkpoint `student_pruned`: `0.92`
+- our packed ternary recovered path: `1.00`
+- our Triton integrated runtime: `1.00`
 
 Operational result on T4 after production prewarm:
 
@@ -37,6 +37,34 @@ Honest reading:
 - the current runtime is usable in Linux/NVIDIA/Colab;
 - the remaining work is portability and broader external validation, not “does this pipeline work at all?”.
 
+Commercial reading:
+
+- the original HF Gemma 2B reference answered `90/100` here;
+- our improved dense checkpoint answered `92/100`;
+- our packed recovered runtime answered `100/100`;
+- so the project is not only compressing a model, it is improving the local product behavior while moving the MLP path into a materially lighter packed ternary representation.
+
+## Method Independence
+
+This project no longer depends on Microsoft BitNet runtime code to reach the current result.
+
+What Microsoft/BitNet contributed historically:
+
+- it was a useful early guide for ternary thinking
+- it helped shape the first intuition about low-bit deployment discipline
+
+What is ours in the current track:
+
+- pruning and recovery order over Gemma 2B
+- progressive ternary MLP expansion strategy
+- packed ternary export for the MLP path
+- packed-path recovery strategy
+- structural runtime path
+- Triton runtime integration
+- production bundle generation and prewarm strategy
+
+That distinction matters because the current claim is not “we copied BitNet to Gemma”. The current claim is “we developed our own functional dense-to-packed-ternary pipeline and runtime for this model family”.
+
 ## What Was Proved
 
 ### 1. Pruning helped instead of hurting on the local suite
@@ -44,7 +72,7 @@ Honest reading:
 Reference evaluation:
 
 - original HF Gemma 2B: `0.90`
-- `student_pruned`: `0.92`
+- our improved dense checkpoint `student_pruned`: `0.92`
 
 That matters because the whole ternary track is built on top of `student_pruned`. The base checkpoint was not degraded; it improved locally.
 
@@ -113,7 +141,7 @@ That enabled the production bundle stage.
 
 The correct product claim today is:
 
-- a Gemma-derived packed ternary runtime bundle for Linux/NVIDIA/Colab that preserves the recovered local benchmark behavior and is operational after prewarm.
+- a Gemma-derived packed ternary runtime bundle for Linux/NVIDIA/Colab that improves the local benchmark result over the original HF Gemma reference, preserves the recovered behavior, and is operational after prewarm.
 
 The incorrect product claim would be:
 
@@ -172,8 +200,8 @@ Core notebook order:
 
 ### Reference vs Improved Base
 
-- original Gemma 2B reference: `0.90`
-- `student_pruned`: `0.92`
+- original HF Gemma 2B reference: `0.90`
+- our improved dense checkpoint `student_pruned`: `0.92`
 
 ### Quantization Stage
 
@@ -191,6 +219,12 @@ Core notebook order:
 - packed base: `0.01`
 - old adapter on packed path: `0.63`
 - recovered packed path: `1.00`
+
+This is the strongest current sales comparison in the repository:
+
+- original HF Gemma reference: `90/100`
+- our improved dense checkpoint: `92/100`
+- our packed recovered runtime: `100/100`
 
 ### Triton Runtime
 
@@ -245,7 +279,8 @@ Today the user gets:
 - a compact packed ternary MLP artifact plus recovered adapter;
 - Triton runtime entrypoint;
 - prewarm profile and production manifest;
-- a model that is locally stronger than the original Gemma reference on the project suite.
+- a model that is locally stronger than the original HF Gemma reference on the project suite;
+- a practical demonstration that our own method can move from dense model to packed ternary runtime without losing usability.
 
 ## What Still Needs Work
 
