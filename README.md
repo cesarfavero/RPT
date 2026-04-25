@@ -83,6 +83,14 @@ Key validated milestones:
 
 That means the project is past “theory only”. It already has a working runtime bundle for the supported environment, and the current practical path is no longer dependent on Microsoft BitNet tooling.
 
+## Standalone Runtime Repository
+
+Standalone runtime and CLI work now lives in a dedicated repository:
+
+- [cesarfavero/rpt-runtime](https://github.com/cesarfavero/rpt-runtime)
+
+The main RPT repository remains the research and validation source of truth.
+
 ## Where To Start
 
 ### If you want the research narrative

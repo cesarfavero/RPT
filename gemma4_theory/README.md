@@ -253,6 +253,14 @@ Production bundle verification:
 - `min_latency ~= 0.35s`
 - `max_latency ~= 1.02s`
 
+## Standalone Runtime Repository
+
+The standalone runtime and CLI track now also has a dedicated repository:
+
+- [cesarfavero/rpt-runtime](https://github.com/cesarfavero/rpt-runtime)
+
+Use that repository for runtime-facing work. Keep this repository as the source of truth for notebooks, results, and validation history.
+
 ## Recommended Current Entry Points
 
 ### If you want the research proof

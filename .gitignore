@@ -42,3 +42,12 @@ paper/*.synctex.gz
 gemma4_theory/checkpoints/
 gemma4_theory/exports/
 gemma4_theory/deploy/*.bin
+
+# Local downloads / portable imports
+*.crdownload
+drive-downloads/
+
+# Local production bundles
+gemma4_theory/build/distributable_packed_recovered_l78/
+gemma4_theory/build/production_triton_packed_recovered_l78/
+gemma4_theory/results/packed_recovery/production_bundle/*.zip

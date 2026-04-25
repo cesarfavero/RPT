@@ -83,6 +83,14 @@ BitNet/Microsoft 的材料在项目早期非常有用，它为三值化思路、
 
 这意味着项目已经不再只是“理论验证”。它已经在支持的环境中拥有一个可工作的 runtime bundle，并且当前实用路径不再依赖 Microsoft BitNet 工具链。
 
+## 独立 Runtime 仓库
+
+独立的 runtime 与 CLI 现在位于单独仓库中：
+
+- [cesarfavero/rpt-runtime](https://github.com/cesarfavero/rpt-runtime)
+
+主 RPT 仓库仍然是研究与验证的事实来源。
+
 ## 从哪里开始
 
 ### 如果你想看研究叙事

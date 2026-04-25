@@ -83,6 +83,14 @@ Marcos já validados:
 
 Isso significa que o projeto já passou da fase “só teoria”. Hoje ele já tem um bundle de runtime funcional para o ambiente suportado, sem depender da toolchain BitNet da Microsoft.
 
+## Repositório Separado de Runtime
+
+O runtime e a CLI agora também têm um repositório dedicado:
+
+- [cesarfavero/rpt-runtime](https://github.com/cesarfavero/rpt-runtime)
+
+O repositório principal RPT continua sendo a fonte de verdade de pesquisa e validação.
+
 ## Por Onde Começar
 
 ### Se você quer a narrativa de pesquisa
