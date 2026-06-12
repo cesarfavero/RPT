@@ -2,10 +2,10 @@
 
 Versões deste README:
 
-- English: [`README.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.md)
+- English: [`README.md`](README.md)
 - Português: `README.pt-BR.md`
-- 中文: [`README.zh-CN.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.zh-CN.md)
-- Русский: [`README.ru.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.ru.md)
+- 中文: [`README.zh-CN.md`](README.zh-CN.md)
+- Русский: [`README.ru.md`](README.ru.md)
 
 Repositório de pesquisa e engenharia com duas trilhas relacionadas:
 
@@ -20,7 +20,7 @@ Ele documenta o que foi testado, o que funcionou, o que falhou e o que hoje est�
 
 ## O Que Importa Agora
 
-Se você quer ir direto para o resultado prático atual, comece em [`gemma4_theory/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/README.md).
+Se você quer ir direto para o resultado prático atual, comece em [`gemma4_theory/README.md`](gemma4_theory/README.md).
 
 Essa trilha já validou o seguinte no benchmark local de 100 perguntas:
 
@@ -97,14 +97,14 @@ O repositório principal RPT continua sendo a fonte de verdade de pesquisa e val
 
 Abra:
 
-- [`gemma4_theory/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/README.md)
+- [`gemma4_theory/README.md`](gemma4_theory/README.md)
 
 ### Se você quer ver artefato packed e runtime
 
 Abra:
 
-- [`gemma4_theory/deploy/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/deploy/README.md)
-- [`gemma4_theory/runtime/packed_recovered_l78/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/runtime/packed_recovered_l78/README.md)
+- [`gemma4_theory/deploy/README.md`](gemma4_theory/deploy/README.md)
+- [`gemma4_theory/runtime/packed_recovered_l78/README.md`](gemma4_theory/runtime/packed_recovered_l78/README.md)
 
 ### Se você já baixou o zip de produção
 
@@ -137,6 +137,21 @@ A regra deste repositório é simples:
 - resultados não são editados manualmente;
 - toda etapa útil deve terminar com commit + push.
 
+## Ecossistema Público
+
+O ecossistema público do RPT é separado por responsabilidade:
+
+- [`RPT`](https://github.com/cesarfavero/RPT): pesquisa, notebooks, validação, papers, artefatos de resultado e notas de reprodutibilidade.
+- [`rpt-runtime`](https://github.com/cesarfavero/rpt-runtime): camada de runtime e CLI para executar artefatos RPT empacotados.
+- [`rpt-model-bundles`](https://github.com/cesarfavero/rpt-model-bundles): manifests, checksums, notas de release e metadados de distribuição dos bundles.
+
+Use GitHub Issues no repositório relevante para bugs, relatos de reprodução,
+lacunas de documentação e dúvidas de integração.
+
 ## Licença
 
-MIT License (`LICENSE`).
+Apache License 2.0. Veja [`LICENSE`](LICENSE) e [`NOTICE`](NOTICE).
+
+Pesos de modelos, datasets e checkpoints de terceiros continuam sujeitos às
+suas próprias licenças e termos upstream. Em especial, assets da família Gemma
+continuam sujeitos aos Gemma Terms of Use aplicáveis.

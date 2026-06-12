@@ -2,10 +2,10 @@
 
 README 语言版本：
 
-- English: [`README.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.md)
-- Português: [`README.pt-BR.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.pt-BR.md)
+- English: [`README.md`](README.md)
+- Português: [`README.pt-BR.md`](README.pt-BR.md)
 - 中文: `README.zh-CN.md`
-- Русский: [`README.ru.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.ru.md)
+- Русский: [`README.ru.md`](README.ru.md)
 
 这是一个包含两条相关路线的研究与工程仓库：
 
@@ -20,7 +20,7 @@ README 语言版本：
 
 ## 当前最重要的内容
 
-如果你想直接查看当前最实际的结果，请从 [`gemma4_theory/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/README.md) 开始。
+如果你想直接查看当前最实际的结果，请从 [`gemma4_theory/README.md`](gemma4_theory/README.md) 开始。
 
 在本地 100 题基准上，该路线已经验证：
 
@@ -97,14 +97,14 @@ BitNet/Microsoft 的材料在项目早期非常有用，它为三值化思路、
 
 打开：
 
-- [`gemma4_theory/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/README.md)
+- [`gemma4_theory/README.md`](gemma4_theory/README.md)
 
 ### 如果你想看 packed artifact 和 runtime
 
 打开：
 
-- [`gemma4_theory/deploy/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/deploy/README.md)
-- [`gemma4_theory/runtime/packed_recovered_l78/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/runtime/packed_recovered_l78/README.md)
+- [`gemma4_theory/deploy/README.md`](gemma4_theory/deploy/README.md)
+- [`gemma4_theory/runtime/packed_recovered_l78/README.md`](gemma4_theory/runtime/packed_recovered_l78/README.md)
 
 ### 如果你已经下载了生产 zip
 
@@ -139,4 +139,8 @@ python runtime/run_triton_inference.py --model-dir . --prompt "Qual a capital da
 
 ## 许可证
 
-MIT License (`LICENSE`)。
+Apache License 2.0. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
+
+Third-party model weights, datasets, and checkpoints remain subject to their
+own upstream licenses and terms. In particular, Gemma-family assets remain
+subject to the applicable Gemma Terms of Use.

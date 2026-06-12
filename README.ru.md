@@ -2,9 +2,9 @@
 
 Версии README:
 
-- English: [`README.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.md)
-- Português: [`README.pt-BR.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.pt-BR.md)
-- 中文: [`README.zh-CN.md`](/Users/cesarfavero/Documents/MyPru/RPT/README.zh-CN.md)
+- English: [`README.md`](README.md)
+- Português: [`README.pt-BR.md`](README.pt-BR.md)
+- 中文: [`README.zh-CN.md`](README.zh-CN.md)
 - Русский: `README.ru.md`
 
 Это исследовательский и инженерный репозиторий с двумя связанными направлениями:
@@ -20,7 +20,7 @@
 
 ## Что Сейчас Важнее Всего
 
-Если вам нужен текущий практический результат, начните с [`gemma4_theory/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/README.md).
+Если вам нужен текущий практический результат, начните с [`gemma4_theory/README.md`](gemma4_theory/README.md).
 
 В этом треке уже подтверждено на локальном benchmark'е из 100 вопросов:
 
@@ -97,14 +97,14 @@
 
 Откройте:
 
-- [`gemma4_theory/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/README.md)
+- [`gemma4_theory/README.md`](gemma4_theory/README.md)
 
 ### Если вам нужен packed artifact и runtime
 
 Откройте:
 
-- [`gemma4_theory/deploy/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/deploy/README.md)
-- [`gemma4_theory/runtime/packed_recovered_l78/README.md`](/Users/cesarfavero/Documents/MyPru/RPT/gemma4_theory/runtime/packed_recovered_l78/README.md)
+- [`gemma4_theory/deploy/README.md`](gemma4_theory/deploy/README.md)
+- [`gemma4_theory/runtime/packed_recovered_l78/README.md`](gemma4_theory/runtime/packed_recovered_l78/README.md)
 
 ### Если вы уже скачали production zip
 
@@ -139,4 +139,8 @@ python runtime/run_triton_inference.py --model-dir . --prompt "Qual a capital da
 
 ## Лицензия
 
-MIT License (`LICENSE`).
+Apache License 2.0. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
+
+Third-party model weights, datasets, and checkpoints remain subject to their
+own upstream licenses and terms. In particular, Gemma-family assets remain
+subject to the applicable Gemma Terms of Use.

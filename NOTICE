@@ -1,0 +1,31 @@
+RPT Notices
+
+RPT source code, documentation, notebooks, and repository materials are
+published under the Apache License 2.0 unless a file states otherwise.
+
+This notice does not grant rights to third-party model weights, datasets,
+checkpoints, hosted services, or trademarks. Those remain subject to their own
+upstream licenses and terms.
+
+Gemma Notice
+
+Some RPT experiments and runtime bundles may use, modify, convert, or package
+Gemma-family model weights or model derivatives.
+
+Gemma is provided under and subject to the Gemma Terms of Use found at:
+
+https://ai.google.dev/gemma/terms
+
+Gemma-family model weights and any Gemma model derivatives remain subject to
+the applicable Gemma terms, including distribution notices, use restrictions,
+and any required third-party recipient terms. RPT does not claim ownership of
+Google's Gemma base models.
+
+When distributing a Gemma-based RPT artifact outside a hosted service, include
+this notice and any additional notices required by the Gemma Terms of Use.
+
+Third-Party Components
+
+Third-party libraries, tools, datasets, models, and runtimes retain their own
+licenses and terms. Review dependency manifests and upstream model cards before
+distribution.
