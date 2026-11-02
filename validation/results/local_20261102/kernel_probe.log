@@ -1,0 +1,1 @@
+{"status": "blocked", "report": "/workspace/scratch/a2b4890a1846/RPT/validation/results/local_review_20261102/kernel.json", "reason": "torch and triton are required"}

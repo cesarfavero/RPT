@@ -4,13 +4,19 @@ from pathlib import Path
 import gc
 import hashlib
 import json
+import math
 from typing import Any
 
 import numpy as np
 import torch
 import torch.nn.functional as F
-from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer
+
+try:
+    from .artifacts import LEGACY_PACKED_SHA256, EXPECTED_TENSOR_COUNT, read_json, resolve_expected_packed_sha256, validate_packed_codes, validate_packed_manifest, verify_bundle_checksums
+    from .execution import summarize_execution
+except ImportError:  # direct script / notebook imports
+    from artifacts import LEGACY_PACKED_SHA256, EXPECTED_TENSOR_COUNT, read_json, resolve_expected_packed_sha256, validate_packed_codes, validate_packed_manifest, verify_bundle_checksums
+    from execution import summarize_execution
 
 try:
     import triton
@@ -20,8 +26,7 @@ except Exception:  # pragma: no cover - handled at runtime in non-CUDA envs
     tl = None
 
 
-EXPECTED_PACKED_SHA256 = "0b6849fe3ceaab615a4e54f63f5a96e9d9d431ba03b7b791a7ab0638ea174116"
-EXPECTED_TENSOR_COUNT = 78
+EXPECTED_PACKED_SHA256 = LEGACY_PACKED_SHA256
 
 
 def sha256_file(path: Path, chunk_size: int = 8 * 1024 * 1024) -> str:
@@ -126,22 +131,25 @@ def triton_ternary_linear(
     packed_cuda = packed.to(device=x.device, non_blocking=True)
     out = torch.empty((x2.shape[0], out_features), device=x.device, dtype=torch.float32)
     grid = (triton.cdiv(x2.shape[0], block_m), triton.cdiv(out_features, block_n))
-    _ternary_linear_kernel[grid](
-        x2,
-        packed_cuda,
-        out,
-        x2.shape[0],
-        in_features,
-        out_features,
-        float(scale),
-        x2.stride(0),
-        x2.stride(1),
-        out.stride(0),
-        out.stride(1),
-        BLOCK_M=block_m,
-        BLOCK_N=block_n,
-        BLOCK_K=block_k,
-    )
+    # Triton chooses the current device/stream at launch. An Accelerate device
+    # map can place this layer on a GPU other than the process's current one.
+    with torch.cuda.device(x.device):
+        _ternary_linear_kernel[grid](
+            x2,
+            packed_cuda,
+            out,
+            x2.shape[0],
+            in_features,
+            out_features,
+            float(scale),
+            x2.stride(0),
+            x2.stride(1),
+            out.stride(0),
+            out.stride(1),
+            BLOCK_M=block_m,
+            BLOCK_N=block_n,
+            BLOCK_K=block_k,
+        )
     return out.reshape(*x.shape[:-1], out_features).to(dtype=x.dtype)
 
 
@@ -162,6 +170,11 @@ class TritonPackedTernaryLinear(torch.nn.Module):
         fallback_to_pytorch: bool = True,
     ) -> None:
         super().__init__()
+        if len(shape) != 2 or any(type(n) is not int or n < 1 for n in shape) or shape[0] * shape[1] != numel:
+            raise ValueError('Packed linear shape must match numel')
+        if isinstance(scale, bool) or not isinstance(scale, (int, float)) or not math.isfinite(scale) or scale < 0:
+            raise ValueError('Packed linear scale must be finite and nonnegative')
+        validate_packed_codes(packed_bytes, numel)
         self.name = name
         self.out_features = int(shape[0])
         self.in_features = int(shape[1])
@@ -171,6 +184,7 @@ class TritonPackedTernaryLinear(torch.nn.Module):
         self.block_n = int(block_n)
         self.block_k = int(block_k)
         self.fallback_to_pytorch = bool(fallback_to_pytorch)
+        self.execution_counts = {"triton": 0, "pytorch": 0}
         raw = np.frombuffer(packed_bytes, dtype=np.uint8).copy()
         self.register_buffer("packed", torch.from_numpy(raw), persistent=True)
 
@@ -185,8 +199,10 @@ class TritonPackedTernaryLinear(torch.nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if x.shape[-1] != self.in_features:
+            raise RuntimeError(f"{self.name}: input width {x.shape[-1]} != {self.in_features}")
         if x.is_cuda and triton is not None:
-            return triton_ternary_linear(
+            output = triton_ternary_linear(
                 x,
                 self.packed,
                 out_features=self.out_features,
@@ -196,6 +212,8 @@ class TritonPackedTernaryLinear(torch.nn.Module):
                 block_n=self.block_n,
                 block_k=self.block_k,
             )
+            self.execution_counts["triton"] += 1
+            return output
         if not self.fallback_to_pytorch:
             raise RuntimeError("Triton backend unavailable and fallback disabled.")
         weight = _unpack_weight_pytorch(
@@ -207,7 +225,31 @@ class TritonPackedTernaryLinear(torch.nn.Module):
             device=x.device,
             dtype=x.dtype,
         )
-        return F.linear(x, weight, None)
+        output = F.linear(x, weight, None)
+        self.execution_counts["pytorch"] += 1
+        return output
+
+
+def runtime_execution_report(
+    model: torch.nn.Module, *, require_triton: bool = False,
+    expected_layers: int = EXPECTED_TENSOR_COUNT,
+) -> dict[str, Any]:
+    """Report successful layer calls, not merely an installed/imported backend.
+
+    Call after CUDA synchronization. For an official run, require all expected
+    layers to have executed through Triton and prohibit any PyTorch fallback.
+    """
+    return summarize_execution(
+        ((name, layer.execution_counts) for name, layer in model.named_modules()
+         if isinstance(layer, TritonPackedTernaryLinear)),
+        require_triton=require_triton, expected_layers=expected_layers,
+    )
+
+
+def reset_runtime_execution(model: torch.nn.Module) -> None:
+    for layer in model.modules():
+        if isinstance(layer, TritonPackedTernaryLinear):
+            layer.execution_counts = {"triton": 0, "pytorch": 0}
 
 
 def resolve_layout(model_dir: str | Path) -> dict[str, Path]:
@@ -265,11 +307,26 @@ def replace_mlp_linears_with_triton(
     block_m: int = 16,
     block_n: int = 16,
     block_k: int = 64,
+    fallback_to_pytorch: bool = True,
+    require_triton: bool = False,
 ) -> dict[str, Any]:
     bin_path = Path(bin_path)
     replaced: list[str] = []
     replaced_lora_base_layers: list[str] = []
     replaced_direct_modules: list[str] = []
+
+    # Check all destinations before mutating any layer. A shape-compatible table
+    # is required even when the number of tensors happens to equal 78.
+    for item in manifest["tensors"]:
+        _, target = _find_module(model, item["name"].removesuffix(".weight"))
+        base = getattr(target, "base_layer", target)
+        weight = getattr(base, "weight", None)
+        if weight is None or tuple(weight.shape) != tuple(item["shape"]):
+            raise RuntimeError(f"Packed shape does not match destination: {item['name']}")
+        if getattr(weight, "is_meta", False):
+            raise RuntimeError(f"Cannot replace an offloaded/meta weight: {item['name']}")
+        if require_triton and weight.device.type != "cuda":
+            raise RuntimeError(f"Strict Triton requires CUDA placement: {item['name']} on {weight.device}")
 
     with bin_path.open("rb") as handle:
         for item in manifest["tensors"]:
@@ -278,6 +335,8 @@ def replace_mlp_linears_with_triton(
             root, target = _find_module(model, module_path)
             handle.seek(item["offset"])
             blob = handle.read(item["packed_bytes"])
+            if len(blob) != item["packed_bytes"]:
+                raise RuntimeError(f"Packed artifact truncated while loading {param_name}")
             packed_layer = TritonPackedTernaryLinear(
                 packed_bytes=blob,
                 shape=item["shape"],
@@ -287,6 +346,7 @@ def replace_mlp_linears_with_triton(
                 block_m=block_m,
                 block_n=block_n,
                 block_k=block_k,
+                fallback_to_pytorch=fallback_to_pytorch and not require_triton,
             )
 
             target_device = None
@@ -323,7 +383,7 @@ def replace_mlp_linears_with_triton(
         "replaced": replaced,
         "replaced_lora_base_layers": replaced_lora_base_layers,
         "replaced_direct_modules": replaced_direct_modules,
-        "backend": "triton",
+        "configured_backend": "triton",
         "block_m": block_m,
         "block_n": block_n,
         "block_k": block_k,
@@ -340,13 +400,30 @@ def load_triton_packed_recovered_l78(
     block_m: int = 16,
     block_n: int = 16,
     block_k: int = 64,
+    require_triton: bool = False,
+    fallback_to_pytorch: bool = True,
+    expected_packed_sha256: str | None = None,
+    require_full_checksums: bool = False,
 ) -> tuple[Any, Any, dict[str, Any]]:
+    if require_triton and (triton is None or not torch.cuda.is_available()):
+        raise RuntimeError("Strict Triton execution requires an available CUDA device and Triton; fallback is disabled.")
+    if require_triton and not verify_sha:
+        raise ValueError("Strict Triton validation cannot disable artifact SHA256 verification")
+    if require_triton:
+        fallback_to_pytorch = False
     paths = resolve_layout(model_dir)
-    packed_sha = sha256_file(paths["packed_bin"])
-    if verify_sha and packed_sha != EXPECTED_PACKED_SHA256:
-        raise RuntimeError(f"Packed SHA mismatch: expected {EXPECTED_PACKED_SHA256}, got {packed_sha}")
-
-    manifest = json.loads(paths["packed_manifest"].read_text(encoding="utf-8"))
+    checksum_report = verify_bundle_checksums(paths["root"], required=require_full_checksums)
+    production_path = paths["root"] / "production_manifest.json"
+    production = read_json(production_path) if production_path.exists() else {}
+    expected_hash = resolve_expected_packed_sha256(production, override=expected_packed_sha256) if verify_sha else None
+    manifest = read_json(paths["packed_manifest"])
+    validation = validate_packed_manifest(manifest, paths["packed_bin"],
+        expected_tensor_count=EXPECTED_TENSOR_COUNT,
+        expected_sha256=expected_hash)
+    # Validate artifacts before importing/loading the model stack. Kernel
+    # probes continue to need only torch, numpy and Triton.
+    from peft import PeftModel
+    from transformers import AutoModelForCausalLM, AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(str(paths["student_pruned"]), token=token)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -370,16 +447,23 @@ def load_triton_packed_recovered_l78(
         block_m=block_m,
         block_n=block_n,
         block_k=block_k,
+        fallback_to_pytorch=fallback_to_pytorch,
+        require_triton=require_triton,
     )
     model.eval()
     report = {
         "model_dir": str(paths["root"]),
         "load_order": "student_pruned -> recovered adapter -> replace MLP base layers with TritonPackedTernaryLinear",
-        "packed_sha256": packed_sha,
-        "runtime_kind": "native_triton_prototype",
-        "is_native_ternary_runtime": True,
-        "is_optimized_kernel": True,
+        "packed_sha256": validation["packed_sha256"],
+        "runtime_kind": "packed_triton_prototype",
+        "require_triton": require_triton,
+        "fallback_allowed": fallback_to_pytorch,
+        "artifact_validation": {**validation, **checksum_report},
         "triton_available": triton is not None,
+        "torch_cuda_version": getattr(torch.version, "cuda", None),
+        "torch_hip_version": getattr(torch.version, "hip", None),
         **replacement_report,
+        **runtime_execution_report(model),
     }
     return model, tokenizer, report
+

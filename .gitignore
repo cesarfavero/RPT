@@ -22,6 +22,9 @@ Thumbs.db
 *.bin
 *.safetensors
 
+# Local validation campaigns (publish only explicitly reviewed reports)
+validation_runs/
+
 # Local large dirs
 archive/
 dataset_wikitext/

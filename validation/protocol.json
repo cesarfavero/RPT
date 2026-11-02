@@ -1,0 +1,40 @@
+{
+  "schema_version": "rpt-experiment-protocol-v1",
+  "status": "planned_model_runs_not_executed",
+  "historical_suite_role": "development_and_regression",
+  "first_campaign": "Evaluate the current frozen final artifact before changing recovery",
+  "tasks": ["arc_easy", "arc_challenge", "hellaswag", "truthfulqa_mc1"],
+  "preflight_limit_per_task": 20,
+  "smoke_scores_are_final_evidence": false,
+  "final_limit_per_task": null,
+  "seeds": [42, 123, 2026],
+  "baseline_variants": [
+    "original_dense",
+    "dense_same_recovery_data_and_budget",
+    "pruned_same_recovery_data_and_budget",
+    "ternary_no_pruning_same_recovery",
+    "pruned_ternary_packed_recovered",
+    "competitive_4bit_same_backbone"
+  ],
+  "freeze_before_scoring": ["dataset_documents", "training_exposure", "tokenizer", "prompt_policy", "model_hashes", "runtime_source", "task_config", "seed"],
+  "no_training_or_checkpoint_selection_on_final_test": true,
+  "quality_target": {
+    "proposed_max_absolute_accuracy_loss": 0.01,
+    "report_reference_correct_candidate_wrong_separately": true,
+    "confidence_level": 0.95,
+    "acceptance_rule_status": "Define paired confidence rule and sample size before final model campaign; target is not a result."
+  },
+  "runtime_matrix": {
+    "batch_sizes": [1, 4],
+    "input_tokens": [128, 512, 2048],
+    "requested_output_tokens": [32, 128, 256],
+    "report_actual_output_tokens": true,
+    "phases": ["process_start_and_load", "first_request", "explicit_prewarm", "steady_state"],
+    "metrics": ["aggregate_tokens_per_second", "latency_p50_p95", "ttft_when_measured", "tpot_when_measured", "allocated_and_reserved_memory", "load_peak_memory", "generation_peak_memory", "energy_when_measured"]
+  },
+  "research_hypothesis": "Learning correction content and order jointly with measured cost improves the quality-cost curve beyond static residual ordering",
+  "research_status": "Synthetic certified final-projection reference implemented; learned policy, LLM evaluation and hardware kernels pending",
+  "novelty_claim": "not_established",
+  "backend_policy": "Explicit backend, numerical probe first, reject silent fallback; DTK evidence stays separate from NVIDIA",
+  "resource_policy": "Use only the user's granted free quota; do not select a paid resource automatically"
+}

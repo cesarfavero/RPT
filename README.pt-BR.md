@@ -29,9 +29,18 @@ Essa trilha já validou o seguinte no benchmark local de 100 perguntas:
 - nosso caminho ternário packed após adapter recovered: `1.00`
 - nosso runtime Triton integrado no caminho packed: `1.00`
 
-Esse é o claim mais importante hoje no repositório:
+Esses números pertencem à suíte de desenvolvimento: as mesmas perguntas e
+respostas foram utilizadas no recovery e na seleção de checkpoints. Eles
+demonstram recuperação e funcionamento do caminho packed, mas ainda não provam
+generalização em dados novos nem superioridade frente ao modelo denso.
 
-- melhoramos o resultado local em relação ao Gemma 2B original;
+As respostas históricas dos dois caminhos packed continuam com 100/100 no
+avaliador estrito novo. Essa é uma reavaliação dos textos salvos, sem executar o
+modelo novamente. Os resultados originais permanecem preservados.
+
+O resultado técnico demonstrado é:
+
+- recuperamos as respostas da suíte usada no desenvolvimento;
 - convertemos todo o caminho MLP para uma representação packed ternária;
 - recuperamos funcionalidade sobre esse caminho packed;
 - produzimos um bundle de runtime utilizável para Linux/NVIDIA/Colab.
@@ -131,6 +140,31 @@ Os detalhes estão documentados nos READMEs de runtime e deploy.
 
 ## Reprodutibilidade
 
+O caminho atual está em [REPRODUCIBILITY.md](REPRODUCIBILITY.md). Ele inclui
+avaliador único versionado, detecção de sobreposição de dados, hashes dos modelos,
+avaliação externa do artefato packed exato e controle denso explícito.
+
+```bash
+python -m pip install -r validation/requirements-cpu.txt
+python -m validation.run_validation --phase cpu
+python -m validation.environment --output environment.json
+```
+
+Para a máquina chinesa, use [o guia SCNet](docs/SCNET_VALIDATION.md). Placas
+BW-1/DTK exigem verificação própria de compatibilidade; uma interface chamada
+CUDA não comprova que seja o mesmo ambiente NVIDIA dos experimentos anteriores.
+
+O [protótipo de refinamento adaptativo](research/adaptive_output/README.md)
+já tem testes e resultados sintéticos em CPU. Ele preserva o argmax da mesma
+representação completa sob as hipóteses numéricas documentadas. Ainda não mede
+qualidade de um LLM, energia ou aceleração de produção.
+
+O número histórico de 5,66 tokens/s é a média de taxas de oito pedidos curtos,
+após prewarm. Não é throughput agregado nem demonstra vantagem sobre uma
+baseline densa equivalente. O kernel atual decodifica os pesos em tiles e usa
+produto matricial em ponto flutuante; ainda não pula os pesos zero. O arquivo
+MLP usa 2 bits por peso, sem incluir o restante do modelo e os adaptadores.
+
 A regra deste repositório é simples:
 
 - notebooks salvam artefatos timestampados;
@@ -155,3 +189,4 @@ Apache License 2.0. Veja [`LICENSE`](LICENSE) e [`NOTICE`](NOTICE).
 Pesos de modelos, datasets e checkpoints de terceiros continuam sujeitos às
 suas próprias licenças e termos upstream. Em especial, assets da família Gemma
 continuam sujeitos aos Gemma Terms of Use aplicáveis.
+

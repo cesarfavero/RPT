@@ -1,0 +1,40 @@
+{
+  "schema_version": "rpt-local-validation-context-v1",
+  "source_note": "Local git commits identify partial snapshots, not remote release commits. File SHA256 values identify tested source bytes.",
+  "remote_baselines": {
+    "cesarfavero/RPT": "a1c904ba0ebee3c8aab236f62ef1685eef3d2f69",
+    "cesarfavero/rpt-runtime": "c90402c881e6a3ed6fcef8e936f800b8e3d62c35"
+  },
+  "rpt_tests": {
+    "discovered": 85,
+    "passed": 85,
+    "skipped": 0
+  },
+  "runtime_tests": {
+    "discovered": 48,
+    "passed": 42,
+    "skipped": 6,
+    "skip_reason": "PyTorch absent; one test additionally requires Triton and two GPUs"
+  },
+  "runtime_source_sha256": {
+    "runtime/artifacts.py": "f455969783e14b9996bc328a4e64935d20266b48156efcab3150299d7183177b",
+    "runtime/cli.py": "b38653307aa9881ba5c154266c4b2bdacebae32103ad2ce1d9f6ab45286d9206",
+    "runtime/execution.py": "1ca1bb31258d6e5db6f74663c05060b598f8e96e4c0ffc0310ec398ca4b840b8",
+    "runtime/loader.py": "5bab4dd9e632ad3ac5e2e06a5d6b50f9efa1480ce9e04851925086a08aebf742",
+    "runtime/metrics.py": "cddfdcf09df005362d7c601edb13a7a34b78b957a016d507c726cdb31588f3f0",
+    "runtime/native_loader.py": "35766847f74aca358df6e5dc55f5eac599f1f393c956ad598dcbfa79d36dcb79",
+    "runtime/run_triton_inference.py": "34eca167d7d21a61553278c28ac2d0f94b57760da542f315c13b5ff567a735b6",
+    "runtime/triton_loader.py": "214632abffd8a2c0acdb9fa6718afa7ef5c25cf624bf193d44eef9bf46dfd14d",
+    "tests/__init__.py": "20f7d51ba8736021f4b2a69d36378d06a09f37b51e70783b2b11960f1ba07ac9",
+    "tests/helpers.py": "b454a11ce0e15af927a8225eb872a005a8e0b0242e537ea5e42750171e698093",
+    "tests/test_artifacts.py": "e2207860472bcfdd2072e06232547a6697391be5f3dd13b1c545af91e6f1e26b",
+    "tests/test_cli.py": "81bee4a0e0135c8c3e836a7fbca8aa16d5df248c536157e8a168c35b151caedf",
+    "tests/test_execution_metrics.py": "73957aeecc48f0eeb53d28c72589ad4f3c97443aa23cfd78109ca0f51e9045a7",
+    "tests/test_loader_guards.py": "43d1f96321a903d7b38aa14145f7fe058b34b0cf8c49b109c336cd63fe56f4b1",
+    "tests/test_tensor_runtime.py": "a1e6608a0ec638c0055ee87d7c8947d0fe0f7658d0a177ef40dedccef75fe87c"
+  },
+  "gpu_executed": false,
+  "model_executed": false,
+  "external_harness_executed": false,
+  "notebook_validation": "All edited code cells parsed; builders 21/24/25/26/27 snapshot logic tested in isolated temporary Git repositories. No notebook training, package installation or model cells were executed."
+}

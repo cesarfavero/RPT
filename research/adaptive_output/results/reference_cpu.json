@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T22:30:18.393112+00:00",
+  "status": "synthetic_reference_experiment_completed",
+  "actual_llm_weights_evaluated": false,
+  "external_language_benchmark_evaluated": false,
+  "accuracy_or_reasoning_quality_claim": false,
+  "new_method_priority_claim": false,
+  "production_speedup_demonstrated": false,
+  "certificate_scope": "Greedy argmax equality for identical hidden vector and all planes of the same representation, using the documented ordered float64 reference; no source-model, generation-distribution, sequence-level, semantic, or optimized-kernel guarantee",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "cpu_logical_count": 9,
+    "device": "CPU only",
+    "baseline_git_commit": "6dd38f1ae64ad139ec37064ac06405e528f5673b",
+    "source_sha256": {
+      "projection.py": "d803b30c45cd697150fb5cc9faeb86e70f4d7ce9f7638a6f0c64856c1d46af44",
+      "run_experiment.py": "9ad7a44ac094eb046c46692f41b910ee539221b3b0ef5cefc228fec9620264f0"
+    }
+  },
+  "total_run_wall_seconds": 5.363726727,
+  "whole_process_peak_rss_bytes": 28577792,
+  "energy_measured": false,
+  "cost_accounting": "Per-call timing includes validation, projections, norm, bounds, outward rounding, selection and fallback. Model construction, verification, warmup and full-run time are separate. All persistent ndarray storage is counted; traced temporary allocations and process RSS are reported with their scope. No claim about DRAM bytes, GPU occupancy, or energy is made.",
+  "cases": [
+    {
+      "name": "small_corrections",
+      "seed": 20261102,
+      "classification": "synthetic_cpu_reference_only",
+      "construction": "Random ternary codes; plane scales 0.02**plane",
+      "shape": {
+        "output_rows": 128,
+        "hidden_size": 64,
+        "planes": 4
+      },
+      "samples": 256,
+      "timing_repeats": 3,
+      "extra_warmup_calls_per_method": 4,
+      "model_build_seconds": 0.001002274,
+      "verification_seconds": 0.251741906,
+      "model_sha256": "8da50d3810f0f22dc25a0255ae343e076afb5cb766dd92f9c908d32e9db1c287",
+      "hidden_batch_sha256": "7487c58235bf96e4c8ae25d29e35b1b9c7987540eb5299bd730038364d791143",
+      "argmax_mismatches_against_complete_representation": 0,
+      "early_certified_decisions": 256,
+      "full_fallback_decisions": 0,
+      "early_exit_fraction": 1.0,
+      "planes_executed_histogram": {
+        "1": 37,
+        "2": 204,
+        "3": 15,
+        "4": 0
+      },
+      "timing": {
+        "complete_ordered_float64_reference": {
+          "calls": 768,
+          "total_seconds": 0.397865379,
+          "median_call_ms": 0.4708215,
+          "p95_call_ms": 0.7253816,
+          "decisions_per_second": 1930.301153446176
+        },
+        "adaptive_including_all_bound_and_decision_work": {
+          "calls": 768,
+          "total_seconds": 0.334919596,
+          "median_call_ms": 0.401297,
+          "p95_call_ms": 0.6907784499999999,
+          "decisions_per_second": 2293.087681856633
+        },
+        "complete_reference_seconds_divided_by_adaptive_seconds": 1.1879429682579696,
+        "interpretation": "Local interpreted NumPy timings, not a production-kernel or LLM speedup claim"
+      },
+      "memory": {
+        "persistent_model_arrays_bytes": {
+          "int8_codes": 32768,
+          "float64_row_scales": 4096,
+          "float64_bias": 1024,
+          "int64_bound_metadata": 4096,
+          "total_persistent_ndarray_bytes": 41984
+        },
+        "supplied_hidden_batch_bytes": 131072,
+        "full_peak_traced_call_allocations_bytes": 10250,
+        "adaptive_peak_traced_call_allocations_bytes": 17608,
+        "trace_scope": "Peak traced Python/NumPy allocations during up to 16 complete calls; persistent arrays and supplied inputs allocated before tracing are reported separately. This is not GPU memory, complete native-library memory, or process RSS."
+      },
+      "logical_work_for_one_pass_over_all_samples": {
+        "complete_reference": {
+          "hidden_values_validated": 16384,
+          "projection_code_elements_read": 8388608,
+          "projection_sign_products": 8388608,
+          "projection_accumulator_adds": 8388608,
+          "row_scale_products": 131072,
+          "row_logit_adds": 131072,
+          "projection_rows_checked_finite": 131072,
+          "hidden_abs_elements": 0,
+          "hidden_max_reduction_elements": 0,
+          "bound_table_adds": 0,
+          "bound_table_nextafter": 0,
+          "bound_count_metadata_reads": 0,
+          "bound_scale_metadata_reads": 0,
+          "bound_scale_products": 0,
+          "bound_product_nextafter": 0,
+          "interval_endpoint_adds": 0,
+          "interval_endpoint_nextafter": 0,
+          "interval_endpoints_checked_finite": 0,
+          "dominance_rows_inspected": 0,
+          "certificate_checks": 0
+        },
+        "adaptive": {
+          "hidden_values_validated": 16384,
+          "projection_code_elements_read": 4014080,
+          "projection_sign_products": 4014080,
+          "projection_accumulator_adds": 4014080,
+          "row_scale_products": 62720,
+          "row_logit_adds": 62720,
+          "projection_rows_checked_finite": 62720,
+          "hidden_abs_elements": 16384,
+          "hidden_max_reduction_elements": 16384,
+          "bound_table_adds": 16384,
+          "bound_table_nextafter": 16384,
+          "bound_count_metadata_reads": 156288,
+          "bound_scale_metadata_reads": 156288,
+          "bound_scale_products": 156288,
+          "bound_product_nextafter": 156288,
+          "interval_endpoint_adds": 312576,
+          "interval_endpoint_nextafter": 312576,
+          "interval_endpoints_checked_finite": 125440,
+          "dominance_rows_inspected": 62720,
+          "certificate_checks": 490
+        },
+        "interpretation": "Defined scalar reference-algorithm primitives, not hardware FLOPs or DRAM traffic. Counts include bound-table construction, metadata reads, outward rounding and dominance work. Python control/object costs are included in wall-clock timing, not in these counters."
+      }
+    },
+    {
+      "name": "substantial_corrections",
+      "seed": 20261103,
+      "classification": "synthetic_cpu_reference_only",
+      "construction": "Random ternary codes; plane scales 0.5**plane",
+      "shape": {
+        "output_rows": 128,
+        "hidden_size": 64,
+        "planes": 4
+      },
+      "samples": 256,
+      "timing_repeats": 3,
+      "extra_warmup_calls_per_method": 4,
+      "model_build_seconds": 0.00070582,
+      "verification_seconds": 0.367326866,
+      "model_sha256": "1ec29b78c5b227f7b82f834656f4d5c6972819a3f40fdd45418d53608b42cc59",
+      "hidden_batch_sha256": "182965a0ad7503eacada16b1e08e8f83e5dca6aeabd77d03701fe7da3e29a6cc",
+      "argmax_mismatches_against_complete_representation": 0,
+      "early_certified_decisions": 0,
+      "full_fallback_decisions": 256,
+      "early_exit_fraction": 0.0,
+      "planes_executed_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 256
+      },
+      "timing": {
+        "complete_ordered_float64_reference": {
+          "calls": 768,
+          "total_seconds": 0.438751478,
+          "median_call_ms": 0.4735005,
+          "p95_call_ms": 0.7949157999999998,
+          "decisions_per_second": 1750.4214538509202
+        },
+        "adaptive_including_all_bound_and_decision_work": {
+          "calls": 768,
+          "total_seconds": 0.562734672,
+          "median_call_ms": 0.646946,
+          "p95_call_ms": 0.9627466,
+          "decisions_per_second": 1364.7639610875087
+        },
+        "complete_reference_seconds_divided_by_adaptive_seconds": 0.7796773503232798,
+        "interpretation": "Local interpreted NumPy timings, not a production-kernel or LLM speedup claim"
+      },
+      "memory": {
+        "persistent_model_arrays_bytes": {
+          "int8_codes": 32768,
+          "float64_row_scales": 4096,
+          "float64_bias": 1024,
+          "int64_bound_metadata": 4096,
+          "total_persistent_ndarray_bytes": 41984
+        },
+        "supplied_hidden_batch_bytes": 131072,
+        "full_peak_traced_call_allocations_bytes": 10250,
+        "adaptive_peak_traced_call_allocations_bytes": 21624,
+        "trace_scope": "Peak traced Python/NumPy allocations during up to 16 complete calls; persistent arrays and supplied inputs allocated before tracing are reported separately. This is not GPU memory, complete native-library memory, or process RSS."
+      },
+      "logical_work_for_one_pass_over_all_samples": {
+        "complete_reference": {
+          "hidden_values_validated": 16384,
+          "projection_code_elements_read": 8388608,
+          "projection_sign_products": 8388608,
+          "projection_accumulator_adds": 8388608,
+          "row_scale_products": 131072,
+          "row_logit_adds": 131072,
+          "projection_rows_checked_finite": 131072,
+          "hidden_abs_elements": 0,
+          "hidden_max_reduction_elements": 0,
+          "bound_table_adds": 0,
+          "bound_table_nextafter": 0,
+          "bound_count_metadata_reads": 0,
+          "bound_scale_metadata_reads": 0,
+          "bound_scale_products": 0,
+          "bound_product_nextafter": 0,
+          "interval_endpoint_adds": 0,
+          "interval_endpoint_nextafter": 0,
+          "interval_endpoints_checked_finite": 0,
+          "dominance_rows_inspected": 0,
+          "certificate_checks": 0
+        },
+        "adaptive": {
+          "hidden_values_validated": 16384,
+          "projection_code_elements_read": 8388608,
+          "projection_sign_products": 8388608,
+          "projection_accumulator_adds": 8388608,
+          "row_scale_products": 131072,
+          "row_logit_adds": 131072,
+          "projection_rows_checked_finite": 131072,
+          "hidden_abs_elements": 16384,
+          "hidden_max_reduction_elements": 16384,
+          "bound_table_adds": 16384,
+          "bound_table_nextafter": 16384,
+          "bound_count_metadata_reads": 196608,
+          "bound_scale_metadata_reads": 196608,
+          "bound_scale_products": 196608,
+          "bound_product_nextafter": 196608,
+          "interval_endpoint_adds": 393216,
+          "interval_endpoint_nextafter": 393216,
+          "interval_endpoints_checked_finite": 196608,
+          "dominance_rows_inspected": 98304,
+          "certificate_checks": 768
+        },
+        "interpretation": "Defined scalar reference-algorithm primitives, not hardware FLOPs or DRAM traffic. Counts include bound-table construction, metadata reads, outward rounding and dominance work. Python control/object costs are included in wall-clock timing, not in these counters."
+      }
+    },
+    {
+      "name": "exact_ties",
+      "seed": 20261104,
+      "classification": "synthetic_cpu_reference_only",
+      "construction": "Every output row identical; strict certificate must defer",
+      "shape": {
+        "output_rows": 128,
+        "hidden_size": 64,
+        "planes": 4
+      },
+      "samples": 256,
+      "timing_repeats": 3,
+      "extra_warmup_calls_per_method": 4,
+      "model_build_seconds": 0.000371258,
+      "verification_seconds": 0.332983288,
+      "model_sha256": "a7f8e421d098dc81e267b66a1e2b781d4f121931b31ceb93632169425ab993bf",
+      "hidden_batch_sha256": "e4d791782df0c23d122b6f59f614c02a158de78080398ecddee8f3f02d13b558",
+      "argmax_mismatches_against_complete_representation": 0,
+      "early_certified_decisions": 0,
+      "full_fallback_decisions": 256,
+      "early_exit_fraction": 0.0,
+      "planes_executed_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 256
+      },
+      "timing": {
+        "complete_ordered_float64_reference": {
+          "calls": 768,
+          "total_seconds": 0.400358705,
+          "median_call_ms": 0.468187,
+          "p95_call_ms": 0.7371232499999999,
+          "decisions_per_second": 1918.2797586479355
+        },
+        "adaptive_including_all_bound_and_decision_work": {
+          "calls": 768,
+          "total_seconds": 0.604288086,
+          "median_call_ms": 0.7109725,
+          "p95_call_ms": 1.1001708499999996,
+          "decisions_per_second": 1270.916997691727
+        },
+        "complete_reference_seconds_divided_by_adaptive_seconds": 0.6625295356228487,
+        "interpretation": "Local interpreted NumPy timings, not a production-kernel or LLM speedup claim"
+      },
+      "memory": {
+        "persistent_model_arrays_bytes": {
+          "int8_codes": 32768,
+          "float64_row_scales": 4096,
+          "float64_bias": 1024,
+          "int64_bound_metadata": 4096,
+          "total_persistent_ndarray_bytes": 41984
+        },
+        "supplied_hidden_batch_bytes": 131072,
+        "full_peak_traced_call_allocations_bytes": 10250,
+        "adaptive_peak_traced_call_allocations_bytes": 21624,
+        "trace_scope": "Peak traced Python/NumPy allocations during up to 16 complete calls; persistent arrays and supplied inputs allocated before tracing are reported separately. This is not GPU memory, complete native-library memory, or process RSS."
+      },
+      "logical_work_for_one_pass_over_all_samples": {
+        "complete_reference": {
+          "hidden_values_validated": 16384,
+          "projection_code_elements_read": 8388608,
+          "projection_sign_products": 8388608,
+          "projection_accumulator_adds": 8388608,
+          "row_scale_products": 131072,
+          "row_logit_adds": 131072,
+          "projection_rows_checked_finite": 131072,
+          "hidden_abs_elements": 0,
+          "hidden_max_reduction_elements": 0,
+          "bound_table_adds": 0,
+          "bound_table_nextafter": 0,
+          "bound_count_metadata_reads": 0,
+          "bound_scale_metadata_reads": 0,
+          "bound_scale_products": 0,
+          "bound_product_nextafter": 0,
+          "interval_endpoint_adds": 0,
+          "interval_endpoint_nextafter": 0,
+          "interval_endpoints_checked_finite": 0,
+          "dominance_rows_inspected": 0,
+          "certificate_checks": 0
+        },
+        "adaptive": {
+          "hidden_values_validated": 16384,
+          "projection_code_elements_read": 8388608,
+          "projection_sign_products": 8388608,
+          "projection_accumulator_adds": 8388608,
+          "row_scale_products": 131072,
+          "row_logit_adds": 131072,
+          "projection_rows_checked_finite": 131072,
+          "hidden_abs_elements": 16384,
+          "hidden_max_reduction_elements": 16384,
+          "bound_table_adds": 16384,
+          "bound_table_nextafter": 16384,
+          "bound_count_metadata_reads": 196608,
+          "bound_scale_metadata_reads": 196608,
+          "bound_scale_products": 196608,
+          "bound_product_nextafter": 196608,
+          "interval_endpoint_adds": 393216,
+          "interval_endpoint_nextafter": 393216,
+          "interval_endpoints_checked_finite": 196608,
+          "dominance_rows_inspected": 98304,
+          "certificate_checks": 768
+        },
+        "interpretation": "Defined scalar reference-algorithm primitives, not hardware FLOPs or DRAM traffic. Counts include bound-table construction, metadata reads, outward rounding and dominance work. Python control/object costs are included in wall-clock timing, not in these counters."
+      }
+    },
+    {
+      "name": "greedy_dense_approximation",
+      "seed": 20261105,
+      "classification": "synthetic_cpu_reference_only",
+      "construction": "Synthetic Gaussian dense matrix; greedy absmax residual planes",
+      "shape": {
+        "output_rows": 128,
+        "hidden_size": 64,
+        "planes": 4
+      },
+      "samples": 256,
+      "timing_repeats": 3,
+      "extra_warmup_calls_per_method": 4,
+      "model_build_seconds": 0.001215965,
+      "verification_seconds": 0.320292911,
+      "model_sha256": "d203013fafaddc27b96b7b1dc93ecdc249a1391a286c29593a808c6b1afc115b",
+      "hidden_batch_sha256": "a6f61eff330b69aa4c77e330eccc89a3bc6f0cc5cbd358e61b4dfb9471f1b410",
+      "argmax_mismatches_against_complete_representation": 0,
+      "early_certified_decisions": 0,
+      "full_fallback_decisions": 256,
+      "early_exit_fraction": 0.0,
+      "planes_executed_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 256
+      },
+      "timing": {
+        "complete_ordered_float64_reference": {
+          "calls": 768,
+          "total_seconds": 0.396188943,
+          "median_call_ms": 0.4580875,
+          "p95_call_ms": 0.7199032999999999,
+          "decisions_per_second": 1938.4690400105385
+        },
+        "adaptive_including_all_bound_and_decision_work": {
+          "calls": 768,
+          "total_seconds": 0.561293923,
+          "median_call_ms": 0.6507215,
+          "p95_call_ms": 1.0473493999999999,
+          "decisions_per_second": 1368.2670852647018
+        },
+        "complete_reference_seconds_divided_by_adaptive_seconds": 0.7058493362665536,
+        "interpretation": "Local interpreted NumPy timings, not a production-kernel or LLM speedup claim"
+      },
+      "memory": {
+        "persistent_model_arrays_bytes": {
+          "int8_codes": 32768,
+          "float64_row_scales": 4096,
+          "float64_bias": 1024,
+          "int64_bound_metadata": 4096,
+          "total_persistent_ndarray_bytes": 41984
+        },
+        "supplied_hidden_batch_bytes": 131072,
+        "full_peak_traced_call_allocations_bytes": 10250,
+        "adaptive_peak_traced_call_allocations_bytes": 21624,
+        "trace_scope": "Peak traced Python/NumPy allocations during up to 16 complete calls; persistent arrays and supplied inputs allocated before tracing are reported separately. This is not GPU memory, complete native-library memory, or process RSS."
+      },
+      "logical_work_for_one_pass_over_all_samples": {
+        "complete_reference": {
+          "hidden_values_validated": 16384,
+          "projection_code_elements_read": 8388608,
+          "projection_sign_products": 8388608,
+          "projection_accumulator_adds": 8388608,
+          "row_scale_products": 131072,
+          "row_logit_adds": 131072,
+          "projection_rows_checked_finite": 131072,
+          "hidden_abs_elements": 0,
+          "hidden_max_reduction_elements": 0,
+          "bound_table_adds": 0,
+          "bound_table_nextafter": 0,
+          "bound_count_metadata_reads": 0,
+          "bound_scale_metadata_reads": 0,
+          "bound_scale_products": 0,
+          "bound_product_nextafter": 0,
+          "interval_endpoint_adds": 0,
+          "interval_endpoint_nextafter": 0,
+          "interval_endpoints_checked_finite": 0,
+          "dominance_rows_inspected": 0,
+          "certificate_checks": 0
+        },
+        "adaptive": {
+          "hidden_values_validated": 16384,
+          "projection_code_elements_read": 8388608,
+          "projection_sign_products": 8388608,
+          "projection_accumulator_adds": 8388608,
+          "row_scale_products": 131072,
+          "row_logit_adds": 131072,
+          "projection_rows_checked_finite": 131072,
+          "hidden_abs_elements": 16384,
+          "hidden_max_reduction_elements": 16384,
+          "bound_table_adds": 16384,
+          "bound_table_nextafter": 16384,
+          "bound_count_metadata_reads": 196608,
+          "bound_scale_metadata_reads": 196608,
+          "bound_scale_products": 196608,
+          "bound_product_nextafter": 196608,
+          "interval_endpoint_adds": 393216,
+          "interval_endpoint_nextafter": 393216,
+          "interval_endpoints_checked_finite": 196608,
+          "dominance_rows_inspected": 98304,
+          "certificate_checks": 768
+        },
+        "interpretation": "Defined scalar reference-algorithm primitives, not hardware FLOPs or DRAM traffic. Counts include bound-table construction, metadata reads, outward rounding and dominance work. Python control/object costs are included in wall-clock timing, not in these counters."
+      }
+    }
+  ]
+}
