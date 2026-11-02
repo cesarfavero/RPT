@@ -19,28 +19,67 @@ Official project site:
 Use GitHub Issues in the relevant repository for bugs, reproduction reports,
 documentation gaps, and integration questions.
 
-## What Was Validated
+## Evidence Status
 
 The current validated track lives in [`gemma4_theory/`](gemma4_theory/).
 
-Local 100-question benchmark:
+Historical 100-question development suite, scored by the original evaluator:
 
 - original HF `google/gemma-2-2b-it`: `0.90`
-- improved dense checkpoint `student_pruned`: `0.92`
+- pruned/recovered dense checkpoint `student_pruned`: `0.92`
 - packed ternary recovered path: `1.00`
 - Triton-integrated packed runtime: `1.00`
 
-Operational result on T4 after production prewarm:
+The recovery notebooks used these same questions and expected answers for
+training and checkpoint selection. The scores demonstrate recovery on the
+development suite and functional execution of packed weights. They do not
+establish held-out generalization or superiority over the dense reference.
+
+The saved answers have also been regraded with a conservative full-answer
+evaluator: both packed paths still score 100/100. This is a regrade of saved
+answers, not a new model run. See [the evidence review](docs/reports/EVIDENCE_STATUS_2026-11-02.md).
+
+Historical eight-prompt T4 check after prewarm:
 
 - `avg_tokens_per_sec ~= 5.66`
 - `min_latency ~= 0.35s`
 - `max_latency ~= 1.02s`
+
+The 5.66 figure is an arithmetic mean of request-level rates, not aggregate
+throughput, and does not establish acceleration over a matched dense baseline.
+The earlier External500 evaluation used a dense/pruned base plus an older
+adapter, not the final packed artifact. The current kernel decodes packed weights
+inside tiles and uses a floating-point dense dot product; zero-skipping and a
+whole-model 1.58-bit format are not implemented.
 
 Bounded claim:
 
 RPT currently demonstrates a reproducible dense-to-packed-ternary pipeline and
 runtime path for the validated Linux/NVIDIA/Colab target. It is not presented
 as a universal drop-in replacement for every hardware/runtime environment.
+
+## Independent Validation and Current Research
+
+The executable validation path now includes a versioned exact-match evaluator,
+frozen dataset manifests with training-overlap checks, an exact-artifact external
+evaluation runner, runtime backend evidence, and CPU regression tests.
+
+```bash
+python -m pip install -r validation/requirements-cpu.txt
+python -m validation.run_validation --phase cpu
+python -m validation.environment --output environment.json
+```
+
+Use [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the packed and dense controls,
+[SCNET_VALIDATION.md](docs/SCNET_VALIDATION.md) for SCNet/DTK setup, and
+[the experimental protocol](validation/protocol.json) for pending model runs.
+Passing CPU tests does not certify GPU compatibility or model quality.
+
+The [adaptive output reference experiment](research/adaptive_output/README.md)
+tests whether incremental ternary corrections can stop after certifying the
+greedy argmax of the same complete representation. Its published results are
+synthetic CPU measurements, including slower cases. They are not an LLM benchmark,
+an energy result, or a claim of scientific priority.
 
 ## Where To Start
 
@@ -97,3 +136,4 @@ Apache License 2.0. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
 Third-party model weights, datasets, checkpoints, and trademarks remain subject
 to their own upstream licenses and terms. In particular, Gemma-family assets
 remain subject to the applicable Gemma Terms of Use.
+

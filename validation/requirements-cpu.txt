@@ -1,0 +1,2 @@
+# Portable reference experiment and test suite; no accelerator stack installed.
+numpy==2.3.5

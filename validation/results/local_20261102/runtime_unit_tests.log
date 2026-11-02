@@ -1,0 +1,53 @@
+test_absent_digest_uses_historical_digest_not_unchecked_mode (test_artifacts.BundleIntegrityTests.test_absent_digest_uses_historical_digest_not_unchecked_mode) ... ok
+test_actual_tensor_table_must_still_have_78_entries (test_artifacts.BundleIntegrityTests.test_actual_tensor_table_must_still_have_78_entries) ... ok
+test_complete_checksum_coverage_and_corruption (test_artifacts.BundleIntegrityTests.test_complete_checksum_coverage_and_corruption) ... ok
+test_complete_checksums_cannot_certify_empty_model_directories (test_artifacts.BundleIntegrityTests.test_complete_checksums_cannot_certify_empty_model_directories) ... ok
+test_empty_configs_and_tokenizer_payload_are_rejected (test_artifacts.BundleIntegrityTests.test_empty_configs_and_tokenizer_payload_are_rejected) ... ok
+test_legacy_layout_still_verifies_packed (test_artifacts.BundleIntegrityTests.test_legacy_layout_still_verifies_packed) ... ok
+test_manifest_cannot_change_runtime_tensor_count (test_artifacts.BundleIntegrityTests.test_manifest_cannot_change_runtime_tensor_count) ... ok
+test_null_or_malformed_digest_cannot_disable_verification (test_artifacts.BundleIntegrityTests.test_null_or_malformed_digest_cannot_disable_verification) ... ok
+test_override_is_validated_and_agrees_with_present_manifest (test_artifacts.BundleIntegrityTests.test_override_is_validated_and_agrees_with_present_manifest) ... ok
+test_required_model_files_cannot_be_missing_or_empty (test_artifacts.BundleIntegrityTests.test_required_model_files_cannot_be_missing_or_empty) ... ok
+test_shard_index_rejects_missing_empty_and_external_references (test_artifacts.BundleIntegrityTests.test_shard_index_rejects_missing_empty_and_external_references) ... ok
+test_strict_checksums_and_internal_symlinks (test_artifacts.BundleIntegrityTests.test_strict_checksums_and_internal_symlinks) ... ok
+test_unlisted_files_are_not_silently_trusted (test_artifacts.BundleIntegrityTests.test_unlisted_files_are_not_silently_trusted) ... ok
+test_valid_sharded_model_and_sentencepiece_layout (test_artifacts.BundleIntegrityTests.test_valid_sharded_model_and_sentencepiece_layout) ... ok
+test_rejects_duplicate_names_and_overlapping_ranges (test_artifacts.PackedArtifactTests.test_rejects_duplicate_names_and_overlapping_ranges) ... ok
+test_rejects_nonzero_padding (test_artifacts.PackedArtifactTests.test_rejects_nonzero_padding) ... ok
+test_rejects_reserved_codes_in_all_positions (test_artifacts.PackedArtifactTests.test_rejects_reserved_codes_in_all_positions) ... ok
+test_rejects_shape_count_offset_scale_and_padding_metadata (test_artifacts.PackedArtifactTests.test_rejects_shape_count_offset_scale_and_padding_metadata) ... ok
+test_rejects_truncation_and_trailing_bytes (test_artifacts.PackedArtifactTests.test_rejects_truncation_and_trailing_bytes) ... ok
+test_rejects_wrong_hash_and_count (test_artifacts.PackedArtifactTests.test_rejects_wrong_hash_and_count) ... ok
+test_valid_packed_and_hash (test_artifacts.PackedArtifactTests.test_valid_packed_and_hash) ... ok
+test_archive_checksum_failure_preserves_install (test_cli.InstallerTests.test_archive_checksum_failure_preserves_install) ... ok
+test_bad_archive_preserves_install_and_registry (test_cli.InstallerTests.test_bad_archive_preserves_install_and_registry) ... ok
+test_config_write_failure_is_atomic (test_cli.InstallerTests.test_config_write_failure_is_atomic) ... ok
+test_download_requires_https_and_checksums (test_cli.InstallerTests.test_download_requires_https_and_checksums) ... ok
+test_failed_rollback_keeps_previous_copy_outside_temporary_stage (test_cli.InstallerTests.test_failed_rollback_keeps_previous_copy_outside_temporary_stage) ... ok
+test_invalid_model_names_and_store_lock (test_cli.InstallerTests.test_invalid_model_names_and_store_lock) ... ok
+test_null_digest_cannot_publish_changed_packed_bytes (test_cli.InstallerTests.test_null_digest_cannot_publish_changed_packed_bytes) ... ok
+test_path_traversal_and_symlink_archive_members_are_rejected (test_cli.InstallerTests.test_path_traversal_and_symlink_archive_members_are_rejected) ... ok
+test_publish_failure_restores_old_directory (test_cli.InstallerTests.test_publish_failure_restores_old_directory) ... ok
+test_registry_failure_rolls_back_install (test_cli.InstallerTests.test_registry_failure_rolls_back_install) ... ok
+test_reinstall_same_directory_and_dangling_symlink (test_cli.InstallerTests.test_reinstall_same_directory_and_dangling_symlink) ... ok
+test_replaces_symlink_without_touching_source (test_cli.InstallerTests.test_replaces_symlink_without_touching_source) ... ok
+test_unloadable_candidate_with_complete_checksums_preserves_install (test_cli.InstallerTests.test_unloadable_candidate_with_complete_checksums_preserves_install) ... ok
+test_valid_archive_replacement_with_checksums (test_cli.InstallerTests.test_valid_archive_replacement_with_checksums) ... ok
+test_strict_evidence_requires_all_layers_and_zero_fallback (test_execution_metrics.ExecutionEvidenceTests.test_strict_evidence_requires_all_layers_and_zero_fallback) ... ok
+test_unexecuted_layers_are_not_claimed_as_triton (test_execution_metrics.ExecutionEvidenceTests.test_unexecuted_layers_are_not_claimed_as_triton) ... ok
+test_aggregates_tokens_over_time_not_unweighted_rates (test_execution_metrics.ThroughputTests.test_aggregates_tokens_over_time_not_unweighted_rates) ... ok
+test_empty_phase_is_explicit (test_execution_metrics.ThroughputTests.test_empty_phase_is_explicit) ... ok
+test_invalid_timings_are_rejected (test_execution_metrics.ThroughputTests.test_invalid_timings_are_rejected) ... ok
+test_launch_enters_input_device_and_restores_previous_device (test_loader_guards.DeviceSelectionTests.test_launch_enters_input_device_and_restores_previous_device) ... ok
+test_verified_loader_rejects_null_hash_before_model_loading (test_loader_guards.LoaderHashGuardTests.test_verified_loader_rejects_null_hash_before_model_loading) ... ok
+test_bad_packed_length_reserved_codes_and_padding_fail_before_forward (test_tensor_runtime.PackedTensorTests.test_bad_packed_length_reserved_codes_and_padding_fail_before_forward) ... skipped 'PyTorch is not installed; numerical runtime checks pending'
+test_cpu_forward_matches_dense_and_records_fallback (test_tensor_runtime.PackedTensorTests.test_cpu_forward_matches_dense_and_records_fallback) ... skipped 'PyTorch is not installed; numerical runtime checks pending'
+test_invalid_shape_and_input_width (test_tensor_runtime.PackedTensorTests.test_invalid_shape_and_input_width) ... skipped 'PyTorch is not installed; numerical runtime checks pending'
+test_strict_layer_rejects_cpu_without_counting_a_success (test_tensor_runtime.PackedTensorTests.test_strict_layer_rejects_cpu_without_counting_a_success) ... skipped 'PyTorch is not installed; numerical runtime checks pending'
+test_triton_launch_uses_input_device_when_current_device_differs (test_tensor_runtime.PackedTensorTests.test_triton_launch_uses_input_device_when_current_device_differs) ... skipped 'PyTorch is not installed; numerical runtime checks pending'
+test_zero_scale_and_noncontiguous_input (test_tensor_runtime.PackedTensorTests.test_zero_scale_and_noncontiguous_input) ... skipped 'PyTorch is not installed; numerical runtime checks pending'
+
+----------------------------------------------------------------------
+Ran 48 tests in 0.375s
+
+OK (skipped=6)

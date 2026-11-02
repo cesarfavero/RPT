@@ -1,5 +1,19 @@
 # RPT-9 Model Optimization Roadmap
 
+## Priority update (2026-11-02)
+
+Evaluate the final packed artifact on frozen external data before selecting
+more checkpoints or changing recovery. This supersedes placing external
+validation after optimization in the historical sequence below.
+
+Portable evaluation and integrity checks, hardware preflight, a strict Triton
+probe and a synthetic adaptive-output reference are now implemented. Actual
+model evaluation, SCNet/NVIDIA measurements, a packed-first loader, optimized
+kernels, energy measurements and matched-budget recovery controls are pending.
+See [the evidence review](EVIDENCE_STATUS_2026-11-02.md) and
+[the declared campaign](../../validation/protocol.json).
+
+
 This file turns `RPT-9` into an execution sequence instead of a loose idea list.
 
 Constraint:
@@ -213,3 +227,4 @@ Gate:
 
 - current site and public install work should stay blocked from reopening until compiled distribution exists
 - `RPT-9` should optimize toward the compiled product path, not toward another Python-distributed runtime bundle
+

@@ -1,5 +1,19 @@
 # Gemma 2B Ternary Runtime Track
 
+## Atualização das evidências (2026-11-02)
+
+A suíte de 100 questões foi usada no recovery e na seleção de checkpoints. Os
+dois caminhos packed mantiveram 100/100 na reavaliação dos textos salvos com
+correção estrita, mas esse resultado mede desenvolvimento. O External500
+histórico usa uma base densa e um adaptador anterior. A avaliação externa do
+pacote packed final passa a ser a primeira etapa do novo protocolo.
+
+Consulte o [estado das evidências](../docs/reports/EVIDENCE_STATUS_2026-11-02.md)
+e o [protocolo de reprodução](../REPRODUCIBILITY.md). Os resultados abaixo
+preservam o histórico; os títulos que usam “proved” não estabelecem causalidade,
+generalização ou aceleração sem os controles descritos nesses documentos.
+
+
 This folder is the current practical track of the repository.
 
 Goal:

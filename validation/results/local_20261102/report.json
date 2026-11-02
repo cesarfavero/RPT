@@ -1,0 +1,99 @@
+{
+  "schema_version": "rpt-validation-run-v1",
+  "phase": "all",
+  "created_at_utc": "2026-11-02T23:44:08.706665+00:00",
+  "source": {
+    "git_commit": "6dd38f1ae64ad139ec37064ac06405e528f5673b",
+    "git_dirty": true,
+    "source_sha256": {
+      "validation/__init__.py": "0f3c69fe3fa998463ac561a96cdd922b9979fc3ea0799bcc8c229bf8603ae1fa",
+      "validation/environment.py": "21a5121a41199920f38929f7e4050407f0157f7c5872913cc6d09cdd81a96d8a",
+      "validation/evaluation.py": "bff1e79b3bd5ffe7edca66e15f682a65c6d6cd9865e60a864dc5372cdee0c236",
+      "validation/kernel_probe.py": "7aba7cbf118d26e2f88431b4a69a1068ec2ab9d73561eaa646ff96c49287e794",
+      "validation/lm_eval_packed.py": "218c180208d01ac3bd45f547099f5cedc80e8febddb1f8a55b1e2103bb88faca",
+      "validation/metrics.py": "9708b798324baef0aaed2a5fdf7c7d743ce0172dae45478b70d0601e031db4c0",
+      "validation/regrade_history.py": "b102346538f767637d7f0ccc65af70e2177d1c1b581365851621b65b0dfc01a9",
+      "validation/run_validation.py": "b2ee724a8a8ce9dbc81b609e400d36669fe61e2201ed606a71da536108c87256",
+      "validation/splits.py": "cfc87ca530a19812702c64f7e9276b4d231d1167c4b870b19cad21f5b63edd10",
+      "research/adaptive_output/__init__.py": "9fba7a156b56be6f7c0f42a766903d5e24d71f87aa89e741b93aa139c4bff680",
+      "research/adaptive_output/projection.py": "d803b30c45cd697150fb5cc9faeb86e70f4d7ce9f7638a6f0c64856c1d46af44",
+      "research/adaptive_output/run_experiment.py": "9ad7a44ac094eb046c46692f41b910ee539221b3b0ef5cefc228fec9620264f0",
+      "gemma4_theory/runtime/packed_recovered_l78/artifacts.py": "f455969783e14b9996bc328a4e64935d20266b48156efcab3150299d7183177b",
+      "gemma4_theory/runtime/packed_recovered_l78/execution.py": "1ca1bb31258d6e5db6f74663c05060b598f8e96e4c0ffc0310ec398ca4b840b8",
+      "gemma4_theory/runtime/packed_recovered_l78/loader.py": "5bab4dd9e632ad3ac5e2e06a5d6b50f9efa1480ce9e04851925086a08aebf742",
+      "gemma4_theory/runtime/packed_recovered_l78/metrics.py": "cddfdcf09df005362d7c601edb13a7a34b78b957a016d507c726cdb31588f3f0",
+      "gemma4_theory/runtime/packed_recovered_l78/native_loader.py": "35766847f74aca358df6e5dc55f5eac599f1f393c956ad598dcbfa79d36dcb79",
+      "gemma4_theory/runtime/packed_recovered_l78/run_triton_inference.py": "34eca167d7d21a61553278c28ac2d0f94b57760da542f315c13b5ff567a735b6",
+      "gemma4_theory/runtime/packed_recovered_l78/triton_loader.py": "214632abffd8a2c0acdb9fa6718afa7ef5c25cf624bf193d44eef9bf46dfd14d",
+      "tests/test_adaptive_output.py": "f2125041937c6b15d1fa208d613286cf8d7c86dced26241aa4d99a81bf8df3d0",
+      "tests/test_evaluation.py": "0752277257900a799742320554196bf4add352409a58703d66f3bc7d73de2048",
+      "tests/test_lm_eval_packed.py": "aaf71110c2c1a1ccf640964625874d3444f939bc0165755d6f78bf93213e6fdf",
+      "tests/test_notebook_evaluators.py": "8ad4bdba8c5669434522a03f0a218b5b24083d9c2e7fb9158a82fe946b08adb0",
+      "tests/test_preflight_failures.py": "c769ede5432dcd6bd5030a7e8afcdb5821721c4bdb160dc97969042060cb256a",
+      "tests/test_splits.py": "1c884c01124805cf1669c6f436933f3aea50c255eff4c693927c187a24b5811e",
+      "tests/test_validation_metrics.py": "f78b847eee29f7c9660f2c4fecd119f1e1c986c0d82348d417515b4f879f0d0b"
+    }
+  },
+  "environment": {
+    "schema_version": "rpt-environment-v1",
+    "created_at_utc": "2026-11-02T23:44:08.718731+00:00",
+    "platform": {
+      "system": "Linux",
+      "machine": "x86_64",
+      "python": "3.12.14",
+      "cpu_count": 9,
+      "physical_memory_bytes": 10451427328
+    },
+    "packages": {
+      "numpy": "2.3.5",
+      "torch": null,
+      "triton": null,
+      "pytorch-triton": null,
+      "pytorch-triton-rocm": null,
+      "transformers": null,
+      "peft": null,
+      "accelerate": null,
+      "safetensors": null,
+      "datasets": null,
+      "lm_eval": null
+    },
+    "vendor_tools_present": {
+      "nvidia-smi": false,
+      "rocm-smi": false,
+      "hy-smi": false,
+      "sinfo": false,
+      "sbatch": false
+    },
+    "torch": {
+      "status": "not_installed"
+    },
+    "backend_assessment": {
+      "kind": "unavailable",
+      "kernel_probe_required": true,
+      "reason": "PyTorch or its driver could not be initialized."
+    },
+    "secret_values_collected": false,
+    "model_quality_evaluated": false
+  },
+  "steps": [
+    {
+      "name": "unit_tests",
+      "status": "passed",
+      "exit_code": 0,
+      "elapsed_seconds": 0.6186408770008711,
+      "log_file": "unit_tests.log"
+    },
+    {
+      "name": "kernel_probe",
+      "status": "blocked",
+      "exit_code": 2,
+      "elapsed_seconds": 0.1143501330006984,
+      "log_file": "kernel_probe.log",
+      "reason": "torch and triton are required"
+    }
+  ],
+  "model_quality_evaluated": false,
+  "status": "blocked",
+  "status_scope": "Only the requested phases; never an implicit full-model or hardware certification.",
+  "next_stage": "Use validation.lm_eval_packed with frozen datasets, local model artifacts and explicit backend."
+}

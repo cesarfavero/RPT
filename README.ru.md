@@ -1,5 +1,16 @@
 # RPT
 
+## Evidence update (2026-11-02)
+
+The 100-question suite was used during recovery training and checkpoint selection.
+Both packed paths retain 100/100 when their saved answers are regraded with the
+strict evaluator, but this is development evidence. The historical External500
+report measures an earlier dense/adapter path, not the final packed artifact.
+Read the [current evidence review](docs/reports/EVIDENCE_STATUS_2026-11-02.md) and
+[reproduction protocol](REPRODUCIBILITY.md) before interpreting the historical
+claims below. Updated source does not imply that saved notebook outputs were rerun.
+
+
 Версии README:
 
 - English: [`README.md`](README.md)
